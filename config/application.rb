@@ -16,6 +16,9 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Ensure that any required environment variables for the application are present
+require_relative 'required_env_vars'
+
 module Teamo
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
