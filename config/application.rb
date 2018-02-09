@@ -29,5 +29,9 @@ module Teamo
     config.generators.system_tests = nil
 
     config.active_record.schema_format = :sql
+
+    config.action_mailer.default_url_options = {
+      host: ENV.fetch('TEAMO_HOSTNAME'), port: ENV.fetch('TEAMO_PORT')
+    }
   end
 end
