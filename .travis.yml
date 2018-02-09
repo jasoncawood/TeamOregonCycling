@@ -1,0 +1,3 @@
+install:
+  - bundle config gems.rapidrailsthemes.com $RRT_CREDENTIALS
+  - bundle install
