@@ -1,5 +1,7 @@
 language: ruby
-cache: bundler
+cache:
+  directories:
+    - vendor/bundle
 install:
   - bundle config gems.rapidrailsthemes.com $RRT_CREDENTIALS
-  - bundle install
+  - bundle install --path vendor/bundle
