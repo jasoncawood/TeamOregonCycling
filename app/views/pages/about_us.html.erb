@@ -1,0 +1,56 @@
+<div id="about-us">
+  <section>
+
+    <h2>About Us</h2>
+
+    <%= image_tag('team-photo.jpg', id: 'team-photo') %>
+
+    <p>Team Oregon was established in 1987 to develop the cycling abilities of
+      its members and the sport of competitive cycling with a focus on the
+      Pacific Northwest.</p>
+
+    <p>As we begin our thirty-first year, we continue to celebrate and support
+      the cycling community by welcoming new members of all skill members,
+      teaching proper racing skills, and helping our members achieve their
+      cycling goals.</p>
+
+    <p>Team Oregon operates a team-oriented model to ensure that all riders have
+      a place. Experienced riders share their knowledge with less experienced
+      team members, enabling growth and skill development. In addition to
+      racing, members are encouraged to be active in the club and assist in the
+      club’s operations and projects. Team Oregon actively promotes races,
+      training rides, training camps, community cycling events, and
+      coaching.</p>
+
+    <p>The team’s mission is to enhance the sport of cycling in Oregon by
+      organizing an accessible team with resources to help all members reach
+      their goals within the sport.</p>
+
+    <p>We’d love to meet you! Feel free to <%= link_to 'contact us',
+      page_path(:contact) %> with any questions.</p>
+
+  </section>
+
+  <section id="leaders">
+    <h3>Team Leadership</h3>
+
+    <%= leader_bio(name: 'Erica Menze', title: 'President',
+                   email: 'erica.teamoregon@gmail.com', image: 'erica',
+                   bio: <<-BIO)
+        Erica has been a member of Team Oregon for five years, and led the
+        women’s team to the top of the podium for the last three. An attorney by
+        day, Erica is a passionate cyclist and advocate of Team Oregon in every
+        category.
+        BIO
+    %>
+
+    <%= leader_bio(name: 'Ryan Menze', title: 'Treasurer',
+                   email: 'menzerd@gmail.com', image: 'ryan',
+                   bio: <<-BIO)
+        Ryan – also known as R Money – will continue to serve as Team Oregon’s
+        Treasurer after five years of membership. When he’s not on his bike, you
+        can find Ryan cross-training and planning his next ride.
+        BIO
+    %>
+  </section>
+</div>

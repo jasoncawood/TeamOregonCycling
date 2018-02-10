@@ -25,6 +25,10 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+group :test do
+  gem 'rails-controller-testing'
+end
+
 group :development do
   gem 'foreman'
   gem 'listen', '>= 3.0.5', '< 3.2'

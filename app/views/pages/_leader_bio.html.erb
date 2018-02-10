@@ -1,0 +1,15 @@
+<section>
+  <header>
+    <h4><%= name %></h4>
+    <div class="title"><%= title %></div>
+  </header>
+  <%=
+    if image.blank?
+      image_tag('anonymous_user.png')
+    else
+      image_tag("leaders/#{image}.jpg")
+    end
+  %>
+  <p class="email"><%= mail_to(email) if email.present? %></p>
+  <p class="bio"><%= bio %></p>
+</section>
