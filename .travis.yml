@@ -5,3 +5,4 @@ cache:
 install:
   - bundle config gems.rapidrailsthemes.com $RRT_CREDENTIALS
   - bundle install --path vendor/bundle
+  - RAILS_ENV=test rails db:create
