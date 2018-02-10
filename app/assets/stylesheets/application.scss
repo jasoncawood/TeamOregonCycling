@@ -12,4 +12,13 @@
  *
  *= require_self
  */
+@import "variables";
 @import "bootstrap";
+@import "bootswatch";
+
+#page-header {
+  @extend .navbar;
+  @extend .navbar-expand;
+  @extend .navbar-dark;
+  @extend .bg-primary;
+}
