@@ -12,13 +12,144 @@
  *
  *= require_self
  */
-@import "variables";
+$enable-rounded: true;
+$enable-shadows: true;
+$enable-gradients: true;
+$enable-transitions: true;
+
+$dark: #3E3E3F;
+
+$primary: #22BCAC;
+$info:    #A4D9D2;
+
+$body-bg: $dark;
+
 @import "bootstrap";
-@import "bootswatch";
 
 #page-header {
   @extend .navbar;
   @extend .navbar-expand;
   @extend .navbar-dark;
   @extend .bg-primary;
+  @extend .sticky-top;
+}
+
+#content {
+  @extend .container;
+  background-color: $light;
+}
+
+#content:not(.sidebar) {
+  .main-content {
+    @extend .col-12;
+  }
+}
+
+#content.sidebar {
+  .main-content {
+    @extend .col-md-8;
+  }
+
+  #sidebar {
+    @extend .col-md-4;
+
+    #sb-sponsors {
+      @extend .card;
+
+      h2 {
+        display: none;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        text-align: center;
+        @extend .mt-3;
+        @extend .mb-0;
+      }
+
+      ul {
+        @extend .list-unstyled;
+        @extend .card-body;
+
+        > li {
+          text-align: center;
+        }
+
+        ul li {
+          display: inline-block;
+        }
+      }
+
+      img {
+        @extend .mw-100;
+        @extend .m-1;
+        max-height: 5em;
+      }
+
+      #sb-title-sponsor img {
+        max-height: 10em;
+      }
+    }
+  }
+}
+
+
+#about-us {
+  @extend .main-content;
+
+  > section {
+    @extend .col-12;
+  }
+
+  #team-photo {
+    @extend .mb-3;
+    @extend .w-100;
+    @extend .rounded;
+  }
+
+  #leaders {
+    @extend .border-top;
+    @extend .pt-3;
+    @extend .mt-5;
+
+    h2 {
+      text-align: center;
+    }
+
+    >div {
+      @extend .card-group;
+    }
+
+    .leader-bio {
+      @extend .card;
+      @extend .m-1;
+      @extend .border;
+
+      header {
+        @extend .card-header;
+      }
+
+      .headshot {
+        @extend .w-100;
+        height: 15em;
+
+        img {
+          @extend .mx-auto;
+          display: block;
+          width: 250px;
+          @extend .mw-100;
+          @extend .mh-100;
+          @extend .rounded;
+        }
+      }
+
+      .bio {
+        @extend .card-body;
+
+        .email {
+          text-align: center;
+        }
+      }
+    }
+  }
 }

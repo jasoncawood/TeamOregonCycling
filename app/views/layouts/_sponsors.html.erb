@@ -1,0 +1,33 @@
+<div id="sb-sponsors">
+  <h2>Sponsors</h2>
+  <ul>
+    <li id="sb-title-sponsor">
+      <h3>Presented By</h3>
+      <ul>
+        <li><%= link_to image_tag('sponsors/rodda.png', alt: 'Rodda Paint', title: 'Rodda Paint'),
+                        page_path(:sponsors, anchor: 'rodda') %></li>
+      </ul>
+    </li>
+    <li>
+      <h3>Sponsors</h3>
+      <ul>
+        <%
+          {
+            northlake: 'North Lake Physical Therapy',
+            castelli: 'Castelli',
+            organic_partners: 'Organic Partners International',
+            green_drop: 'Green Drop Garage',
+            backporch: 'Backporch Coffee',
+            river_city: 'River City Bicycles',
+            re_sports: 'RE Sports Wellness/Melissa Shays',
+            o2_endurance: 'O2 Endurance',
+            nuun: 'Nuun'
+          }.each do |slug, name|
+        %>
+          <li><%= link_to image_tag("sponsors/#{slug}.jpg", alt: name, title: name),
+                          page_path(:sponsors, anchor: slug) %></li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+</div>

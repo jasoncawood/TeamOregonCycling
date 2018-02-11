@@ -1,8 +1,8 @@
+<%
+  show_sidebar!
+%>
 <div id="about-us">
-  <section>
-
-    <h2>About Us</h2>
-
+  <section id="team-description">
     <%= image_tag('team-photo.jpg', id: 'team-photo') %>
 
     <p>Team Oregon was established in 1987 to develop the cycling abilities of
@@ -28,12 +28,11 @@
 
     <p>We’d love to meet you! Feel free to <%= link_to 'contact us',
       page_path(:contact) %> with any questions.</p>
-
   </section>
 
   <section id="leaders">
-    <h3>Team Leadership</h3>
-
+    <h2>Team Leadership</h2>
+    <div>
     <%= leader_bio(name: 'Erica Menze', title: 'President',
                    email: 'erica.teamoregon@gmail.com', image: 'erica',
                    bio: <<-BIO)
@@ -43,7 +42,9 @@
         category.
         BIO
     %>
+    </div>
 
+    <div>
     <%= leader_bio(name: 'Ryan Menze', title: 'Treasurer',
                    email: 'menzerd@gmail.com', image: 'ryan',
                    bio: <<-BIO)
@@ -52,5 +53,66 @@
         can find Ryan cross-training and planning his next ride.
         BIO
     %>
+    <%= leader_bio(name: 'John Gill', title: 'Clothing Director / CX Leader',
+                   email: 'jgill0802@gmail.com',
+                   bio: <<-BIO)
+        Single-origin coffee retro neutra taiyaki tousled 3 wolf moon
+        vexillologist gentrify quinoa blue bottle fashion axe coloring book
+        etsy. Pop-up swag bushwick lo-fi mumblecore meggings artisan
+        chicharrones locavore disrupt semiotics. Wolf vinyl master cleanse,
+        cold-pressed marfa biodiesel stumptown DIY.
+        BIO
+    %>
+    </div>
+
+    <div>
+    <%= leader_bio(name: 'Will Hahn', title: 'Elite/Development Team Leader',
+                   bio: <<-BIO)
+        Biodiesel pok pok sustainable next level enamel pin, marfa authentic +1
+        cliche knausgaard pour-over cold-pressed single-origin coffee pinterest.
+        Unicorn helvetica drinking vinegar venmo pork belly. Etsy lumbersexual
+        direct trade yuccie butcher. Unicorn PBR&B microdosing, bicycle rights
+        glossier cardigan beard thundercats vice vexillologist sartorial
+        normcore.
+        BIO
+    %>
+
+    <%= leader_bio(name: 'Nick Wood', title: 'Mountain Bike Team Leader',
+                   email: 'nick.wood48@gmail.com',
+                   bio: <<-BIO)
+        Kombucha pabst everyday carry affogato venmo sustainable. Cray iPhone
+        raw denim godard chartreuse green juice affogato iceland keytar umami
+        viral fam poutine glossier cred. Lo-fi banjo hammock selvage pork belly
+        locavore tumblr. Af normcore vice, YOLO selvage vinyl williamsburg vape
+        food truck. +1 fanny pack actually church-key, gluten-free vice hell of
+        kinfolk bespoke.
+        BIO
+    %>
+    </div>
+
+    <div>
+    <%= leader_bio(name: 'John Wilger',
+                 title: 'IT Support / Saturday Ride Leader',
+                 email: 'john@johnwilger.com', image: 'johnw',
+                 bio: <<-BIO)
+        John has been racing with Team Oregon since 2014 on the road
+        and—more recently—in cyclocross, as well. For 2018, his
+        goals are centered around the Baker City Cycling Classic stage race, and
+        you'll find him leading the team road ride most Saturdays this spring.
+        BIO
+    %>
+
+    <%= leader_bio(name: 'Brett Ensor',
+                   title: 'Assistant Clothing Director',
+                   email: 'b.d.ensor@gmail.com ',
+                   bio: <<-BIO)
+        Cloud bread whatever activated charcoal chicharrones biodiesel fixie,
+        four dollar toast kickstarter pickled tacos disrupt. Salvia franzen
+        glossier, literally narwhal tousled raw denim tbh. Man braid slow-carb
+        seitan air plant mlkshk cold-pressed prism la croix. Fixie banh mi
+        stumptown keffiyeh green juice tilde food truck.
+        BIO
+    %>
+    </div>
   </section>
 </div>
