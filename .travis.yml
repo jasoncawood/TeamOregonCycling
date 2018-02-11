@@ -5,7 +5,7 @@ cache:
   directories:
     - vendor/bundle
 before_script:
-  - psql -c 'create database teamo_test;' -U postgre
+  - psql -c 'create database teamo_test;' -U postgres
 install:
   - bundle config gems.rapidrailsthemes.com $RRT_CREDENTIALS
   - bundle install --path vendor/bundle
