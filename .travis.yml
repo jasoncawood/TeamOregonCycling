@@ -1,8 +1,11 @@
 language: ruby
+addons:
+  postgresql: 9.6
 cache:
   directories:
     - vendor/bundle
+before_script:
+  - psql -c 'create database teamo_test;' -U postgre
 install:
   - bundle config gems.rapidrailsthemes.com $RRT_CREDENTIALS
   - bundle install --path vendor/bundle
-  - RAILS_ENV=test bin/rails db:create
