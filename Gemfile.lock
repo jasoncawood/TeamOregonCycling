@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/king601/devise-bootstrapped.git
+  revision: 02e5259cfaa980deeb3e190ac5a49c9254caa867
+  branch: bootstrap4
+  specs:
+    devise-bootstrapped (0.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -211,12 +218,14 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   devise
+  devise-bootstrapped!
   dotenv-rails
   foreman
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   pg (~> 0.18)
+  popper_js
   puma (~> 3.7)
   rails (~> 5.1.4)
   rails-controller-testing

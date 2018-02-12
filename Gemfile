@@ -9,9 +9,12 @@ end
 gem 'bootstrap'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped',
+  branch: 'bootstrap4'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg', '~> 0.18'
+gem 'popper_js'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.4'
 gem 'sass-rails', '~> 5.0'

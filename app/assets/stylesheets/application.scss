@@ -54,6 +54,28 @@ $body-bg: $dark;
         }
       }
     }
+
+    #user-links {
+      @extend .ml-md-auto;
+
+      #logged-in-user-links {
+        @extend .nav-item;
+        @extend .dropdown;
+
+        #user-dropdown {
+          @extend .nav-link;
+          @extend .dropdown-toggle;
+        }
+
+        > div {
+          @extend .dropdown-menu;
+
+          a {
+            @extend .dropdown-item;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -117,6 +139,10 @@ $body-bg: $dark;
       }
     }
   }
+}
+
+#devise {
+  @extend .main-content;
 }
 
 #about-us {

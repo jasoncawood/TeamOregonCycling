@@ -12,17 +12,31 @@
 
   <body>
     <nav id="page-header">
-      <%= link_to image_tag('logo.png'), root_url, id: 'header-logo' %>
       <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false"
         aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <%= link_to image_tag('logo.png'), root_url, id: 'header-logo' %>
       <div id="navbarSupportedContent">
-        <ul>
+        <ul id="main-links">
           <%= main_nav_link 'Home', root_path %>
           <%= main_nav_link 'Sponsors', page_path(:sponsors) %>
+        </ul>
+        <ul id="user-links">
+          <% if current_user.present? %>
+            <li id="logged-in-user-links">
+              <a href="#" id="user-dropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"><%= current_user.display_name %></a>
+              <div class="dropdown-menu" arial-labelledby="user-dropdown">
+                <%= link_to('Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item') %>
+              </div>
+            </li>
+          <% else %>
+            <%= main_nav_link('Log In', new_user_session_path) unless current_user.present? %>
+          <% end %>
         </ul>
       </div>
     </nav>
