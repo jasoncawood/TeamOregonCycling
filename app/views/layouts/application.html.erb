@@ -11,9 +11,21 @@
   </head>
 
   <body>
-    <header id="page-header">
-      <%= link_to image_tag('logo.png'), root_url, class: 'navbar-brand mr-0 mr-md-2' %>
-    </header>
+    <nav id="page-header">
+      <%= link_to image_tag('logo.png'), root_url, id: 'header-logo' %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarSupportedContent">
+        <ul>
+          <%= main_nav_link 'Home', root_path %>
+          <%= main_nav_link 'Sponsors', page_path(:sponsors) %>
+        </ul>
+      </div>
+    </nav>
     <div id="content" class="<%= 'sidebar' if show_sidebar? %>">
       <div class="row">
         <%= yield %>

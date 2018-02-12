@@ -28,10 +28,33 @@ $body-bg: $dark;
 
 #page-header {
   @extend .navbar;
-  @extend .navbar-expand;
-  @extend .navbar-dark;
+  @extend .navbar-expand-lg;
+  @extend .navbar-light;
   @extend .bg-primary;
   @extend .sticky-top;
+
+  #header-logo {
+    @extend .navbar-brand;
+    @extend .mr-0;
+    @extend .mr-md-2;
+  }
+
+  #navbarSupportedContent {
+    @extend .collapse;
+    @extend .navbar-collapse;
+
+    > ul {
+      @extend .navbar-nav;
+
+      > li {
+        @extend .nav-item;
+
+        > a {
+          @extend .nav-link;
+        }
+      }
+    }
+  }
 }
 
 #content {
@@ -42,6 +65,9 @@ $body-bg: $dark;
 #content:not(.sidebar) {
   .main-content {
     @extend .col-12;
+
+    .intro {
+    }
   }
 }
 
@@ -92,7 +118,6 @@ $body-bg: $dark;
     }
   }
 }
-
 
 #about-us {
   @extend .main-content;
@@ -151,5 +176,30 @@ $body-bg: $dark;
         }
       }
     }
+  }
+}
+
+#sponsors {
+  @extend .main-content;
+
+  .sponsor {
+    @extend .mb-3;
+
+    h4 {
+      margin-left: 16rem;
+    }
+
+    img {
+      width: 15rem;
+      @include float-left;
+    }
+
+    > div {
+      margin-left: 16rem;
+    }
+  }
+
+  .title-sponsor {
+    font-size: 1.2em;
   }
 }
