@@ -20,6 +20,7 @@ gem 'rails', '~> 5.1.4'
 gem 'redcarpet'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
+gem 'the_help'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 

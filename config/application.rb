@@ -36,5 +36,7 @@ module Teamo
     config.action_mailer.default_url_options = {
       host: ENV.fetch('TEAMO_HOSTNAME'), port: ENV.fetch('TEAMO_PORT')
     }
+
+    config.autoload_paths << Rails.root.join('lib')
   end
 end
