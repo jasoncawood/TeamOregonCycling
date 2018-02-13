@@ -5,6 +5,12 @@ module ApplicationHelper
     end
   end
 
+  def page_title(new_value=nil)
+    @page_title = new_value unless new_value.nil?
+    return nil if @page_title.blank?
+    " - #{@page_title}"
+  end
+
   def markdown(text)
     options = {
       filter_html:     true,
