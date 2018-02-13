@@ -1,0 +1,35 @@
+<section id="<%= sponsor.slug %>" class="sponsor">
+  <div>
+    <div class="logo">
+      <%= link_to(image_tag("sponsors/#{sponsor.logo_image}"),
+                  sponsor.main_url)  %>
+    </div>
+    <div class="sponsor-description">
+      <h4><%= link_to(sponsor.name, sponsor.main_url) %></h4>
+      <%= markdown(sponsor.description) %>
+      <% if sponsor.additional_links.any? %>
+        <div class="social">
+          <div class="links">
+            <h5>Social Media:</h5>
+            <ul>
+              <% sponsor.additional_links.each do |key, value| %>
+                <li><%= link_to(key, value) %></li>
+              <% end %>
+            </ul>
+          </div>
+
+          <% if sponsor.hashtags.any? %>
+            <div class="hashtags">
+              <h6>Hashtags: </h6>
+              <ul>
+                <% sponsor.hashtags.each do |hashtag| %>
+                  <li><%= hashtag %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

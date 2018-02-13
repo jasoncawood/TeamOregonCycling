@@ -3,56 +3,12 @@
   hide_sidebar_sponsors!
 %>
 <div id="sponsors">
-  <div class="jumbotron">
-      <h2>Sponsors</h2>
-      <p class="lead">Team Oregon is proud to present our 2018 sponsors!</p>
+  <div id="title-sponsor">
+    <h2>Team Oregon is proud to be presented by</h2>
+    <%= render partial: 'sponsor', object: title_sponsor %>
   </div>
 
-  <h3>Presented by</h3>
+  <h2>Sponsors</h2>
 
-  <section id="rodda" class="sponsor">
-    <h4><%= link_to('Rodda Paint', 'https://www.roddapaint.com/') %></h4>
-    <%= image_tag('sponsors/rodda.png') %>
-    <div>
-      <p>Migas yuccie af chambray offal trust fund. Activated charcoal gochujang
-        adaptogen ugh locavore ethical scenester. Skateboard semiotics viral
-        brunch food truck craft beer neutra chia hella gochujang cold-pressed
-        seitan. Messenger bag organic art party copper mug meggings fam swag.
-        Tumeric dreamcatcher vaporware, chartreuse biodiesel green juice
-        intelligentsia lo-fi 3 wolf moon freegan distillery hoodie sriracha
-        salvia shoreditch. Tote bag kale chips tilde man bun gentrify woke
-        chicharrones snackwave hoodie semiotics glossier street art. Tote bag
-        flannel meggings pork belly, humblebrag scenester la croix art party
-        woke bushwick cray cloud bread hashtag.</p>
-      <h5>Social Media:</h5>
-      <ul>
-        <li><%= link_to('Facebook', 'https://www.facebook.com/roddapaint') %></li>
-      </ul>
-    </div>
-  </section>
-
-  <h3>Sponsors</h3>
-  <section id="northlake" class="sponsor">
-    <h4><%= link_to('North Lake Physical Therapy and Rehabilitation',
-                    'http://www.northlakephysicaltherapy.com/') %></h4>
-    <%= image_tag('sponsors/northlake.jpg') %>
-    <div>
-      <p>North Lake Physical Therapy and Rehabilitation proudly continues its
-        support and partnership in 2018. Owners of North Lake, Michael Choate
-        MSPT, and Vince Blaney, MSPT, are both avid competitive cyclists and
-        have worked with many athletes over their careers. North Lake has
-        multiple locations around the Portland metro area to serve our
-        members.</p>
-
-      <p>The sport of cycling poses both mental and physical challenges, and the
-        team at North Lake is ready to get you back to peak form. North Lake
-        works with most insurance companies, increasing access for all
-        members.</p>
-
-      <h5>Social Media</h5>
-      <ul>
-        <li><%= link_to('Facebook', 'https://www.facebook.com/North-Lake-Physical-Therapy-150697991645983/?fref=ts') %></li>
-      </ul>
-    </div>
-  </section>
+  <%= render partial: 'sponsor', collection: other_sponsors %>
 </div>

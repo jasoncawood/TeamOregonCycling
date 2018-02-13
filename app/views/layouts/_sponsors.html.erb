@@ -4,13 +4,15 @@
     <li id="sb-title-sponsor">
       <h3>Presented By</h3>
       <ul>
-        <li><%= link_to image_tag('sponsors/rodda.png', alt: 'Rodda Paint', title: 'Rodda Paint'),
-                        page_path(:sponsors, anchor: 'rodda') %></li>
+        <%= render partial: 'layouts/mini_sponsor',
+                   object: title_sponsor %>
       </ul>
     </li>
     <li>
       <h3>Sponsors</h3>
       <ul>
+          <%= render partial: 'layouts/mini_sponsor',
+                     collection: other_sponsors %>
         <%
           {
             northlake: 'North Lake Physical Therapy',
@@ -24,8 +26,6 @@
             nuun: 'Nuun'
           }.each do |slug, name|
         %>
-          <li><%= link_to image_tag("sponsors/#{slug}.jpg", alt: name, title: name),
-                          page_path(:sponsors, anchor: slug) %></li>
         <% end %>
       </ul>
     </li>

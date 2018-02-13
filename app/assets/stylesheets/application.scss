@@ -208,24 +208,72 @@ $body-bg: $dark;
 #sponsors {
   @extend .main-content;
 
+  h2 {
+    @extend .my-5;
+    text-align: center;
+  }
+
   .sponsor {
-    @extend .mb-3;
+    @extend .card;
+    @extend .my-5;
 
     h4 {
-      margin-left: 16rem;
-    }
-
-    img {
-      width: 15rem;
-      @include float-left;
     }
 
     > div {
-      margin-left: 16rem;
+      @extend .row;
+
+      .logo {
+        @extend .col-md-2;
+        @extend .card-body;
+        text-align: center;
+
+        img {
+          @extend .mx-3;
+          max-width: 100%;
+          max-height: 10em;
+        }
+      }
+
+      .sponsor-description {
+        @extend .col-md-10;
+        @extend .card-body;
+        @extend .p-5;
+
+        .social {
+          @extend .row;
+
+          .links {
+            @extend .col-md-7;
+          }
+
+          .hashtags {
+            @extend .col-md-5;
+
+            ul {
+              li:before {
+                content: '#';
+              }
+            }
+          }
+        }
+      }
     }
   }
 
-  .title-sponsor {
-    font-size: 1.2em;
+  #title-sponsor {
+    font-size: 1.2rem;
+
+    .logo {
+      @extend .col-12;
+      img {
+        max-height: 100%;
+        height: 20rem;
+      }
+    }
+
+    .sponsor-description {
+      @extend .col-12;
+    }
   }
 }
