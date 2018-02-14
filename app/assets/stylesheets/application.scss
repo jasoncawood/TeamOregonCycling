@@ -67,9 +67,10 @@ $body-bg: $dark;
           @extend .dropdown-toggle;
         }
 
-        > div {
-          @extend .dropdown-menu;
-
+        .dropdown-menu {
+          ul {
+            @extend .list-unstyled;
+          }
           a {
             @extend .dropdown-item;
           }

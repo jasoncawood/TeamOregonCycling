@@ -1,7 +1,9 @@
 module ApplicationHelper
-  def main_nav_link(title, url)
+  include TheHelp::ServiceCaller
+
+  def main_nav_link(title, url, **options)
     content_tag(:li, class: current_page?(url) ? 'active' : '') do
-      link_to title, url
+      link_to title, url, **options
     end
   end
 
@@ -30,5 +32,21 @@ module ApplicationHelper
     markdown = Redcarpet::Markdown.new(renderer, extensions)
 
     markdown.render(text).html_safe
+  end
+
+  def with_permission_to(permission)
+    call_service(Services::Authorize, permission: permission,
+                 authorized: -> { yield if block_given? },
+                 not_authorized: -> {})
+  end
+
+  private
+
+  def service_context
+    current_user
+  end
+
+  def service_logger
+    logger
   end
 end

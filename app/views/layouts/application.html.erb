@@ -31,7 +31,12 @@
                 data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false"><%= current_user.display_name %></a>
               <div class="dropdown-menu" arial-labelledby="user-dropdown">
-                <%= link_to('Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item') %>
+                <ul>
+                  <% with_permission_to(:manage_users) do %>
+                    <%= main_nav_link('Manage Users', admin_users_path) %>
+                  <% end %>
+                  <%= main_nav_link('Sign Out', destroy_user_session_path, method: :delete) %>
+                </ul>
               </div>
             </li>
           <% else %>
