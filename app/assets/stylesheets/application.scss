@@ -277,3 +277,32 @@ $body-bg: $dark;
     }
   }
 }
+
+.alert-error {
+  @extend .alert-danger;
+ }
+
+.alert-alert {
+  @extend .alert-danger;
+ }
+
+.alert-notice {
+  @extend .alert-success;
+ }
+
+ #devise {
+   #error_explanation {
+     @extend .card;
+     @extend .text-white;
+     @extend .bg-danger;
+
+     h1, h2, h3, h4, h5, h6 {
+       @extend .card-header;
+       font-size: 1.5em;
+     }
+
+     ul {
+       @extend .card-body;
+     }
+   }
+ }

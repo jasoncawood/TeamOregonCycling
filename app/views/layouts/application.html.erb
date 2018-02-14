@@ -41,6 +41,7 @@
       </div>
     </nav>
     <div id="content" class="<%= 'sidebar' if show_sidebar? %>">
+      <%= render partial: 'layouts/messages' %>
       <div class="row">
         <%= yield %>
         <%= render(partial: 'layouts/sidebar') if show_sidebar? %>
