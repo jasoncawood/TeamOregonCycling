@@ -3,3 +3,8 @@
 #page-header {
   @extend .bg-warning;
 }
+
+#content {
+  max-width: none;
+  @extend .container-fluid;
+}
