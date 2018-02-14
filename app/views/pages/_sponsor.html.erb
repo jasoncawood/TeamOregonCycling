@@ -5,7 +5,7 @@
                   sponsor.main_url)  %>
     </div>
     <div class="sponsor-description">
-      <h4><%= link_to(sponsor.name, sponsor.main_url) %></h4>
+      <h4 id="<%= sponsor.slug %>-anchor"><%= link_to(sponsor.name, sponsor.main_url) %></h4>
       <%= markdown(sponsor.description) %>
       <% if sponsor.additional_links.any? %>
         <div class="social">

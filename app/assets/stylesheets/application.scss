@@ -26,12 +26,20 @@ $body-bg: $dark;
 
 @import "bootstrap";
 
+#sponsors .sponsor h4::before { 
+  display: block; 
+  content: " "; 
+  margin-top: -6em; 
+  height: 6em; 
+  visibility: hidden; 
+}
+
 #page-header {
   @extend .navbar;
   @extend .navbar-expand-lg;
   @extend .navbar-light;
   @extend .bg-primary;
-  @extend .sticky-top;
+  @extend .fixed-top;
 
   #header-logo {
     @extend .navbar-brand;
@@ -83,6 +91,7 @@ $body-bg: $dark;
 #content {
   @extend .container;
   background-color: $light;
+  padding-top: 6em;
 }
 
 #content:not(.sidebar) {

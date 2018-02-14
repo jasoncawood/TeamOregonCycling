@@ -5,6 +5,6 @@ link_to(
     alt: mini_sponsor.name,
     title: mini_sponsor.name
   ),
-  page_path(:sponsors, anchor: mini_sponsor.slug)
+  page_path(:sponsors, anchor: "#{mini_sponsor.slug}-anchor")
 )
 %></li>
