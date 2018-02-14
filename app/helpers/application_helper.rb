@@ -1,3 +1,5 @@
+require 'the_help/service_caller'
+
 module ApplicationHelper
   include TheHelp::ServiceCaller
 
