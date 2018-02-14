@@ -1,0 +1,9 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+<% content_for :main_links do %>
+  <%= main_nav_link 'Users', admin_users_path %>
+<% end %>
+<%= render layout: 'layouts/document' do %>
+  <%= yield %>
+<% end %>
