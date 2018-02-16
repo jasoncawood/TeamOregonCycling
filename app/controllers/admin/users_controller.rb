@@ -4,7 +4,7 @@ module Admin
     private :users=
 
     def index
-      call_service(Services::Admin::ListUsers,
+      call_service(Admin::ListUsers,
                    with_result: ->(users) { self.users = users })
     end
   end

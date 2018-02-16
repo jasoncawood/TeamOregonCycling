@@ -42,7 +42,7 @@ module ApplicationHelper
   end
 
   def with_permission_to(permission)
-    call_service(Services::Authorize, permission: permission,
+    call_service(Authorize, permission: permission,
                  authorized: -> { yield if block_given? },
                  not_authorized: -> {})
   end

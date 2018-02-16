@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Services::Admin::ListUsers do
+RSpec.describe Admin::ListUsers do
   subject { described_class.new(**service_args) }
 
   let(:service_args) {{

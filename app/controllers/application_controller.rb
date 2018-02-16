@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_permission(permission)
-    call_service(Services::Authorize, permission: permission,
+    call_service(Authorize, permission: permission,
                  not_authorized: method(:render_forbidden))
   end
 

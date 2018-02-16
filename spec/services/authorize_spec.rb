@@ -1,6 +1,6 @@
-require 'services/authorize'
+require 'authorize'
 
-RSpec.describe Services::Authorize do
+RSpec.describe Authorize do
   subject { described_class.new(**service_args) }
 
   let(:service_args) {{
