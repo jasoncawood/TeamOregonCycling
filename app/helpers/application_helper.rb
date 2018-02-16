@@ -41,8 +41,8 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
-  def with_permission_to(permission)
-    call_service(Authorize, permission: permission,
+  def with_permission_to(permission, on: nil)
+    call_service(Authorize, permission: permission, on: on,
                  authorized: -> { yield if block_given? },
                  not_authorized: -> {})
   end
