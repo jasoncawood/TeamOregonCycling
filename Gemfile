@@ -14,12 +14,14 @@ gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped',
   branch: 'bootstrap4'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'octicons_helper'
 gem 'pg', '~> 0.18'
 gem 'popper_js'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.4'
 gem 'redcarpet'
 gem 'sass-rails', '~> 5.0'
+gem 'scenic'
 gem 'simple_form'
 gem 'the_help'
 gem 'turbolinks', '~> 5'
@@ -28,6 +30,7 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
 end
 

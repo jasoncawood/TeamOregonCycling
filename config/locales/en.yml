@@ -30,4 +30,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  membership_status:
+    current: "Current (exp. %{ends_on})"
+    expired: "Expired (%{ends_on})"
+    pending: "Pending (starts %{ends_on})"
+    none:    "n/a"

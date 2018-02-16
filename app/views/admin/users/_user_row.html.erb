@@ -1,0 +1,39 @@
+<tr>
+  <td><%= user.display_name %></td>
+  <td><%= mail_to(user.email) %></td>
+  <td class="<%= user.membership_status.downcase %>-member">
+    <%=t "membership_status.#{user.membership_status}",
+         ends_on: l_date(user.membership_ends_on) %>
+  </td>
+  <td class="roles">
+    <ul>
+      <% user.roles.each do |role| %>
+        <li><%= role.name %></li>
+      <% end %>
+    </ul>
+  </td>
+  <td class="actions">
+    <div class="btn-group">
+      <%= link_to(octicon('eye', :'aria-label' => 'View'),
+                  admin_user_path(user),
+                  class: 'btn btn-secondary btn-sm',
+                  'data-toggle' => 'tooltip',
+                  'data-placement' => 'bottom',
+                  title: 'View User Details') %>
+      <%= link_to(octicon('pencil', :'aria-label' => 'Edit'),
+                  edit_admin_user_path(user),
+                  class: 'btn btn-secondary btn-sm',
+                  'data-toggle' => 'tooltip',
+                  'data-placement' => 'bottom',
+                  title: 'Edit User') %>
+      <%= link_to(octicon('trashcan', :'aria-label' => 'View'),
+                  admin_user_path(user),
+                  method: :delete,
+                  class: 'btn btn-danger btn-sm',
+                  'data-toggle' => 'tooltip',
+                  'data-placement' => 'bottom',
+                  title: 'Delete User',
+                  confirm: "Are you sure you want to delete user #{user.display_name}") %>
+    </div>
+  </td>
+</tr>

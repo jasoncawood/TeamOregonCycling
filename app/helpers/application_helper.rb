@@ -3,6 +3,11 @@ require 'the_help/service_caller'
 module ApplicationHelper
   include TheHelp::ServiceCaller
 
+  def l_date(date)
+    return if date.nil?
+    l(date.to_date)
+  end
+
   def main_nav_link(title, url, **options)
     content_tag(:li, class: current_page?(url) ? 'active' : '') do
       link_to title, url, **options

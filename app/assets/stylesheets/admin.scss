@@ -8,3 +8,52 @@
   max-width: none;
   @extend .container-fluid;
 }
+
+#manage-users {
+  @extend .main-content;
+
+  #user-listing {
+    @extend .table;
+    @extend .table-striped;
+    @extend .table-sm;
+
+    tbody {
+      font-size: 0.8rem;
+    }
+
+    td, th {
+      @extend .align-middle;
+    }
+
+    .roles {
+      ul {
+        @extend .list-inline;
+        @extend .my-0;
+
+        li {
+          @extend .list-inline-item;
+        }
+      }
+    }
+
+    .current-member {
+      @extend .text-success;
+    }
+
+    .pending-member {
+      @extend .text-warning;
+    }
+
+    .expired-member {
+      @extend .text-danger;
+    }
+
+    .none-member {
+      @extend .text-muted;
+    }
+
+    .actions {
+      @extend .text-right;
+    }
+  }
+}

@@ -40,6 +40,57 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
+-- Name: memberships; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE memberships (
+    id bigint NOT NULL,
+    starts_on timestamp without time zone,
+    ends_on timestamp without time zone,
+    user_id bigint
+);
+
+
+--
+-- Name: current_memberships; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW current_memberships AS
+ SELECT m.id,
+    m.starts_on,
+    m.ends_on,
+    m.user_id,
+    m.seqnum
+   FROM ( SELECT m_1.id,
+            m_1.starts_on,
+            m_1.ends_on,
+            m_1.user_id,
+            row_number() OVER (PARTITION BY m_1.user_id ORDER BY m_1.ends_on DESC) AS seqnum
+           FROM memberships m_1
+          WHERE (m_1.starts_on <= ('now'::text)::date)) m
+  WHERE (m.seqnum = 1);
+
+
+--
+-- Name: memberships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE memberships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: memberships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE memberships_id_seq OWNED BY memberships.id;
+
+
+--
 -- Name: roles; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -116,7 +167,9 @@ CREATE TABLE users (
     unlock_token character varying,
     locked_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    last_name character varying NOT NULL,
+    first_name character varying NOT NULL
 );
 
 
@@ -137,6 +190,13 @@ CREATE SEQUENCE users_id_seq
 --
 
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: memberships id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY memberships ALTER COLUMN id SET DEFAULT nextval('memberships_id_seq'::regclass);
 
 
 --
@@ -162,6 +222,14 @@ ALTER TABLE ONLY ar_internal_metadata
 
 
 --
+-- Name: memberships memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY memberships
+    ADD CONSTRAINT memberships_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -183,6 +251,13 @@ ALTER TABLE ONLY schema_migrations
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_memberships_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_memberships_on_user_id ON memberships USING btree (user_id);
 
 
 --
@@ -228,6 +303,14 @@ CREATE UNIQUE INDEX index_users_on_unlock_token ON users USING btree (unlock_tok
 
 
 --
+-- Name: memberships fk_rails_99326fb65d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY memberships
+    ADD CONSTRAINT fk_rails_99326fb65d FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -235,6 +318,9 @@ SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20180209211146'),
-('20180213065655');
+('20180213065655'),
+('20180215233812'),
+('20180216000821'),
+('20180216001502');
 
 

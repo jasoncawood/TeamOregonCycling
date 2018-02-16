@@ -26,13 +26,23 @@ $body-bg: $dark;
 
 @import "bootstrap";
 
-#sponsors .sponsor h4::before { 
-  display: block; 
-  content: " "; 
-  margin-top: -6em; 
-  height: 6em; 
-  visibility: hidden; 
+.btn {
+  svg {
+    fill: $white;
+  }
 }
+
+.alert-error {
+  @extend .alert-danger;
+ }
+
+.alert-alert {
+  @extend .alert-danger;
+ }
+
+.alert-notice {
+  @extend .alert-success;
+ }
 
 #page-header {
   @extend .navbar;
@@ -227,7 +237,12 @@ $body-bg: $dark;
     @extend .card;
     @extend .my-5;
 
-    h4 {
+    h4::before {
+      display: block; 
+      content: " "; 
+      margin-top: -6em; 
+      height: 6em; 
+      visibility: hidden; 
     }
 
     > div {
@@ -288,31 +303,19 @@ $body-bg: $dark;
   }
 }
 
-.alert-error {
-  @extend .alert-danger;
- }
+#devise {
+  #error_explanation {
+    @extend .card;
+    @extend .text-white;
+    @extend .bg-danger;
 
-.alert-alert {
-  @extend .alert-danger;
- }
+    h1, h2, h3, h4, h5, h6 {
+      @extend .card-header;
+      font-size: 1.5em;
+    }
 
-.alert-notice {
-  @extend .alert-success;
- }
-
- #devise {
-   #error_explanation {
-     @extend .card;
-     @extend .text-white;
-     @extend .bg-danger;
-
-     h1, h2, h3, h4, h5, h6 {
-       @extend .card-header;
-       font-size: 1.5em;
-     }
-
-     ul {
-       @extend .card-body;
-     }
-   }
- }
+    ul {
+      @extend .card-body;
+    }
+  }
+}

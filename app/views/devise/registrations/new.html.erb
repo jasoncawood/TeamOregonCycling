@@ -18,6 +18,14 @@
       </div>
 
       <div class="form-group">
+        <%= f.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+      </div>
+
+      <div class="form-group">
         <%= f.submit "Sign up", class: "btn btn-primary btn-block btn-lg" %>
       </div>
     <% end %>

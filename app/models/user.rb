@@ -3,8 +3,18 @@ class User < ApplicationRecord
     :trackable, :validatable, :confirmable, :lockable, :timeoutable
 
   has_and_belongs_to_many :roles
+  has_one :current_membership
+
+  validates :first_name, :last_name, presence: true
 
   def display_name
-    email
+    [last_name, first_name].join(', ')
   end
+
+  def membership_status
+    current_membership&.status || 'none'
+  end
+
+  delegate :ends_on, to: :current_membership, prefix: :membership,
+    allow_nil: true
 end

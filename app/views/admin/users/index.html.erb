@@ -1,0 +1,18 @@
+<div id="manage-users">
+  <h2>Manage User Accounts</h2>
+
+  <table id="user-listing">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Membership Status</th>
+        <th>Roles</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'user_row', as: 'user', collection: controller.users %>
+    </tbody>
+  </table>
+</div>
