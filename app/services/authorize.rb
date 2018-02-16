@@ -5,17 +5,14 @@ class Authorize < BaseService
   authorization_policy allow_all: true
 
   main do
-    Queries::RolesForUserAndPermission
-      .count(user: context, permission: permission,
-             result: method(:roles_counted))
-  end
+    num_user_roles_with_permission = context.roles
+      .where(['permissions @> ARRAY[:permission]', permission: permission])
+      .count
 
-  callback(:roles_counted) { |count| process_role_count(count) }
-
-  private
-
-  def process_role_count(count)
-    return authorized.call if count >= 1
-    not_authorized.call
+    if num_user_roles_with_permission >= 1
+      authorized.call
+    else
+      not_authorized.call
+    end
   end
 end
