@@ -68,3 +68,24 @@
     }
   }
 }
+
+#user-details {
+  @extend .main-content;
+
+  >div {
+    @extend .d-flex;
+    @extend .flex-wrap;
+  }
+
+  #account-info {
+    @extend .card;
+
+    h3 {
+      @extend .card-header;
+    }
+
+    dl {
+      @extend .card-body;
+    }
+  }
+}

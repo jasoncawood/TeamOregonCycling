@@ -1,0 +1,22 @@
+<% user = controller.user %>
+<div id="user-details">
+  <h2><%= user.display_name %></h2>
+  <div>
+    <div id="account-info">
+      <h3>Account Info</h3>
+      <dl id="user-account">
+        <dt>First Name:</dt>
+        <dd><%= user.first_name %></dd>
+
+        <dt>Last Name:</dt>
+        <dd><%= user.last_name %></dd>
+
+        <dt>Email Address</dt>
+        <dd><%= user.email %></dd>
+
+        <dt>Created:</dt>
+        <dd><%=l user.created_at %></dd>
+      </dl>
+    </div>
+  </div>
+</div>

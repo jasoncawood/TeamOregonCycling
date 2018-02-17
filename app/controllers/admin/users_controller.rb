@@ -1,11 +1,18 @@
 module Admin
   class UsersController < BaseController
-    attr_accessor :users
-    private :users=
+    attr_accessor :users, :user, :memberships
+    private :users=, :user=, :memberships=
 
     def index
       call_service(Admin::ListUsers,
                    with_result: ->(users) { self.users = users })
+    end
+
+    def show
+      call_service(Admin::GetUserDetails, user: params[:id],
+                   with_result: method(:user=))
+      # call_service(Admin::ListMembershipHistory, user: user,
+      #              with_result: method(:memberships=))
     end
 
     def destroy
