@@ -1,0 +1,95 @@
+require 'rails_helper'
+
+RSpec.describe Authorize::UserAuthorizer do
+  subject { described_class.new(**service_args) }
+
+  let(:service_args) {{
+    context: user,
+    logger: logger,
+    permission: permission,
+    on: target,
+    authorized: authorized,
+    not_authorized: not_authorized
+  }}
+
+  let(:user) { create(:user, roles: [role]) }
+  let(:role) { create(:role) }
+  let(:logger) { instance_double('Logger').as_null_object }
+  let(:authorized) { instance_double('Proc', :authorized, call: nil) }
+  let(:not_authorized) { instance_double('Proc', :not_authorized, call: nil) }
+
+  let(:permission) { :whatever }
+  let(:target) { double(is_a?: false) }
+
+  shared_examples_for :it_is_not_authorized do
+    it 'calls the not_authorized callback' do
+      subject.call
+      expect(not_authorized).to have_received(:call)
+    end
+
+    it 'does not call the authorized callback' do
+      subject.call
+      expect(authorized).not_to have_received(:call)
+    end
+  end
+
+  shared_examples_for :it_is_authorized do
+    it 'does not call the not_authorized callback' do
+      subject.call
+      expect(not_authorized).not_to have_received(:call)
+    end
+
+    it 'calls the authorized callback' do
+      subject.call
+      expect(authorized).to have_received(:call)
+    end
+  end
+
+  it 'checks that the target is a User' do
+    subject.call rescue nil
+    expect(target).to have_received(:is_a?).with(User)
+  end
+
+  it 'raises an ArgumentError if the target is not a User' do
+    expect { subject.call }.to raise_error ArgumentError
+  end
+
+  context 'when the target is the same user as the context' do
+    let(:target) { user }
+
+    context 'a check for the :delete permission' do
+      # Prevent users with the manage_users permission from deleting their own
+      # account, so that we don't end up in a situation where there are no users
+      # who have that permission.
+      context 'when the user has the :manage_users permission' do
+        before do
+          role.update_attributes!(permissions: [:manage_users])
+        end
+
+        it_behaves_like :it_is_not_authorized
+      end
+
+      context 'when the user does not have the :manage_users permission' do
+        it_behaves_like :it_is_authorized
+      end
+    end
+  end
+
+  context 'when the target is not the same user as the context' do
+    let(:target) { create(:user) }
+
+    context 'a check for the :delete permission' do
+      context 'when the user has the :manage_users permission' do
+        before do
+          role.update_attributes!(permissions: [:manage_users])
+        end
+
+        it_behaves_like :it_is_authorized
+      end
+
+      context 'when the user does not have the :manage_users permission' do
+        it_behaves_like :it_is_not_authorized
+      end
+    end
+  end
+end

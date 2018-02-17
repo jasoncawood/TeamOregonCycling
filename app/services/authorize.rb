@@ -6,33 +6,36 @@ class Authorize < BaseService
   authorization_policy allow_all: true
 
   main do
-    authorize_on_object ||
-      authorize_permission
+    authorize_on_object
+    authorize_permission(permission)
   end
 
   private
 
   def authorize_on_object
-    return false if on.nil?
+    return if on.nil?
     authorizer = "Authorize::#{on.class.name}Authorizer".safe_constantize
-    if authorizer.nil?
-      not_authorized.call
-    else
+    denied! if authorizer.nil?
     call_service(authorizer, permission: permission, on: on,
                  authorized: authorized, not_authorized: not_authorized)
-    end
-    true
+    stop!
   end
 
-  def authorize_permission
+  def authorize_permission(permission)
     num_user_roles_with_permission = context.roles
       .where(['permissions @> ARRAY[:permission]', permission: permission])
       .count
+    authorized! if num_user_roles_with_permission >= 1
+    denied!
+  end
 
-    if num_user_roles_with_permission >= 1
-      authorized.call
-    else
-      not_authorized.call
-    end
+  def authorized!
+    authorized.call
+    stop!
+  end
+
+  def denied!
+    not_authorized.call
+    stop!
   end
 end

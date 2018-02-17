@@ -42,9 +42,15 @@ module ApplicationHelper
   end
 
   def with_permission_to(permission, on: nil)
+    yield if block_given? && has_permission?(permission, on: on)
+  end
+
+  def has_permission?(permission, on: nil)
+    permitted = false
     call_service(Authorize, permission: permission, on: on,
-                 authorized: -> { yield if block_given? },
-                 not_authorized: -> {})
+                 authorized: -> { permitted = true },
+                 not_authorized: -> { permitted = false })
+    return permitted
   end
 
   private
