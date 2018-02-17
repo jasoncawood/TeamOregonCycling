@@ -1,5 +1,15 @@
 @import "application";
 
+.main-content {
+  .btn {
+    line-height: 1.0;
+  }
+}
+
+.btn.disabled {
+  cursor: not-allowed;
+}
+
 #page-header {
   @extend .bg-warning;
 }
