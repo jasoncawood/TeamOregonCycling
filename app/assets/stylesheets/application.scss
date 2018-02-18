@@ -57,6 +57,24 @@ $body-bg: $dark;
   }
 }
 
+.help-block {
+  @extend .form-text;
+  @extend .text-muted;
+  font-size: 0.8rem;
+}
+
+.has-error {
+
+  .form-control {
+    @extend .border;
+    @extend .border-danger;
+  }
+
+  .help-block {
+    @extend .text-danger;
+  }
+}
+
 #page-header {
   @extend .navbar;
   @extend .navbar-expand-lg;

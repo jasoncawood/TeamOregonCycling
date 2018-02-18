@@ -177,7 +177,8 @@ CREATE TABLE users (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     last_name character varying NOT NULL,
-    first_name character varying NOT NULL
+    first_name character varying NOT NULL,
+    discarded_at timestamp without time zone
 );
 
 
@@ -290,6 +291,13 @@ CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (conf
 
 
 --
+-- Name: index_users_on_discarded_at; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_users_on_discarded_at ON users USING btree (discarded_at);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -332,6 +340,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180216001502'),
 ('20180218000518'),
 ('20180218001434'),
-('20180218010534');
+('20180218010534'),
+('20180218194755');
 
 

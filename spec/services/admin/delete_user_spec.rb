@@ -34,9 +34,14 @@ RSpec.describe Admin::DeleteUser do
       expect(success).to have_received(:call).with(user_to_delete)
     end
 
-    it 'deletes the specified user' do
+    it 'discards the specified user' do
       subject.call
-      expect(User.where(id: user_to_delete.id).count).to eq 0
+      expect(User.kept.where(id: user_to_delete.id).count).to eq 0
+    end
+
+    it 'does not fully delete the specified user' do
+      subject.call
+      expect(User.discarded.where(id: user_to_delete.id).count).to eq 1
     end
   end
 

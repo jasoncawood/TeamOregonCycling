@@ -35,3 +35,7 @@ en:
     expired: "Expired (%{ends_on})"
     pending: "Pending (starts %{ends_on})"
     none:    "n/a"
+  account_inactive: |
+    Your account is currently inactive. Please <a
+    href="/pages/contact_us?reason=account_inactive">contact us</a> to restore
+    access.

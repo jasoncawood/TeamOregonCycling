@@ -6,7 +6,7 @@ module Admin
     require_permission :delete, on: :user
 
     main do
-      user.destroy
+      user.discard
       success.call(user)
     end
 

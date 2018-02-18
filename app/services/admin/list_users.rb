@@ -5,7 +5,7 @@ module Admin
     require_permission :manage_users
 
     main do
-      users = User.order(:last_name, :first_name)
+      users = User.kept.order(:last_name, :first_name)
         .includes(:current_membership, :roles)
       with_result.call(users)
     end

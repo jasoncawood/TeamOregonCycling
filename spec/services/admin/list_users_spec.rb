@@ -34,5 +34,13 @@ RSpec.describe Admin::ListUsers do
         [user_b, user_c, user_a, user]
       )
     end
+
+    it 'does not include discarded users' do
+      user_b.discard
+      subject.call
+      expect(result_handler).to have_received(:call).with(
+        [user_c, user_a, user]
+      )
+    end
   end
 end

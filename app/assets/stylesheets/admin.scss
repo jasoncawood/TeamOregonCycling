@@ -138,6 +138,11 @@ body {
     @extend .mx-auto;
     @extend .mb-3;
 
+    .help-block {
+      @extend .col-sm-8;
+      @extend .offset-md-4;
+    }
+
     >header {
       @extend .card-header;
       text-align: center;
@@ -151,11 +156,11 @@ body {
       @extend .row;
 
       >input {
-        @extend .col-sm-9;
+        @extend .col-sm-8;
       }
 
       >label {
-        @extend .col-sm-3;
+        @extend .col-sm-4;
         @extend .col-form-label;
       }
     }
