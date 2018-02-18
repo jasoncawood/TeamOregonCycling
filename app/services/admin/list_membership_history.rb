@@ -6,7 +6,9 @@ module Admin
     require_permission :view_membership_history, on: :user
 
     main do
-      memberships = user.memberships.order(ends_on: 'DESC')
+      memberships = user.memberships
+        .order(ends_on: 'DESC')
+        .readonly
       with_result.call(memberships)
     end
 

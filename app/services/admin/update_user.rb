@@ -13,8 +13,10 @@ module Admin
     main do
       authorize_changes_to_user_roles
       if user.update_attributes(changes)
+        user.readonly!
         success.call(user)
       else
+        user.readonly!
         error.call(user)
       end
     end

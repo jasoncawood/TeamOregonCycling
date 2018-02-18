@@ -12,8 +12,9 @@ module Admin
     private
 
     def user
-      return @user if @user.is_a?(User)
-      @user = User.find(@user)
+      @user = User.find(@user) unless @user.is_a?(User)
+      @user.readonly!
+      @user
     end
   end
 end
