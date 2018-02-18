@@ -1,10 +1,14 @@
 <% flash.to_hash.except('timedout').each do |key, value| %>
   <div class="alert alert-<%= key %>">
     <a href="#" data-dismiss="alert" class="close">×</a>
+    <% if value.is_a?(Array) %>
       <ul>
         <li>
           <%= value.html_safe %>
         </li>
       </ul>
+      <% else %>
+      <p><%= value.html_safe %></p>
+    <% end %>
   </div>
 <% end %>
