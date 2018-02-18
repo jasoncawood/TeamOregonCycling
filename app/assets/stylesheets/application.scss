@@ -44,6 +44,19 @@ $body-bg: $dark;
   @extend .alert-success;
  }
 
+.form-action-buttons {
+  text-align: center;
+}
+
+.form-group.check_boxes {
+  .checkbox {
+    @extend .pt-2;
+    input {
+      @extend .mr-3;
+    }
+  }
+}
+
 #page-header {
   @extend .navbar;
   @extend .navbar-expand-lg;

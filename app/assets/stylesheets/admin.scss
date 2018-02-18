@@ -114,3 +114,36 @@
     } 
   }
 }
+
+#edit-user {
+  @extend .main-content;
+
+  >form {
+    @extend .card;
+    max-width: 40rem;
+    @extend .mx-auto;
+    @extend .mb-3;
+
+    >header {
+      @extend .card-header;
+      text-align: center;
+    }
+
+    >div {
+      @extend .card-body;
+    }
+
+    .form-group {
+      @extend .row;
+
+      >input {
+        @extend .col-sm-9;
+      }
+
+      >label {
+        @extend .col-sm-3;
+        @extend .col-form-label;
+      }
+    }
+  }
+}

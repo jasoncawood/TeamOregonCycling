@@ -1,0 +1,20 @@
+<% user = controller.user %>
+<div id="edit-user">
+  <%= simple_form_for user, url: admin_user_path(user) do |f| %>
+    <header>
+      <h2>Edit User</h2>
+      <%= render partial: 'user_action_buttons', as: :user, object: user %>
+    </header>
+    <div>
+      <%= f.input :email, label: 'Email Address' %>
+      <%= f.input :first_name, label: 'First Name' %>
+      <%= f.input :last_name, label: 'Last Name' %>
+      <% with_permission_to(:manage_users) do %>
+        <%= f.association :roles, as: :check_boxes %>
+      <% end %>
+      <div class="form-action-buttons">
+        <%= f.submit class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+</div>

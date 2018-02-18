@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :memberships
   has_one :current_membership
 
-  validates :first_name, :last_name, presence: true
+  validates :email, :first_name, :last_name, presence: true
 
   def display_name
     [last_name, first_name].join(', ')

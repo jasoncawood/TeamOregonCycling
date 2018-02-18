@@ -1,5 +1,10 @@
 <% content_for :head do %>
   <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <script type="text/javascript">
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
 <% end %>
 <% content_for :main_links do %>
   <%= main_nav_link 'Users', admin_users_path %>

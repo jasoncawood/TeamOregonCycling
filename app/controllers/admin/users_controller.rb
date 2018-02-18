@@ -15,6 +15,15 @@ module Admin
                    with_result: method(:memberships=))
     end
 
+    def edit
+      call_service(Admin::GetUserDetails, user: params[:id],
+                   with_result: method(:user=))
+    end
+
+    def update
+      redirect_to admin_user_path(params[:id])
+    end
+
     def destroy
       call_service(Admin::DeleteUser, user: params[:id],
                    success: method(:user_deleted))
