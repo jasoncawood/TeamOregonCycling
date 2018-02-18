@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :email, :first_name, :last_name, presence: true
 
   def display_name
-    [last_name, first_name].join(', ')
+    [first_name, last_name].join(' ')
   end
 
   def membership_status
