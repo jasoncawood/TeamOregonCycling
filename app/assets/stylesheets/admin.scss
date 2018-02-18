@@ -1,5 +1,9 @@
 @import "application";
 
+body {
+  background-color: $light;
+}
+
 .main-content {
   .btn {
     line-height: 1.0;

@@ -21,7 +21,9 @@ module Admin
     end
 
     def update
-      redirect_to admin_user_path(params[:id])
+      call_service(Admin::UpdateUser, user: params[:id], changes: user_params,
+                   success: method(:user_updated),
+                   error: method(:user_update_error))
     end
 
     def destroy
@@ -34,6 +36,22 @@ module Admin
     def user_deleted(user)
       flash[:notice] = "The user #{user.display_name} has been deleted."
       redirect_to admin_users_path
+    end
+
+    def user_updated(user)
+      flash[:notice] = "The user #{user.display_name} has been updated."
+      redirect_to admin_users_path
+    end
+
+    def user_update_error(user, errors)
+      self.errors = errors
+      self.user = user
+      render action: :edit
+    end
+
+    def user_params
+      params.require(:user)
+        .permit(:email, :first_name, :last_name, role_ids: [])
     end
   end
 end
