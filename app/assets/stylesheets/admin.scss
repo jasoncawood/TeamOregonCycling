@@ -105,6 +105,16 @@
       @extend .table;
       @extend .table-striped;
       @extend .table-sm;
+
+      tbody {
+        tr.expired-member {
+          @extend .text-muted;
+        }
+
+        tr.expired-member:first-of-type {
+          @extend .text-danger;
+        }
+      }
     }
   }
 
