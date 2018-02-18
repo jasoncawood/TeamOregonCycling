@@ -14,6 +14,7 @@ gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped',
   branch: 'bootstrap4'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'money-rails'
 gem 'octicons_helper'
 gem 'pg', '~> 0.18'
 gem 'popper_js'

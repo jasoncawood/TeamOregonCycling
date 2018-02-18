@@ -3,6 +3,7 @@ class User < ApplicationRecord
     :trackable, :validatable, :confirmable, :lockable, :timeoutable
 
   has_and_belongs_to_many :roles
+  has_many :memberships
   has_one :current_membership
 
   validates :first_name, :last_name, presence: true

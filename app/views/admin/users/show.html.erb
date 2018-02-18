@@ -1,7 +1,12 @@
 <% user = controller.user %>
 <div id="user-details">
-  <h2><%= user.display_name %></h2>
+  <header>
+    <h2><%= user.display_name %></h2>
+    <%= render partial: 'user_action_buttons', as: :user, object: user %>
+  </header>
+
   <div>
+
     <div id="account-info">
       <h3>Account Info</h3>
       <dl id="user-account">
@@ -18,5 +23,48 @@
         <dd><%=l user.created_at %></dd>
       </dl>
     </div>
+
+    <div id="roles">
+      <h3>Authorized Roles</h3>
+      <div>
+        <ul>
+          <% user.roles.each do |role| %>
+            <li data-toggle="tooltip" data-placement="bottom"
+              title="Permissions: <%= role.permissions.join(', ') %>"><%= role.name %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <h3>Permissions</h3>
+      <div>
+        <ul>
+          <% user.roles.pluck(:permissions).flatten.uniq.sort.each do |perm| %>
+            <li><%= perm %></li>
+          <% end %>
+        <ul>
+      </div>
+    </div>
+
+    <div id="membership-history">
+      <h3>Membership History</h3>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Start Date</th>
+              <th>Expiration Date</th>
+              <th>Purchase Date</th>
+              <th>Amount Paid</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: 'membership_row', as: 'membership',
+              collection: controller.memberships %>
+            </tbody>
+          </table>
+        </div>
+    </div>
+
   </div>
 </div>

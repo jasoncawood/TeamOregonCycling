@@ -11,8 +11,8 @@ module Admin
     def show
       call_service(Admin::GetUserDetails, user: params[:id],
                    with_result: method(:user=))
-      # call_service(Admin::ListMembershipHistory, user: user,
-      #              with_result: method(:memberships=))
+      call_service(Admin::ListMembershipHistory, user: user,
+                   with_result: method(:memberships=))
     end
 
     def destroy

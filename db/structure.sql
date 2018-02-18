@@ -47,7 +47,11 @@ CREATE TABLE memberships (
     id bigint NOT NULL,
     starts_on timestamp without time zone,
     ends_on timestamp without time zone,
-    user_id bigint
+    user_id bigint,
+    amount_paid_cents integer DEFAULT 0 NOT NULL,
+    amount_paid_currency character varying DEFAULT 'USD'::character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -60,11 +64,15 @@ CREATE VIEW current_memberships AS
     m.starts_on,
     m.ends_on,
     m.user_id,
+    m.amount_paid_cents,
+    m.amount_paid_currency,
     m.seqnum
    FROM ( SELECT m_1.id,
             m_1.starts_on,
             m_1.ends_on,
             m_1.user_id,
+            m_1.amount_paid_cents,
+            m_1.amount_paid_currency,
             row_number() OVER (PARTITION BY m_1.user_id ORDER BY m_1.ends_on DESC) AS seqnum
            FROM memberships m_1
           WHERE (m_1.starts_on <= ('now'::text)::date)) m
@@ -321,6 +329,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180213065655'),
 ('20180215233812'),
 ('20180216000821'),
-('20180216001502');
+('20180216001502'),
+('20180218000518'),
+('20180218001434'),
+('20180218010534');
 
 

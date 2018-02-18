@@ -1,6 +1,8 @@
 class Membership < ActiveRecord::Base
   belongs_to :user
 
+  monetize :amount_paid_cents
+
   def status
     if Date.today.between?(starts_on, ends_on + 1.day)
       'current'

@@ -10,6 +10,22 @@
   cursor: not-allowed;
 }
 
+.current-member {
+  @extend .text-success;
+}
+
+.pending-member {
+  @extend .text-warning;
+}
+
+.expired-member {
+  @extend .text-danger;
+}
+
+.none-member {
+  @extend .text-muted;
+}
+
 #page-header {
   @extend .bg-warning;
 }
@@ -47,22 +63,6 @@
       }
     }
 
-    .current-member {
-      @extend .text-success;
-    }
-
-    .pending-member {
-      @extend .text-warning;
-    }
-
-    .expired-member {
-      @extend .text-danger;
-    }
-
-    .none-member {
-      @extend .text-muted;
-    }
-
     .actions {
       @extend .text-right;
     }
@@ -72,20 +72,45 @@
 #user-details {
   @extend .main-content;
 
+  >header {
+    text-align: center;
+  }
+
   >div {
     @extend .d-flex;
     @extend .flex-wrap;
+
+    >div {
+      @extend .card;
+      @extend .m-3;
+
+      >h3 {
+        @extend .card-header;
+      }
+    }
   }
 
   #account-info {
-    @extend .card;
-
-    h3 {
-      @extend .card-header;
-    }
-
     dl {
       @extend .card-body;
     }
+  }
+
+  #membership-history {
+    >div {
+      @extend .card-body;
+    }
+
+    table {
+      @extend .table;
+      @extend .table-striped;
+      @extend .table-sm;
+    }
+  }
+
+  #roles {
+    >div {
+      @extend .card-body;
+    } 
   }
 }

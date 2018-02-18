@@ -1,0 +1,7 @@
+<tr class="<%= membership.status %>-member">
+  <td><%= membership.status %></td>
+  <td><%=l_date membership.starts_on %></td>
+  <td><%=l_date membership.ends_on %></td>
+  <td><%=l_date membership.created_at %></td>
+  <td><%=humanized_money_with_symbol membership.amount_paid %></td>
+</tr>
