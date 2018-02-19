@@ -80,6 +80,42 @@ CREATE VIEW current_memberships AS
 
 
 --
+-- Name: membership_types; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE membership_types (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    weight integer NOT NULL,
+    description character varying NOT NULL,
+    price_cents integer DEFAULT 0 NOT NULL,
+    price_currency character varying DEFAULT 'USD'::character varying NOT NULL,
+    discarded_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: membership_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE membership_types_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: membership_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE membership_types_id_seq OWNED BY membership_types.id;
+
+
+--
 -- Name: memberships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -202,6 +238,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
+-- Name: membership_types id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY membership_types ALTER COLUMN id SET DEFAULT nextval('membership_types_id_seq'::regclass);
+
+
+--
 -- Name: memberships id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -228,6 +271,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 ALTER TABLE ONLY ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: membership_types membership_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY membership_types
+    ADD CONSTRAINT membership_types_pkey PRIMARY KEY (id);
 
 
 --
@@ -260,6 +311,27 @@ ALTER TABLE ONLY schema_migrations
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_membership_types_on_discarded_at; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_membership_types_on_discarded_at ON membership_types USING btree (discarded_at);
+
+
+--
+-- Name: index_membership_types_on_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_membership_types_on_name ON membership_types USING btree (name);
+
+
+--
+-- Name: index_membership_types_on_weight; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_membership_types_on_weight ON membership_types USING btree (weight);
 
 
 --
@@ -341,6 +413,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180218000518'),
 ('20180218001434'),
 ('20180218010534'),
-('20180218194755');
+('20180218194755'),
+('20180219174544');
 
 

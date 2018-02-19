@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :pages, only: %i[show]
 
+  resources :memberships
+
   namespace :admin do
     resources :users
   end

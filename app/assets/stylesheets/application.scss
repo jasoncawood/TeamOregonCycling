@@ -339,6 +339,30 @@ $body-bg: $dark;
   }
 }
 
+#join-team {
+  @extend .main-content;
+
+  >section {
+    @extend .col-12;
+  }
+
+  #membership-types {
+    table {
+      @extend .table;
+      @extend .table-striped;
+      @extend .table-sm;
+      @extend .table-hover;
+      font-size: 0.8rem;
+
+      .btn-enroll {
+        @extend .btn;
+        @extend .btn-primary;
+        @extend .btn-sm;
+      }
+    }
+  }
+}
+
 #devise {
   #error_explanation {
     @extend .card;

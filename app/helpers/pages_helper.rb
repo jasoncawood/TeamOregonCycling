@@ -12,4 +12,8 @@ module PagesHelper
   def other_sponsors
     Sponsor.other_sponsors
   end
+
+  def list_membership_types
+    call_service(ListMembershipTypes, with_each: ->(m_type) { yield m_type })
+  end
 end

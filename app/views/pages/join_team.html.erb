@@ -1,0 +1,96 @@
+<%
+  show_sidebar!
+%>
+<div id="join-team">
+  <section id="welcome">
+    <h2>Join the Team</h2>
+
+    <p>Thank you for your interest in Team Oregon! We're looking forward to
+      another excellent season of Road, Track, Mountain Bike and Cyclocross
+      events, and&mdash;of course&mdash;<%= link_to 'team rides',
+      page_path(:rides) %>! Whether you've been riding for 20 years or are just
+      getting into the sport, we hope you become an O this season.</p>
+
+    <p>Questions about membership?
+      <%= link_to 'Contact us.', page_path(:contact) %></p>
+
+    <p>That said, we have a few pieces of business to take care of before
+      jumping in. Please review the 2017 Code of Conduct, below.</p> 
+  </section>
+
+  <section id="code-of-conduct">
+    <h3>Team Oregon Code of Conduct</h3>
+
+    <ol>
+      <li>Minimum clothing purchase of current-year team kit clothing is 1 QTY
+        of each: Short Sleeve Jersey and Bibs.</li>
+
+      <li>Maintain a good public image and represent Team Oregon, sponsors, and
+        other stakeholders positively through good sportsmanship and public
+        actions. This includes public interactions both online (blogs, social
+        media, email lists, etc) and offline (at races, events, etc).</li>
+
+      <li>Avoid strong language in public while representing the team</li>
+
+      <li>Adhere to the OBRA and/or USA Cycling rules. Ensure that team name is
+        associated with your membership when signing up (Team Oregon p/b Rodda
+        Paint)</li>
+
+      <li>Don't extend team discounts to friends. If they like our deals, tell
+        them to join the team.</li>
+
+      <li>Guest riding on another team is permitted with Team Oregon leadership
+        approval.</li>
+
+      <li>Treat teammates, team leadership, race officials, volunteers, race
+        promoters and other riders with respect at all times.</li>
+
+      <li>Treat spectators and race fans with respect while promoting Team
+        Oregon in a friendly and approachable manner</li>
+
+      <li>Riders are responsible for knowing and abiding by the anti-doping
+        rules and regulations.</li>
+
+      <li>Disputes or concerns between riders and/or team management are to be
+        addressed immediately through team management to quickly resolve
+        issues.</li>
+    </ol>
+
+    <p>Thank You,<br />
+      Team Oregon Leadership</p>
+  </section>
+
+  <section id="membership-types">
+    <h3>Enroll Now</h3>
+
+    <p>Please select the membership type with which you wish to enroll.
+      Membership is valid for one year from the date of your payment.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Membership Type</th>
+          <th>Description</th>
+          <th>Annual Dues</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% list_membership_types do |m_type| %>
+          <tr>
+            <th><%= m_type.name %></th>
+            <td><%= markdown(m_type.description, hard_wrap: false) %></td>
+            <td><%= humanized_money_with_symbol(m_type.price) %></td>
+            <td>
+              <%= link_to(
+                'Enroll Now',
+                new_membership_path(membership_type: m_type.id),
+                class: 'btn-enroll'
+              ) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</div>

@@ -1,6 +1,7 @@
 <% content_for :main_links do %>
   <%= main_nav_link 'Home', root_path %>
   <%= main_nav_link 'Sponsors', page_path(:sponsors) %>
+  <%= main_nav_link 'Join the Team', page_path(:join_team) %>
 <% end %>
 <%= render layout: 'layouts/document' do %>
   <%= yield %>
