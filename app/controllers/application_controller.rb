@@ -1,4 +1,5 @@
 require 'the_help/service_caller'
+require 'the_help/errors'
 
 class ApplicationController < ActionController::Base
   include TheHelp::ServiceCaller
