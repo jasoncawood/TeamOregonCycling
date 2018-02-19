@@ -1,4 +1,4 @@
-class Membership < ActiveRecord::Base
+class Membership < ApplicationRecord
   belongs_to :user
 
   monetize :amount_paid_cents
