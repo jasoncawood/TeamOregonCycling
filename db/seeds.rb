@@ -32,8 +32,12 @@ admin_role = Role.create_with(permissions: Role::VALID_PERMISSIONS)
 admin_count = ApplicationRecord.connection.select_value(<<-SQL.squish)
   SELECT count(user_id) FROM roles_users WHERE role_id = '#{admin_role.id}';
   SQL
+admin_count = User.kept.joins(:roles).where(roles: { id: admin_role.id }).count
 unless admin_count > 0
   User.create_with(first_name: 'Default', last_name: 'Administrator',
                   password: 'password', roles: [admin_role])
-    .find_or_create_by!(email: 'admin@example.com').confirm
+    .find_or_create_by!(email: 'admin@example.com') do |u|
+    u.confirm
+    u.undiscard
+  end
 end
