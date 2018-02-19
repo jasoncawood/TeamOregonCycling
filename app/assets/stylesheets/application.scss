@@ -137,6 +137,7 @@ $body-bg: $dark;
   @extend .container;
   background-color: $light;
   padding-top: 6em;
+  @extend .pb-3;
 }
 
 #content:not(.sidebar) {
