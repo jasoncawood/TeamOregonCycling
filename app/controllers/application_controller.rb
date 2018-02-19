@@ -5,16 +5,11 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
   before_action :authenticate_user!
-  before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
 
   alias service_context current_user
   alias service_logger logger
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
-  end
 
   def require_permission(permission)
     call_service(Authorize, permission: permission,

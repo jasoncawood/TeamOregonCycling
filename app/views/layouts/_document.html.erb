@@ -32,6 +32,7 @@
                 aria-expanded="false"><%= current_user.display_name %></a>
               <div class="dropdown-menu" arial-labelledby="user-dropdown">
                 <ul>
+                  <%= main_nav_link('Edit My Account', edit_user_registration_path) %>
                   <% with_permission_to(:manage_users) do %>
                     <%= main_nav_link('Manage Users', admin_users_path) %>
                   <% end %>
