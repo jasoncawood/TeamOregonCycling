@@ -14,6 +14,16 @@ module ApplicationHelper
     end
   end
 
+  def admin_site_link
+    link = nil
+    call_service(Admin::DeterminePrimaryAdminScreen,
+                 url_generator: method(:url_for),
+                 with_result: ->(url) {
+                   link = main_nav_link('Admin Site', url)
+                 })
+    link
+  end
+
   def page_title(new_value=nil)
     @page_title = new_value unless new_value.nil?
     return nil if @page_title.blank?
