@@ -2,11 +2,13 @@ module Admin
   class DeterminePrimaryAdminScreen < BaseService
     input :url_generator
     input :with_result, default: ->(url) { url }
+    input :nothing_available, default: -> { nil }
 
     authorization_policy allow_all: true
 
     main do
       try_manage_users
+      nothing_available.call
     end
 
     private
@@ -21,7 +23,8 @@ module Admin
       call_service(Authorize, permission: :manage_users,
                    not_authorized: -> {},
                    authorized: -> {
-                     generate_url_for(controller: 'admin/users', action: :index)
+                     generate_url_for(controller: 'admin/users',
+                                      action: 'index')
                    })
     end
   end
