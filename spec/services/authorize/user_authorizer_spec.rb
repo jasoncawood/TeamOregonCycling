@@ -1,22 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Authorize::UserAuthorizer do
-  subject { described_class.new(**service_args) }
-
   let(:service_args) {{
-    context: user,
-    logger: logger,
     permission: permission,
     on: target,
     authorized: authorized,
     not_authorized: not_authorized
   }}
 
-  let(:user) { create(:user, roles: [role]) }
+  let(:context_user) { create(:user, roles: [role]) }
   let(:role) { create(:role) }
-  let(:logger) { instance_double('Logger').as_null_object }
-  let(:authorized) { instance_double('Proc', :authorized, call: nil) }
-  let(:not_authorized) { instance_double('Proc', :not_authorized, call: nil) }
+  callback_double(:authorized, :not_authorized)
 
   let(:permission) { :whatever }
   let(:target) { double(is_a?: false) }
@@ -78,7 +72,7 @@ RSpec.describe Authorize::UserAuthorizer do
     end
 
     context 'when the target is the same as the context' do
-      let(:target) { user }
+      let(:target) { context_user }
       it_denies :delete
       it_authorizes :show, :update
     end
@@ -91,7 +85,7 @@ RSpec.describe Authorize::UserAuthorizer do
 
   context 'when the user does not have the :manage_users permission' do
     context 'when the target is the same as the context' do
-      let(:target) { user }
+      let(:target) { context_user }
       it_authorizes :show, :update, :delete
     end
 
@@ -102,7 +96,7 @@ RSpec.describe Authorize::UserAuthorizer do
   end
 
   context 'when the target is the same user as the context' do
-    let(:target) { user }
+    let(:target) { context_user }
 
     context 'a check for the :delete permission' do
       let(:permission) { :delete }

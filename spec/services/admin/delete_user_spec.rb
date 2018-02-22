@@ -1,32 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Admin::DeleteUser do
-  subject { described_class.new(**service_args) }
-
   let(:service_args) {{
-    context: user,
-    logger: logger,
     user: user_to_delete,
     success: success
   }}
 
-  let(:user) { create(:user) }
-  let(:logger) { instance_double('Logger').as_null_object }
+  let(:context_user) { create(:user) }
   let(:user_to_delete) { create(:user) }
   let(:success) { instance_double('Proc', 'success', call: nil) }
 
-  let!(:authorizer) {
-    class_double('Authorize').tap do |s|
-      s.as_stubbed_const
-      allow(s).to receive(:call).with(context: user, logger: logger,
-                                      permission: :delete,
-                                      authorized: duck_type(:call),
-                                      not_authorized: duck_type(:call),
-                                      on: user_to_delete) { |authorized:, **_|
-        authorized.call
-      }
-    end
+  service_double(:authorizer, 'Authorize') { |authorized:, **_|
+    authorized.call
   }
+
+  it_requires_permission :delete, on: :user_to_delete
 
   shared_examples_for :it_deletes_the_user do
     it 'calls the success callback with the user that was destroyed' do

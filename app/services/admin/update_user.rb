@@ -8,10 +8,15 @@ module Admin
             "#{user.errors.full_messages.join(', ')}"
     }
 
-    require_permission :update, on: :user
+    authorization_policy do
+      tests = [require_permission(:update, on: :user)]
+      if changes.key?(:roles) || changes.key?(:role_ids)
+        tests << require_permission(:manage_users)
+      end
+      tests.all?
+    end
 
     main do
-      authorize_changes_to_user_roles
       if user.update_attributes(changes)
         user.readonly!
         success.call(user)
@@ -26,20 +31,6 @@ module Admin
     def user
       return @user if @user.is_a?(User)
       @user = User.find(@user)
-    end
-
-    def authorize_changes_to_user_roles
-      return unless changes.key?(:role_ids) || changes.key?(:roles)
-      authorized = false
-      call_service(Authorize, permission: :manage_users,
-                   authorized: -> { authorized = true },
-                   not_authorized: -> { authorized = false })
-      return if authorized
-      user.errors.add(:roles, :not_authorized,
-                      message: 'You are not authorized to modify the roles ' \
-                      'for this user.')
-      error.call(user)
-      stop!
     end
   end
 end

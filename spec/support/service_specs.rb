@@ -28,8 +28,24 @@ RSpec.shared_context :service_specs do
     }
   end
 
+  def self.it_requires_permission(permission, on: nil, authorizer: :authorizer)
+    name = "requires permission :#{permission}"
+    name += " on #{on}" unless on.nil?
+    it name do
+      args = {permission: permission}
+      args[:on] = send(on) unless on.nil?
+      subject.call
+      expect(send(authorizer)).to have_received_service_call(args)
+    end
+  end
+
   def stub_service_call(service, **args_to_match, &block)
     allow(service).to receive(:call).with(hash_including(args_to_match), &block)
+  end
+
+  def have_received_service_call(**service_args)
+    have_received(:call)
+      .with(hash_including(default_service_args.merge(service_args)))
   end
 
   def have_been_called_with(*args)

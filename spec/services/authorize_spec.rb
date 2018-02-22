@@ -1,21 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Authorize do
-  subject { described_class.new(**service_args) }
-
   let(:service_args) {{
-    context: user,
-    logger: logger,
     permission: permission,
     authorized: authorized,
     not_authorized: not_authorized
   }}
 
-  let(:user) { create(:user) }
-  let(:logger) { instance_double('Logger').as_null_object }
+  let(:context_user) { create(:user) }
   let(:permission) { :manage_users }
-  let(:authorized) { instance_double('Proc', :authorized, call: nil) }
-  let(:not_authorized) { instance_double('Proc', :not_authorized, call: nil) }
+  callback_double(:authorized, :not_authorized)
 
   shared_examples_for :it_is_not_authorized do
     it 'calls the not_authorized callback' do
@@ -50,7 +44,7 @@ RSpec.describe Authorize do
       let(:role) { create(:role) }
 
       before do
-        user.update_attributes!(roles: [role])
+        context_user.update_attributes!(roles: [role])
       end
 
       context 'when the assigned role does not have the permission' do
@@ -71,7 +65,7 @@ RSpec.describe Authorize do
       let(:role_2) { create(:role) }
 
       before do
-        user.update_attributes!(roles: [role_1, role_2])
+        context_user.update_attributes!(roles: [role_1, role_2])
       end
 
       context 'when no roles have the permission' do
@@ -97,12 +91,7 @@ RSpec.describe Authorize do
   end
 
   context 'when authorizing an action on an object' do
-    let!(:object_authorizer) {
-      class_double('Authorize::MyClassAuthorizer').tap do |s|
-        s.as_stubbed_const
-        allow(s).to receive(:call)
-      end
-    }
+    service_double(:object_authorizer, 'Authorize::MyClassAuthorizer')
 
     let!(:my_class) {
       class_double('MyClass').as_stubbed_const
@@ -117,7 +106,7 @@ RSpec.describe Authorize do
 
     it 'delegates to the authorizer for the class of the object' do
       subject.call
-      expect(object_authorizer).to have_received(:call).with(**service_args)
+      expect(object_authorizer).to have_received_service_call(service_args)
     end
 
     context 'when no authorizer class is defined for the object' do
