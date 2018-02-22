@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include Discard::Model
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable,
+  devise :database_authenticatable, :recoverable, :rememberable,
     :trackable, :validatable, :confirmable, :lockable, :timeoutable
 
   has_and_belongs_to_many :roles
