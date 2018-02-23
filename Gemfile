@@ -13,7 +13,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped',
   branch: 'bootstrap4'
-gem 'discard'
+gem 'discard', github: 'jhawthorn/discard', branch: 'master'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'money-rails'

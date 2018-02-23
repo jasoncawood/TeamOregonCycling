@@ -12,6 +12,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-    resources :membership_types
+    resources :membership_types do
+      member do
+        post :undelete
+      end
+      collection do
+        get 'deleted'
+      end
+    end
   end
 end

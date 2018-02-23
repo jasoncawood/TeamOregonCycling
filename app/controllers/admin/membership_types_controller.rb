@@ -10,6 +10,13 @@ module Admin
       call_service(ListMembershipTypes, with_result: method(:membership_types=))
     end
 
+    def deleted
+      self.admin_heading = 'Showing deleted membership types'
+      call_service(ListMembershipTypes, only_deleted: true,
+                   with_result: method(:membership_types=))
+      render action: :index
+    end
+
     def new
       call_service(Admin::BuildMembershipType,
                    success: method(:membership_type=))
@@ -27,6 +34,14 @@ module Admin
                    membership_type: params[:id],
                    success: method(:membership_type=))
       flash[:alert] = "The Membership Type '#{membership_type.name}' has been removed."
+      redirect_to admin_membership_types_path
+    end
+
+    def undelete
+      call_service(Admin::UndeleteMembershipType,
+                   membership_type: params[:id],
+                   success: method(:membership_type=))
+      flash[:success] = "The Membership Type '#{membership_type.name}' has been restored."
       redirect_to admin_membership_types_path
     end
 

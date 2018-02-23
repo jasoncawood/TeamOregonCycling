@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/jhawthorn/discard.git
+  revision: c3b29d1fe92815c3aee72e32b33b5c44f2ed7d56
+  branch: master
+  specs:
+    discard (0.2.0)
+      activerecord (>= 4.2, < 6)
+
+GIT
   remote: https://github.com/king601/devise-bootstrapped.git
   revision: 02e5259cfaa980deeb3e190ac5a49c9254caa867
   branch: bootstrap4
@@ -76,8 +84,6 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
-    discard (0.2.0)
-      activerecord (>= 4.2, < 6)
     dotenv (0.7.0)
     dotenv-rails (0.7.0)
       dotenv (= 0.7.0)
@@ -251,7 +257,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   devise-bootstrapped!
-  discard
+  discard!
   dotenv-rails
   factory_bot_rails
   foreman

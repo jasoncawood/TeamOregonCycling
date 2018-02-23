@@ -2,11 +2,13 @@ module Admin
   class BaseController < ApplicationController
     layout 'admin'
 
+    attr_reader :admin_heading
     attr_reader :show_admin_sidebar, :show_admin_sidebar_manage_users
     attr_reader :currently_managing
 
     private
 
+    attr_writer :admin_heading
     attr_writer :show_admin_sidebar, :show_admin_sidebar_manage_users
     attr_writer :currently_managing
 

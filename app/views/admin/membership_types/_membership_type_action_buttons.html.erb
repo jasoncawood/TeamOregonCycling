@@ -1,15 +1,4 @@
 <div class="btn-group">
-  <% unless current_page?(admin_membership_types_path) %>
-    <%= link_to(octicon('arrow-left',
-                        :'aria-label' => 'Back to Membership Types List'),
-                admin_membership_types_path,
-                class: 'btn btn-secondary btn-sm',
-                data: {
-                  toggle: 'tooltip',
-                  placement: 'bottom'
-                  },
-                title: 'Back to Membership Types List') %>
-  <% end %>
   <% unless current_page?(admin_membership_type_path(membership_type)) %>
     <%= link_to(octicon('eye', :'aria-label' => 'View'),
                 admin_membership_type_path(membership_type),
@@ -18,7 +7,8 @@
                 'data-placement' => 'bottom',
                 title: 'View Membership Type Details') %>
   <% end %>
-  <% unless current_page?(edit_admin_membership_type_path(membership_type)) %>
+  <% unless membership_type.discarded? ||
+      current_page?(edit_admin_membership_type_path(membership_type)) %>
     <%= link_to(octicon('pencil', :'aria-label' => 'Edit'),
                 edit_admin_membership_type_path(membership_type),
                 class: 'btn btn-secondary btn-sm',
@@ -26,15 +16,27 @@
                 'data-placement' => 'bottom',
                 title: 'Edit Membership Type') %>
   <% end %>
-  <%= link_to(octicon('trashcan', :'aria-label' => 'Delete'),
-              admin_membership_type_path(membership_type),
-              method: :delete,
-              title: 'Delete Membership Type',
-              class: 'btn btn-danger btn-sm',
-              data: {
-                toggle: 'tooltip',
-                placement: 'bottom',
-                confirm: 'Are you sure you want to delete ' \
-                "membershipt type #{membership_type.name}"
-              }) %>
+  <% if membership_type.discarded? %>
+    <%= link_to(octicon('plus', :'aria-label' => 'Undelete'),
+                undelete_admin_membership_type_path(membership_type),
+                method: :post,
+                title: 'Undelete Membership Type',
+                class: 'btn btn-success btn-sm',
+                data: {
+                  toggle: 'tooltip',
+                  placement: 'bottom'
+                }) %>
+  <% else %>
+    <%= link_to(octicon('trashcan', :'aria-label' => 'Delete'),
+                admin_membership_type_path(membership_type),
+                method: :delete,
+                title: 'Delete Membership Type',
+                class: 'btn btn-danger btn-sm',
+                data: {
+                  toggle: 'tooltip',
+                  placement: 'bottom',
+                  confirm: 'Are you sure you want to delete ' \
+                  "membership type #{membership_type.name}"
+                }) %>
+  <% end %>
 </div>
