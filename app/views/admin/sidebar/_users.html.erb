@@ -2,7 +2,7 @@
   <ul class="nav">
     <%= main_nav_link('Members', admin_users_path) %>
     <%= main_nav_link('Membership Types', admin_membership_types_path, show_sub: managing?(:membership_types)) do %>
-      <li> <%= link_to 'Create Membership Type', new_admin_membership_type_path %></li>
+      <%= main_nav_link 'Create Membership Type', new_admin_membership_type_path %>
     <% end %>
   </ul>
 </div>

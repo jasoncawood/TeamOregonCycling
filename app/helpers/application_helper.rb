@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def main_nav_link(title, url, show_sub: false, **options)
-    content_tag(:li, class: current_page?(url) ? 'active' : '') do
+    content_tag(:li, class: (current_page?(url) || show_sub) ? 'active' : '') do
       if block_given? && show_sub
         link_to(title, url, **options) +
           content_tag(:ul, class: 'nav') do

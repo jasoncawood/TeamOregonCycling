@@ -46,11 +46,29 @@ $body-bg: $dark;
 
 .form-action-buttons {
   text-align: center;
+
+  input[type="submit"], button {
+    @extend .btn;
+  }
+
+  input[type="submit"] {
+    @extend .btn-primary;
+  }
 }
 
 .form-group.check_boxes {
   .checkbox {
     @extend .pt-2;
+    input {
+      @extend .mr-3;
+    }
+  }
+}
+
+.form-group.boolean {
+  .checkbox {
+    @extend .offset-4;
+
     input {
       @extend .mr-3;
     }

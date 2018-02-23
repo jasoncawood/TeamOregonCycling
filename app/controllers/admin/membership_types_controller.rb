@@ -1,7 +1,7 @@
 module Admin
   class MembershipTypesController < Admin::BaseController
-    attr_accessor :membership_types
-    private :membership_types=
+    attr_accessor :membership_types, :membership_type
+    private :membership_types=, :membership_type=
 
     show_admin_sidebar_manage_users!
     currently_managing :membership_types
@@ -12,7 +12,7 @@ module Admin
 
     def new
       call_service(Admin::BuildMembershipType,
-                   with_result: method(:membership_type=))
+                   success: method(:membership_type=))
     end
   end
 end

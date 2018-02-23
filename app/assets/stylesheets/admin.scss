@@ -7,6 +7,41 @@ body.admin-site {
     .btn {
       line-height: 1.0;
     }
+
+  }
+
+  .primary-form {
+    @extend .card;
+    max-width: 40rem;
+    @extend .mx-auto;
+    @extend .mb-3;
+
+    .help-block {
+      @extend .col-sm-8;
+      @extend .offset-md-4;
+    }
+
+    >header {
+      @extend .card-header;
+      text-align: center;
+    }
+
+    >div {
+      @extend .card-body;
+    }
+
+    .form-group {
+      @extend .row;
+
+      >input {
+        @extend .col-sm-8;
+      }
+
+      >label {
+        @extend .col-sm-4;
+        @extend .col-form-label;
+      }
+    }
   }
 
   .btn.disabled {
@@ -60,11 +95,11 @@ body.admin-site {
 
   #content.sidebar {
     .main-content {
-      @extend .col-md-10;
+      @extend .col-md-9;
     }
 
     #sidebar {
-      @extend .col-2;
+      max-width: 300px;
 
       ul.nav {
         @extend .flex-column;
@@ -94,6 +129,7 @@ body.admin-site {
             li.active {
               >a {
                 @extend .btn-outline-primary;
+                @extend .text-primary;
               }
             }
           }
@@ -131,6 +167,14 @@ body.admin-site {
 
     #membership-type-listing {
       @extend .resource-table;
+    }
+  }
+
+  #new-membership-type {
+    @extend .main-content;
+
+    >form {
+      @extend .primary-form;
     }
   }
 
@@ -194,37 +238,7 @@ body.admin-site {
     @extend .main-content;
 
     >form {
-      @extend .card;
-      max-width: 40rem;
-      @extend .mx-auto;
-      @extend .mb-3;
-
-      .help-block {
-        @extend .col-sm-8;
-        @extend .offset-md-4;
-      }
-
-      >header {
-        @extend .card-header;
-        text-align: center;
-      }
-
-      >div {
-        @extend .card-body;
-      }
-
-      .form-group {
-        @extend .row;
-
-        >input {
-          @extend .col-sm-8;
-        }
-
-        >label {
-          @extend .col-sm-4;
-          @extend .col-form-label;
-        }
-      }
+      @extend .primary-form;
     }
   }
 }
