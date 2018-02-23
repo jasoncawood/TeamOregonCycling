@@ -3,6 +3,8 @@ module Admin
     attr_accessor :users, :user, :memberships
     private :users=, :user=, :memberships=
 
+    show_admin_sidebar_manage_users!
+
     def index
       call_service(Admin::ListUsers,
                    with_result: ->(users) { self.users = users })

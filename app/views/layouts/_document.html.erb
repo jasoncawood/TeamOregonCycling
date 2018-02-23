@@ -11,7 +11,7 @@
     <%= yield :head %>
   </head>
 
-  <body>
+  <body class="<%= body_class %>">
     <nav id="page-header">
       <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarSupportedContent"
@@ -32,7 +32,6 @@
                 aria-expanded="false"><%= current_user.display_name %></a>
               <div class="dropdown-menu" arial-labelledby="user-dropdown">
                 <ul>
-                  <%= main_nav_link('Edit My Account', edit_user_registration_path) %>
                   <%= admin_site_link %>
                   <%= main_nav_link('Sign Out', destroy_user_session_path, method: :delete) %>
                 </ul>
@@ -44,9 +43,10 @@
         </ul>
       </div>
     </nav>
-    <div id="content" class="<%= 'sidebar' if show_sidebar? %>">
+    <div id="content" class="<%= 'sidebar' if show_sidebar? || show_admin_sidebar? %>">
       <%= render partial: 'layouts/messages' %>
       <div class="row">
+        <%= render(partial: 'layouts/admin_sidebar') if show_admin_sidebar? %>
         <%= yield %>
         <%= render(partial: 'layouts/sidebar') if show_sidebar? %>
     </div>

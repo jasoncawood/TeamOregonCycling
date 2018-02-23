@@ -1,0 +1,19 @@
+<div id="manage-membership-types">
+  <h2>Manage Membership Types</h2>
+
+  <table id="membership-type-listing">
+    <thead>
+      <tr>
+        <th>Sort Order</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Annual Dues</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'membership_type_row', as: 'membership_type',
+            collection: controller.membership_types %>
+    </tbody>
+  </table>
+</div>

@@ -1,48 +1,35 @@
 @import "application";
 
-body {
+body.admin-site {
   background-color: $light;
-}
 
-.main-content {
-  .btn {
-    line-height: 1.0;
+  .main-content {
+    .btn {
+      line-height: 1.0;
+    }
   }
-}
 
-.btn.disabled {
-  cursor: not-allowed;
-}
+  .btn.disabled {
+    cursor: not-allowed;
+  }
 
-.current-member {
-  @extend .text-success;
-}
+  .current-member {
+    @extend .text-success;
+  }
 
-.pending-member {
-  @extend .text-warning;
-}
+  .pending-member {
+    @extend .text-warning;
+  }
 
-.expired-member {
-  @extend .text-danger;
-}
+  .expired-member {
+    @extend .text-danger;
+  }
 
-.none-member {
-  @extend .text-muted;
-}
+  .none-member {
+    @extend .text-muted;
+  }
 
-#page-header {
-  @extend .bg-warning;
-}
-
-#content {
-  max-width: none;
-  @extend .container-fluid;
-}
-
-#manage-users {
-  @extend .main-content;
-
-  #user-listing {
+  .resource-table {
     @extend .table;
     @extend .table-striped;
     @extend .table-hover;
@@ -52,116 +39,176 @@ body {
       font-size: 0.8rem;
     }
 
-    td, th {
-      @extend .align-middle;
-    }
-
-    .roles {
-      ul {
-        @extend .list-inline;
-        @extend .my-0;
-
-        li {
-          @extend .list-inline-item;
-        }
-      }
-    }
-
     .actions {
       @extend .text-right;
     }
   }
-}
 
-#user-details {
-  @extend .main-content;
-
-  >header {
-    text-align: center;
+  #page-header {
+    @extend .bg-warning;
   }
 
-  >div {
-    @extend .d-flex;
-    @extend .flex-wrap;
+  #content {
+    max-width: none;
+    @extend .container-fluid;
+  }
 
-    >div {
-      @extend .card;
-      @extend .m-3;
+  #content.sidebar {
+    .main-content {
+      @extend .col-md-10;
+    }
 
-      >h3 {
-        @extend .card-header;
+    #sidebar {
+      @extend .col-2;
+
+      >div {
+        @extend .card;
+
+        >h3 {
+          @extend .card-header;
+          font-size: 1rem;
+        }
+      }
+
+      ul.nav {
+        @extend .flex-column;
+
+        li {
+          @extend .nav-item;
+
+          a {
+            @extend .nav-link;
+            @extend .btn;
+            @extend .btn-light;
+            text-align: left;
+          }
+        }
+
+        li.active {
+          a {
+            @extend .btn-info;
+          }
+        }
       }
     }
   }
 
-  #account-info {
-    dl {
-      @extend .card-body;
-    }
-  }
+  #manage-users {
+    @extend .main-content;
 
-  #membership-history {
-    >div {
-      @extend .card-body;
-    }
+    #user-listing {
+      @extend .resource-table;
+      .roles {
+        ul {
+          @extend .list-inline;
+          @extend .my-0;
 
-    table {
-      @extend .table;
-      @extend .table-striped;
-      @extend .table-sm;
-
-      tbody {
-        tr.expired-member {
-          @extend .text-muted;
-        }
-
-        tr.expired-member:first-of-type {
-          @extend .text-danger;
+          li {
+            @extend .list-inline-item;
+          }
         }
       }
     }
   }
 
-  #roles {
-    >div {
-      @extend .card-body;
-    } 
-  }
-}
+  #manage-membership-types {
+    @extend .main-content;
 
-#edit-user {
-  @extend .main-content;
-
-  >form {
-    @extend .card;
-    max-width: 40rem;
-    @extend .mx-auto;
-    @extend .mb-3;
-
-    .help-block {
-      @extend .col-sm-8;
-      @extend .offset-md-4;
+    #membership-type-listing {
+      @extend .resource-table;
     }
+  }
+
+  #user-details {
+    @extend .main-content;
 
     >header {
-      @extend .card-header;
       text-align: center;
     }
 
     >div {
-      @extend .card-body;
+      @extend .d-flex;
+      @extend .flex-wrap;
+
+      >div {
+        @extend .card;
+        @extend .m-3;
+
+        >h3 {
+          @extend .card-header;
+        }
+      }
     }
 
-    .form-group {
-      @extend .row;
+    #account-info {
+      dl {
+        @extend .card-body;
+      }
+    }
 
-      >input {
-        @extend .col-sm-8;
+    #membership-history {
+      >div {
+        @extend .card-body;
       }
 
-      >label {
-        @extend .col-sm-4;
-        @extend .col-form-label;
+      table {
+        @extend .table;
+        @extend .table-striped;
+        @extend .table-sm;
+
+        tbody {
+          tr.expired-member {
+            @extend .text-muted;
+          }
+
+          tr.expired-member:first-of-type {
+            @extend .text-danger;
+          }
+        }
+      }
+    }
+
+    #roles {
+      >div {
+        @extend .card-body;
+      } 
+    }
+  }
+
+  #edit-user {
+    @extend .main-content;
+
+    >form {
+      @extend .card;
+      max-width: 40rem;
+      @extend .mx-auto;
+      @extend .mb-3;
+
+      .help-block {
+        @extend .col-sm-8;
+        @extend .offset-md-4;
+      }
+
+      >header {
+        @extend .card-header;
+        text-align: center;
+      }
+
+      >div {
+        @extend .card-body;
+      }
+
+      .form-group {
+        @extend .row;
+
+        >input {
+          @extend .col-sm-8;
+        }
+
+        >label {
+          @extend .col-sm-4;
+          @extend .col-form-label;
+        }
       }
     }
   }
