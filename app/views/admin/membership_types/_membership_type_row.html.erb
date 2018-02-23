@@ -1,8 +1,8 @@
 <tr>
-  <td><%= membership_type.weight %></td>
+  <td class="numeric"><%= membership_type.weight %></td>
   <td><%= membership_type.name %></td>
   <td><%= markdown(membership_type.description) %></td>
-  <td><%= humanized_money_with_symbol(membership_type.price) %></td>
+  <td class="money"><%= humanized_money_with_symbol(membership_type.price) %></td>
   <td class="boolean"><%= membership_type.approval_required ? 'Yes' : 'No' %></td>
   <td class="actions">
     <%= render partial: 'membership_type_action_buttons', as: :membership_type,

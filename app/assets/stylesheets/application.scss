@@ -79,6 +79,19 @@ $body-bg: $dark;
   background-color: #FFFBCC;
 }
 
+th.boolean, td.boolean {
+  text-align: center;
+}
+
+th.numeric, th.money, td.numeric, td.money {
+  text-align: right;
+}
+
+th, td {
+  @extend .px-3;
+}
+
+
 #page-header {
   @extend .navbar;
   @extend .navbar-expand-lg;
