@@ -92,7 +92,8 @@ CREATE TABLE membership_types (
     price_currency character varying DEFAULT 'USD'::character varying NOT NULL,
     discarded_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    approval_required boolean DEFAULT false NOT NULL
 );
 
 
@@ -414,6 +415,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180218001434'),
 ('20180218010534'),
 ('20180218194755'),
-('20180219174544');
+('20180219174544'),
+('20180223005942');
 
 
