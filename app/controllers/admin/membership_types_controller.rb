@@ -22,6 +22,14 @@ module Admin
                    error: method(:error_creating_membership_type))
     end
 
+    def destroy
+      call_service(Admin::DeleteMembershipType,
+                   membership_type: params[:id],
+                   success: method(:membership_type=))
+      flash[:alert] = "The Membership Type '#{membership_type.name}' has been removed."
+      redirect_to admin_membership_types_path
+    end
+
     private
 
     def membership_type_created(membership_type)

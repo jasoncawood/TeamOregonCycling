@@ -2,7 +2,13 @@ class MembershipType < ApplicationRecord
   include Discard::Model
 
   monetize :price_cents
-  acts_as_list
+  acts_as_list scope: 'discarded_at IS NULL'
+
+  after_discard do
+    MembershipType.kept.order(:position).each_with_index do |mtype, idx|
+      mtype.update_attribute(:position, idx + 1)
+    end
+  end
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
