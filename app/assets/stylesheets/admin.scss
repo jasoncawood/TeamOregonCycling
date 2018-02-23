@@ -84,20 +84,8 @@ body.admin-site {
     }
   }
 
-  #alerts {
-    @extend .position-absolute;
-    width: 40em;
-    max-width: 90%;
-    right: 0;
-    left: 0;
-    margin: auto;
-    top: 2em;
-    z-index: 100;
-  }
-
   #page-header {
     @extend .bg-warning;
-    z-index: 99;
   }
 
   #content {

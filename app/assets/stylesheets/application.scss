@@ -109,6 +109,16 @@ th, td {
   @extend .px-3;
 }
 
+#alerts {
+  @extend .position-absolute;
+  width: 40em;
+  max-width: 90%;
+  right: 0;
+  left: 0;
+  margin: auto;
+  top: 4em;
+  z-index: 100;
+}
 
 #page-header {
   @extend .navbar;
@@ -116,6 +126,7 @@ th, td {
   @extend .navbar-light;
   @extend .bg-primary;
   @extend .fixed-top;
+  z-index: 99;
 
   #header-logo {
     @extend .navbar-brand;
