@@ -3,16 +3,28 @@ require 'the_help/service_caller'
 module ApplicationHelper
   include TheHelp::ServiceCaller
 
-  attr_accessor :body_class
+  attr_accessor :body_class, :currently_managing
 
   def l_date(date)
     return if date.nil?
     l(date.to_date)
   end
 
-  def main_nav_link(title, url, **options)
+  def managing?(*managables)
+    return false if currently_managing.nil?
+    managables.include?(currently_managing)
+  end
+
+  def main_nav_link(title, url, show_sub: false, **options)
     content_tag(:li, class: current_page?(url) ? 'active' : '') do
-      link_to title, url, **options
+      if block_given? && show_sub
+        link_to(title, url, **options) +
+          content_tag(:ul, class: 'nav') do
+            yield
+          end
+      else
+        link_to(title, url, **options)
+      end
     end
   end
 

@@ -13,6 +13,11 @@ body.admin-site {
     cursor: not-allowed;
   }
 
+  .btn-new {
+    @extend .btn;
+    @extend .btn-primary;
+  }
+
   .current-member {
     @extend .text-success;
   }
@@ -61,15 +66,6 @@ body.admin-site {
     #sidebar {
       @extend .col-2;
 
-      >div {
-        @extend .card;
-
-        >h3 {
-          @extend .card-header;
-          font-size: 1rem;
-        }
-      }
-
       ul.nav {
         @extend .flex-column;
 
@@ -79,13 +75,32 @@ body.admin-site {
           a {
             @extend .nav-link;
             @extend .btn;
-            @extend .btn-light;
+            @extend .btn-outline-secondary;
             text-align: left;
+          }
+
+          ul.nav {
+            a {
+              @extend .btn-outline-info;
+              @extend .text-dark;
+              @extend .pl-4;
+              font-size: 0.8rem;
+            }
+
+            a::before {
+              content: '- ';
+            }
+
+            li.active {
+              >a {
+                @extend .btn-outline-primary;
+              }
+            }
           }
         }
 
         li.active {
-          a {
+          >a {
             @extend .btn-info;
           }
         }
