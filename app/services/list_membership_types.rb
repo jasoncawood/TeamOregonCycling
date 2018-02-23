@@ -5,7 +5,7 @@ class ListMembershipTypes < BaseService
   authorization_policy allow_all: true
 
   main do
-    m_types = MembershipType.kept.order(:weight).readonly
+    m_types = MembershipType.kept.order(:position).readonly
     m_types.each { |m_type| with_each.call(m_type) } if with_each.present?
     with_result.call(m_types)
   end

@@ -8,7 +8,7 @@
     <%= f.input :name %>
     <%= f.input :approval_required, hint: 'A user manager must manually approve sign-ups and renewals for this membership type if checked.' %>
     <%= f.input :price, label: 'Annual Dues', required: true %>
-    <%= f.input :weight, label: 'Sort Order', required: true %>
+    <%= f.input :position, label: 'Sort Order', required: true %>
     <%= f.input :description, as: :text %>
     <div class="form-action-buttons">
       <%= f.submit %>

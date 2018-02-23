@@ -14,5 +14,30 @@ module Admin
       call_service(Admin::BuildMembershipType,
                    success: method(:membership_type=))
     end
+
+    def create
+      call_service(Admin::CreateMembershipType,
+                   data: membership_type_params,
+                   success: method(:membership_type_created),
+                   error: method(:error_creating_membership_type))
+    end
+
+    private
+
+    def membership_type_created(membership_type)
+      flash[:info] = 'Membership Type was created'
+      redirect_to admin_membership_types_path
+    end
+
+    def error_creating_membership_type(membership_type)
+      flash[:error] = 'Unable to create new Membership Type'
+      self.membership_type = membership_type
+      render action: :new
+    end
+
+    def membership_type_params
+      params.require(:membership_type)
+        .permit(:name, :description, :price, :position, :approval_required)
+    end
   end
 end

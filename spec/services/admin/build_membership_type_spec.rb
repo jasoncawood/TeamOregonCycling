@@ -23,11 +23,11 @@ RSpec.describe Admin::BuildMembershipType do
     })
   end
 
-  it 'sets the MembershipType#weight to the next-highest weight' do
-    create(:membership_type, weight: 6)
+  it 'sets the MembershipType#position to the next-highest position' do
+    create(:membership_type, position: 6)
     subject.call
     expect(success_handler).to have_been_called_with(satisfy { |v|
-      expect(v.weight).to eq 7
+      expect(v.position).to eq 7
     })
   end
 end

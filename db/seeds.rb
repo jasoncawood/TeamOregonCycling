@@ -1,12 +1,12 @@
 MembershipType.create_with(
-  weight: 1,
+  position: 1,
   price: 65,
   description: <<-DESC).find_or_create_by!(name: 'Standard')
   Standard membership for adult team members.
   DESC
 
 MembershipType.create_with(
-  weight: 2,
+  position: 2,
   price: 10,
   description: <<-DESC).find_or_create_by!(name: 'Student')
   Discounted membership for juniors and full-time students.
@@ -16,7 +16,7 @@ MembershipType.create_with(
   DESC
 
 MembershipType.create_with(
-  weight: 3,
+  position: 3,
   price: 10,
   description: <<-DESC).find_or_create_by!(name: 'Leadership')
   Discounted membership for those who volunteer to serve the team in a

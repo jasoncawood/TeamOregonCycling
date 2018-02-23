@@ -86,7 +86,7 @@ CREATE VIEW current_memberships AS
 CREATE TABLE membership_types (
     id bigint NOT NULL,
     name character varying NOT NULL,
-    weight integer NOT NULL,
+    "position" integer NOT NULL,
     description character varying NOT NULL,
     price_cents integer DEFAULT 0 NOT NULL,
     price_currency character varying DEFAULT 'USD'::character varying NOT NULL,
@@ -329,10 +329,10 @@ CREATE UNIQUE INDEX index_membership_types_on_name ON membership_types USING btr
 
 
 --
--- Name: index_membership_types_on_weight; Type: INDEX; Schema: public; Owner: -
+-- Name: index_membership_types_on_position; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_membership_types_on_weight ON membership_types USING btree (weight);
+CREATE INDEX index_membership_types_on_position ON membership_types USING btree ("position");
 
 
 --
@@ -416,6 +416,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180218010534'),
 ('20180218194755'),
 ('20180219174544'),
-('20180223005942');
+('20180223005942'),
+('20180223055132'),
+('20180223062441');
 
 

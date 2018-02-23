@@ -7,6 +7,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'active_model_validates_intersection_of'
+gem 'acts_as_list'
 gem 'bootstrap'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
