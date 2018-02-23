@@ -48,7 +48,7 @@ module Admin
     private
 
     def membership_type_created(membership_type)
-      flash[:info] = 'Membership Type was created'
+      flash[:success] = 'Membership Type was created'
       redirect_to admin_membership_types_path
     end
 

@@ -1,3 +1,4 @@
+<div id="alerts">
 <% flash.to_hash.except('timedout').each do |key, value| %>
   <div class="alert alert-<%= key %>">
     <a href="#" data-dismiss="alert" class="close">×</a>
@@ -12,3 +13,4 @@
     <% end %>
   </div>
 <% end %>
+</div>

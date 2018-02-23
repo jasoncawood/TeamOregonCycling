@@ -12,6 +12,7 @@
   </head>
 
   <body class="<%= body_class %>">
+    <%= render partial: 'layouts/messages' %>
     <nav id="page-header">
       <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarSupportedContent"
@@ -44,7 +45,6 @@
       </div>
     </nav>
     <div id="content" class="<%= 'sidebar' if show_sidebar? || show_admin_sidebar? %>">
-      <%= render partial: 'layouts/messages' %>
       <div class="row">
         <%= render(partial: 'layouts/admin_sidebar') if show_admin_sidebar? %>
         <%= yield %>

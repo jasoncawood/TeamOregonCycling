@@ -3,7 +3,7 @@ require 'the_help/service_caller'
 module ApplicationHelper
   include TheHelp::ServiceCaller
 
-  attr_accessor :body_class, :currently_managing
+  attr_accessor :body_class, :currently_managing, :admin_heading
 
   def l_date(date)
     return if date.nil?

@@ -11,5 +11,8 @@
   <%= main_nav_link 'Membership', admin_users_path %>
 <% end %>
 <%= render layout: 'layouts/document' do %>
-  <%= yield %>
+  <div class="main-content">
+    <%= content_tag(:h2, admin_heading) if admin_heading.present? %>
+    <%= yield %>
+  </div>
 <% end %>
