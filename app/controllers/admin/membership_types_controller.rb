@@ -29,11 +29,19 @@ module Admin
                    error: method(:error_creating_membership_type))
     end
 
+    def edit
+      call_service(GetMembershipType,
+                   membership_type: params[:id],
+                   with_result: method(:membership_type=),
+                   not_found: method(:render_404))
+    end
+
     def destroy
       call_service(Admin::DeleteMembershipType,
                    membership_type: params[:id],
                    success: method(:membership_type=))
-      flash[:alert] = "The Membership Type '#{membership_type.name}' has been removed."
+      flash[:alert] = "The Membership Type '#{membership_type.name}' has " \
+                      'been removed.'
       redirect_to admin_membership_types_path
     end
 
@@ -41,7 +49,8 @@ module Admin
       call_service(Admin::UndeleteMembershipType,
                    membership_type: params[:id],
                    success: method(:membership_type=))
-      flash[:success] = "The Membership Type '#{membership_type.name}' has been restored."
+      flash[:success] = "The Membership Type '#{membership_type.name}' has " \
+                        'been restored.'
       redirect_to admin_membership_types_path
     end
 

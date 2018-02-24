@@ -166,7 +166,7 @@ body.admin-site {
     }
   }
 
-  #new-membership-type {
+  #new-membership-type, #edit-membership-type {
     >form {
       @extend .primary-form;
     }
