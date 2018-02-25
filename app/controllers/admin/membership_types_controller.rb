@@ -25,8 +25,10 @@ module Admin
     def create
       call_service(Admin::CreateMembershipType,
                    data: membership_type_params,
-                   success: method(:membership_type_created),
+                   success: method(:membership_type=),
                    error: method(:error_creating_membership_type))
+      flash[:success] = 'Membership Type was created'
+      redirect_to admin_membership_types_path
     end
 
     def edit
@@ -34,6 +36,16 @@ module Admin
                    membership_type: params[:id],
                    with_result: method(:membership_type=),
                    not_found: method(:render_404))
+    end
+
+    def update
+      call_service(UpdateMembershipType,
+                   membership_type: params[:id],
+                   data: membership_type_params,
+                   success: method(:membership_type=),
+                   error: method(:error_updating_membership_type))
+      flash[:success] = 'The membership type has been updated.'
+      redirect_to admin_membership_types_path
     end
 
     def destroy
@@ -56,15 +68,18 @@ module Admin
 
     private
 
-    def membership_type_created(membership_type)
-      flash[:success] = 'Membership Type was created'
-      redirect_to admin_membership_types_path
-    end
-
     def error_creating_membership_type(membership_type)
       flash[:error] = 'Unable to create new Membership Type'
       self.membership_type = membership_type
       render action: :new
+      halt!
+    end
+
+    def error_updating_membership_type(membership_type)
+      flash[:error] = 'Unable to update the Membership Type'
+      self.membership_type = membership_type
+      render action: :edit
+      halt!
     end
 
     def membership_type_params

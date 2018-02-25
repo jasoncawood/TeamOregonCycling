@@ -51,7 +51,8 @@ CREATE TABLE memberships (
     amount_paid_cents integer DEFAULT 0 NOT NULL,
     amount_paid_currency character varying DEFAULT 'USD'::character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    membership_type_id bigint NOT NULL
 );
 
 
@@ -336,6 +337,13 @@ CREATE INDEX index_membership_types_on_position ON membership_types USING btree 
 
 
 --
+-- Name: index_memberships_on_membership_type_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_memberships_on_membership_type_id ON memberships USING btree (membership_type_id);
+
+
+--
 -- Name: index_memberships_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -418,6 +426,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180219174544'),
 ('20180223005942'),
 ('20180223055132'),
-('20180223062441');
+('20180223062441'),
+('20180225060122');
 
 
