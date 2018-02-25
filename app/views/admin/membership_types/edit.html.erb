@@ -1,0 +1,19 @@
+<% membership_type = controller.membership_type %>
+<div id="edit-membership-type">
+  <%= simple_form_for membership_type, url: admin_membership_type_path(membership_type) do |f| %>
+    <header>
+      <h2>Edit Membership Type</h2>
+    </header>
+    <div>
+    <%= f.input :name %>
+    <%= f.input :approval_required, hint: 'A user manager must manually approve sign-ups and renewals for this membership type if checked.' %>
+    <%= f.input :price, label: 'Annual Dues', required: true %>
+    <%= f.input :position, label: 'Sort Order', required: true %>
+    <%= f.input :description, as: :text %>
+    <div class="form-action-buttons">
+      <%= f.submit %>
+      <%= link_to 'Cancel', :back, class: 'btn btn-outline-danger' %>
+    </div>
+  </div>
+  <% end %>
+</div>

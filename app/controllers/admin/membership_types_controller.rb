@@ -25,15 +25,35 @@ module Admin
     def create
       call_service(Admin::CreateMembershipType,
                    data: membership_type_params,
-                   success: method(:membership_type_created),
+                   success: method(:membership_type=),
                    error: method(:error_creating_membership_type))
+      flash[:success] = 'Membership Type was created'
+      redirect_to admin_membership_types_path
+    end
+
+    def edit
+      call_service(GetMembershipType,
+                   membership_type: params[:id],
+                   with_result: method(:membership_type=),
+                   not_found: method(:render_404))
+    end
+
+    def update
+      call_service(UpdateMembershipType,
+                   membership_type: params[:id],
+                   data: membership_type_params,
+                   success: method(:membership_type=),
+                   error: method(:error_updating_membership_type))
+      flash[:success] = 'The membership type has been updated.'
+      redirect_to admin_membership_types_path
     end
 
     def destroy
       call_service(Admin::DeleteMembershipType,
                    membership_type: params[:id],
                    success: method(:membership_type=))
-      flash[:alert] = "The Membership Type '#{membership_type.name}' has been removed."
+      flash[:alert] = "The Membership Type '#{membership_type.name}' has " \
+                      'been removed.'
       redirect_to admin_membership_types_path
     end
 
@@ -41,21 +61,25 @@ module Admin
       call_service(Admin::UndeleteMembershipType,
                    membership_type: params[:id],
                    success: method(:membership_type=))
-      flash[:success] = "The Membership Type '#{membership_type.name}' has been restored."
+      flash[:success] = "The Membership Type '#{membership_type.name}' has " \
+                        'been restored.'
       redirect_to admin_membership_types_path
     end
 
     private
 
-    def membership_type_created(membership_type)
-      flash[:success] = 'Membership Type was created'
-      redirect_to admin_membership_types_path
-    end
-
     def error_creating_membership_type(membership_type)
       flash[:error] = 'Unable to create new Membership Type'
       self.membership_type = membership_type
       render action: :new
+      halt!
+    end
+
+    def error_updating_membership_type(membership_type)
+      flash[:error] = 'Unable to update the Membership Type'
+      self.membership_type = membership_type
+      render action: :edit
+      halt!
     end
 
     def membership_type_params

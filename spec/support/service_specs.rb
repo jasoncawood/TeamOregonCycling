@@ -35,7 +35,7 @@ RSpec.shared_context :service_specs do
       args = {permission: permission}
       args[:on] = send(on) unless on.nil?
       subject.call
-      expect(send(authorizer)).to have_received_service_call(args)
+      expect(send(authorizer)).to have_received_service_call(args).at_least(1)
     end
   end
 
