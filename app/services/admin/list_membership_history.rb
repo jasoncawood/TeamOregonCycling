@@ -1,5 +1,5 @@
 module Admin
-  class ListMembershipHistory < BaseService
+  class ListMembershipHistory < ApplicationService
     input :user
     input :with_result, default: -> (memberships) { memberships }
 

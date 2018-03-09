@@ -1,5 +1,5 @@
 module Admin
-  class DeterminePrimaryAdminScreen < BaseService
+  class DeterminePrimaryAdminScreen < ApplicationService
     input :url_generator
     input :with_result, default: ->(url) { url }
     input :nothing_available, default: -> { nil }

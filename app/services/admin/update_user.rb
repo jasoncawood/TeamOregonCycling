@@ -1,5 +1,5 @@
 module Admin
-  class UpdateUser < BaseService
+  class UpdateUser < ApplicationService
     input :user
     input :changes
     input :success, default: ->(user) { user }

@@ -1,5 +1,5 @@
 module Admin
-  class BuildMembershipType < BaseService
+  class BuildMembershipType < ApplicationService
     input :success, default: ->(mtype) { mtype }
 
     require_permission :manage_users

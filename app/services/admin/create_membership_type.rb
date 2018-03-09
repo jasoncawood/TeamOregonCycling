@@ -1,5 +1,5 @@
 module Admin
-  class CreateMembershipType < BaseService
+  class CreateMembershipType < ApplicationService
     class Invalid < StandardError; end
 
     input :data

@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   resources :pages, only: %i[show]
 
+  get '/contact_us', to: 'contact#new', as: :new_contact
+  post '/contact_us', to: 'contact#create', as: :contact
+
   namespace :admin do
     resources :users
     resources :membership_types do

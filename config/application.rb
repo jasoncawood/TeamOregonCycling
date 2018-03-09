@@ -16,9 +16,6 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-# Ensure that any required environment variables for the application are present
-require_relative 'required_env_vars'
-
 module Teamo
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -32,6 +29,10 @@ module Teamo
     config.generators.system_tests = nil
 
     config.active_record.schema_format = :sql
+
+    # Ensure that any required environment variables for the application are
+    # present
+    require_relative 'required_env_vars'
 
     config.action_mailer.default_url_options = {
       host: ENV.fetch('TEAMO_HOSTNAME'), port: ENV.fetch('TEAMO_PORT')

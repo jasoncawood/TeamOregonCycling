@@ -1,4 +1,4 @@
-class GetMembershipType < BaseService
+class GetMembershipType < ApplicationService
   input :membership_type
   input :with_result, default: ->(mtype) { mtype }
   input :not_found, default: -> { raise NotFound, "MembershipType does not exist" }

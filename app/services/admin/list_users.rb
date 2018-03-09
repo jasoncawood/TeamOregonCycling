@@ -1,5 +1,5 @@
 module Admin
-  class ListUsers < BaseService
+  class ListUsers < ApplicationService
     input :with_result, default: ->(users) { users }
 
     require_permission :manage_users

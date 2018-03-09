@@ -16,6 +16,7 @@ gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped',
 gem 'discard', github: 'jhawthorn/discard', branch: 'master'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'mail_form'
 gem 'money-rails'
 gem 'octicons_helper'
 gem 'pg', '~> 0.18'

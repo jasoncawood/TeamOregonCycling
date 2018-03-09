@@ -1,4 +1,4 @@
-class ListMembershipTypes < BaseService
+class ListMembershipTypes < ApplicationService
   input :only_deleted, default: false
   input :with_result, default: ->(m_types) { m_types }
   input :with_each, default: nil

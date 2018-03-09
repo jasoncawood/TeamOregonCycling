@@ -1,4 +1,4 @@
-autoload(:BaseService, 'services/base_service')
+autoload(:ApplicationService, 'services/application_service')
 
 module Admin
   autoload(:DeterminePrimaryAdminScreen, 'services/admin/determine_primary_admin_screen')

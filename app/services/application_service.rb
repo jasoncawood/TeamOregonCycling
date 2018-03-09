@@ -1,4 +1,4 @@
-class BaseService < TheHelp::Service
+class ApplicationService < TheHelp::Service
   class NotFound < StandardError
     attr_reader :entity_type, :id
 
@@ -35,6 +35,10 @@ class BaseService < TheHelp::Service
       entity.errors.full_messages
     end
   end
+
+  input :invalid_input, default: ->(entity) {
+    raise Invalid, entity_type: entity.class, entity: entity
+  }
 
   def self.require_permission(permission=nil, on: nil)
     authorization_policy do

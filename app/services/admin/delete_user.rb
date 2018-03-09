@@ -1,5 +1,5 @@
 module Admin
-  class DeleteUser < BaseService
+  class DeleteUser < ApplicationService
     input :user
     input :success, default: ->(user) { user }
 

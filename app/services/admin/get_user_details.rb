@@ -1,5 +1,5 @@
 module Admin
-  class GetUserDetails < BaseService
+  class GetUserDetails < ApplicationService
     input :user
     input :with_result, default: ->(user) { user }
 

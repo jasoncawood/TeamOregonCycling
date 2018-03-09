@@ -12,8 +12,13 @@
       page_path(:rides) %>! Whether you've been riding for 20 years or are just
       getting into the sport, we hope you become an O this season.</p>
 
-    <p>Questions about membership?
-      <%= link_to 'Contact us.', page_path(:contact) %></p>
+    <p>
+      Questions about membership?
+      <%=
+        link_to 'Contact us.',
+          new_contact_path(reason: 'membership_inquiry')
+      %>
+    </p>
 
     <p>That said, we have a few pieces of business to take care of before
       jumping in. Please review the 2017 Code of Conduct, below.</p> 

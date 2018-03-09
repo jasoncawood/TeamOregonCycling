@@ -1,5 +1,5 @@
 module Admin
-  class UpdateMembershipType < BaseService
+  class UpdateMembershipType < ApplicationService
     input :membership_type
     input :data
     input :success, default: ->(mtype) { mtype }

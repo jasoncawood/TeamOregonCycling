@@ -1,5 +1,5 @@
 module Admin
-  class UndeleteMembershipType < BaseService
+  class UndeleteMembershipType < ApplicationService
     input :membership_type
     input :success, default: ->(membership_type) { membership_type }
 

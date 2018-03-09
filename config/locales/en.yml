@@ -37,5 +37,5 @@ en:
     none:    "n/a"
   account_inactive: |
     Your account is currently inactive. Please <a
-    href="/pages/contact_us?reason=account_inactive">contact us</a> to restore
+    href="/contact_us?reason=account_help">contact us</a> to restore
     access.

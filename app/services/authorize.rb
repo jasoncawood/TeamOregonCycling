@@ -1,4 +1,4 @@
-class Authorize < BaseService
+class Authorize < ApplicationService
   input :permission
   input :on, default: nil
   input :authorized, default: -> { true }
