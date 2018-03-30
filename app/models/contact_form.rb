@@ -29,8 +29,7 @@ class ContactForm < MailForm::Base
       subject: "Team Oregon Contact Form - #{reason}",
       to: ENV.fetch('TEAMO_CONTACT_FORM_TO'),
       cc: email,
-      from: 'no-reply@teamoregon.org',
-      'reply-to' => email
+      from: email
     }
   end
 end
