@@ -1,6 +1,14 @@
 <%
   show_sidebar!
   page_title 'About Us'
+
+  content_for :sidebar_top do
+    %>
+    <div id="jersey">
+      <%= image_tag 'team-o-rodda-jersey.png' %>
+    </div>
+    <%
+  end
 %>
 <div id="about-us">
   <section id="team-description">

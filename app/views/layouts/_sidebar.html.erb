@@ -1,3 +1,4 @@
 <div id="sidebar">
+  <%= yield :sidebar_top %>
   <%= render(partial: 'layouts/sponsors') if show_sidebar_sponsors? %>
 </div>

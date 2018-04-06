@@ -199,6 +199,12 @@ th, td {
   #sidebar {
     @extend .col-md-4;
 
+    #jersey {
+      @extend .card;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
     #sb-sponsors {
       @extend .card;
 
