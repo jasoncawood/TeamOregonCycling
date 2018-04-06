@@ -34,41 +34,44 @@
   <section id="leaders">
     <h2>Team Leadership</h2>
     <div>
-    <%= leader_bio(name: 'Erica Menze', title: 'President', image: 'erica',
-                   bio: <<-BIO)
+      <%= leader_bio(name: 'Tony Dirks', title: 'Board Member') %>
+      <%= leader_bio(name: 'John Gill', title: 'Clothing Director / CX Leader',
+                     image: 'johng') %>
+    </div>
+    <div>
+      <%= leader_bio(name: 'Will Hahn', title: 'Elite/Development Team Leader') %>
+      <%= leader_bio(name: 'Erica Menze', title: 'President', image: 'erica',
+                     bio: <<~BIO)
         Erica has been a member of Team Oregon for five years, and led the
         women’s team to the top of the podium for the last three. An attorney by
         day, Erica is a passionate cyclist and advocate of Team Oregon in every
         category.
         BIO
-    %>
-    <%= leader_bio(name: 'Ryan Menze', title: 'Treasurer', image: 'ryan',
-                   bio: <<-BIO)
+      %>
+    </div>
+    <div>
+      <%= leader_bio(name: 'Ryan Menze', title: 'Board Member, Treasurer',
+                     image: 'ryan', bio: <<-BIO)
         Ryan – also known as R Money – will continue to serve as Team Oregon’s
         Treasurer after five years of membership. When he’s not on his bike, you
         can find Ryan cross-training and planning his next ride.
         BIO
-    %>
+      %>
+      <%= leader_bio(name: 'Brian Marcroft', title: 'Board Member') %>
     </div>
     <div>
-      <%= leader_bio(name: 'John Gill', title: 'Clothing Director / CX Leader',
-                     image: 'johng')
-    %>
-    <%= leader_bio(name: 'Will Hahn', title: 'Elite/Development Team Leader')
-    %>
-    </div>
-    <div>
-    <%= leader_bio(name: 'Nick Wood', title: 'Mountain Bike Team Leader')
-    %>
-    <%= leader_bio(name: 'John Wilger',
-                 title: 'IT Support / Saturday Ride Leader', image: 'johnw',
-                 bio: <<-BIO)
+      <%= leader_bio(name: 'Kelsey Ramsey', title: 'Board Member') %>
+      <%= leader_bio(name: 'John Wilger', title: 'Board Member, IT Support',
+                     image: 'johnw', bio: <<-BIO)
         John has been racing with Team Oregon since 2014 on the road
         and—more recently—in cyclocross, as well. For 2018, his
         goals are centered around the Baker City Cycling Classic stage race, and
         you'll find him leading the team road ride most Saturdays this spring.
         BIO
-    %>
+      %>
+    </div>
+    <div>
+      <%= leader_bio(name: 'Nick Wood', title: 'Mountain Bike Team Leader') %>
     </div>
   </section>
 </div>
