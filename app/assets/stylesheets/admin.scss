@@ -3,56 +3,6 @@
 body.admin-site {
   background-color: $light;
 
-  .main-content {
-    .btn {
-      line-height: 1.0;
-    }
-
-  }
-
-  .primary-form {
-    @extend .card;
-    max-width: 40rem;
-    @extend .mx-auto;
-    @extend .mb-3;
-
-    .help-block {
-      @extend .col-sm-8;
-      @extend .offset-md-4;
-    }
-
-    >header {
-      @extend .card-header;
-      text-align: center;
-    }
-
-    >div {
-      @extend .card-body;
-    }
-
-    .form-group {
-      @extend .row;
-
-      >input {
-        @extend .col-sm-8;
-      }
-
-      >label {
-        @extend .col-sm-4;
-        @extend .col-form-label;
-      }
-    }
-  }
-
-  .btn.disabled {
-    cursor: not-allowed;
-  }
-
-  .btn-new {
-    @extend .btn;
-    @extend .btn-primary;
-  }
-
   .current-member {
     @extend .text-success;
   }

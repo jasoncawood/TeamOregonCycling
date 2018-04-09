@@ -1,6 +1,4 @@
 class ContactController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[new create]
-
   attr_accessor :contact_form
   private :contact_form=
 

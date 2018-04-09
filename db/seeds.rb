@@ -37,7 +37,6 @@ unless admin_count > 0
   User.create_with(first_name: 'Default', last_name: 'Administrator',
                   password: 'password', roles: [admin_role])
     .find_or_create_by!(email: 'admin@example.com') do |u|
-    u.confirm
     u.undiscard
   end
 end

@@ -1,6 +1,4 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[show]
-
   KNOWN_PAGES = %w[
     about_us
     sponsors

@@ -8,11 +8,9 @@ end
 
 gem 'active_model_validates_intersection_of'
 gem 'acts_as_list'
+gem 'bcrypt'
 gem 'bootstrap'
 gem 'coffee-rails', '~> 4.2'
-gem 'devise'
-gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped',
-  branch: 'bootstrap4'
 gem 'discard', github: 'jhawthorn/discard', branch: 'master'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'

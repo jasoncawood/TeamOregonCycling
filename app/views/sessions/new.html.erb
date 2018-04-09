@@ -1,0 +1,14 @@
+<div id="new-session">
+  <%= simple_form_for :session, url: session_path do |f| %>
+    <header>
+      <h2>Member Sign-In</h2>
+    </header>
+    <div>
+      <%= f.input :email %>
+      <%= f.input :password %>
+      <div class="form-action-buttons">
+        <%= f.submit 'Log In' %>
+      </div>
+    </div>
+  <% end %>
+</div>

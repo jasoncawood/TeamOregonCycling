@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   include Discard::Model
 
-  devise :database_authenticatable, :recoverable, :rememberable,
-    :trackable, :validatable, :confirmable, :lockable, :timeoutable
+  has_secure_password
 
   has_and_belongs_to_many :roles
   has_many :memberships
@@ -18,12 +17,12 @@ class User < ApplicationRecord
     current_membership&.status || 'none'
   end
 
-  def active_for_authentication?
-    super && !discarded?
-  end
-
   def inactive_message
     I18n.t('account_inactive')
+  end
+
+  def pending_reconfirmation?
+    unconfirmed_email.present?
   end
 
   delegate :ends_on, to: :current_membership, prefix: :membership,

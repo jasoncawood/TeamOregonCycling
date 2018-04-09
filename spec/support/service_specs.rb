@@ -49,6 +49,10 @@ RSpec.shared_context :service_specs do
   end
 
   def have_been_called_with(*args)
-    have_received(:call).with(*args)
+    have_been_called.with(*args)
+  end
+
+  def have_been_called
+    have_received(:call)
   end
 end

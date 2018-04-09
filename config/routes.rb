@@ -1,13 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    confirmations: 'users/confirmations',
-    passwords: 'users/passwords',
-    sessions: 'users/sessions',
-    unlocks: 'users/unlocks',
-  }
-
   root to: 'pages#show', id: 'about_us'
 
+  resource :session, only: %i[new create destroy]
   resources :pages, only: %i[show]
 
   get '/contact_us', to: 'contact#new', as: :new_contact

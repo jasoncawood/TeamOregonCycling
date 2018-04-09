@@ -3,6 +3,7 @@ SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
@@ -21,179 +22,15 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
+-- Name: _old_users; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE ar_internal_metadata (
-    key character varying NOT NULL,
-    value character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: memberships; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE memberships (
-    id bigint NOT NULL,
-    starts_on timestamp without time zone,
-    ends_on timestamp without time zone,
-    user_id bigint,
-    amount_paid_cents integer DEFAULT 0 NOT NULL,
-    amount_paid_currency character varying DEFAULT 'USD'::character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    membership_type_id bigint NOT NULL
-);
-
-
---
--- Name: current_memberships; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW current_memberships AS
- SELECT m.id,
-    m.starts_on,
-    m.ends_on,
-    m.user_id,
-    m.amount_paid_cents,
-    m.amount_paid_currency,
-    m.seqnum
-   FROM ( SELECT m_1.id,
-            m_1.starts_on,
-            m_1.ends_on,
-            m_1.user_id,
-            m_1.amount_paid_cents,
-            m_1.amount_paid_currency,
-            row_number() OVER (PARTITION BY m_1.user_id ORDER BY m_1.ends_on DESC) AS seqnum
-           FROM memberships m_1
-          WHERE (m_1.starts_on <= ('now'::text)::date)) m
-  WHERE (m.seqnum = 1);
-
-
---
--- Name: membership_types; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE membership_types (
-    id bigint NOT NULL,
-    name character varying NOT NULL,
-    "position" integer NOT NULL,
-    description character varying NOT NULL,
-    price_cents integer DEFAULT 0 NOT NULL,
-    price_currency character varying DEFAULT 'USD'::character varying NOT NULL,
-    discarded_at timestamp without time zone,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    approval_required boolean DEFAULT false NOT NULL
-);
-
-
---
--- Name: membership_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE membership_types_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: membership_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE membership_types_id_seq OWNED BY membership_types.id;
-
-
---
--- Name: memberships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE memberships_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: memberships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE memberships_id_seq OWNED BY memberships.id;
-
-
---
--- Name: roles; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE roles (
-    id bigint NOT NULL,
-    name character varying NOT NULL,
-    permissions text[] DEFAULT '{}'::text[],
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE roles_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
-
-
---
--- Name: roles_users; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE roles_users (
-    user_id bigint NOT NULL,
-    role_id bigint NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE schema_migrations (
-    version character varying NOT NULL
-);
-
-
---
--- Name: users; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE users (
+CREATE TABLE public._old_users (
     id bigint NOT NULL,
     email character varying DEFAULT ''::character varying NOT NULL,
     encrypted_password character varying DEFAULT ''::character varying NOT NULL,
@@ -221,10 +58,210 @@ CREATE TABLE users (
 
 
 --
+-- Name: _old_users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public._old_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: _old_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public._old_users_id_seq OWNED BY public._old_users.id;
+
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: memberships; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.memberships (
+    id bigint NOT NULL,
+    starts_on timestamp without time zone,
+    ends_on timestamp without time zone,
+    user_id bigint,
+    amount_paid_cents integer DEFAULT 0 NOT NULL,
+    amount_paid_currency character varying DEFAULT 'USD'::character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    membership_type_id bigint NOT NULL
+);
+
+
+--
+-- Name: current_memberships; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW public.current_memberships AS
+ SELECT m.id,
+    m.starts_on,
+    m.ends_on,
+    m.user_id,
+    m.amount_paid_cents,
+    m.amount_paid_currency,
+    m.seqnum
+   FROM ( SELECT m_1.id,
+            m_1.starts_on,
+            m_1.ends_on,
+            m_1.user_id,
+            m_1.amount_paid_cents,
+            m_1.amount_paid_currency,
+            row_number() OVER (PARTITION BY m_1.user_id ORDER BY m_1.ends_on DESC) AS seqnum
+           FROM public.memberships m_1
+          WHERE (m_1.starts_on <= ('now'::text)::date)) m
+  WHERE (m.seqnum = 1);
+
+
+--
+-- Name: membership_types; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.membership_types (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    "position" integer NOT NULL,
+    description character varying NOT NULL,
+    price_cents integer DEFAULT 0 NOT NULL,
+    price_currency character varying DEFAULT 'USD'::character varying NOT NULL,
+    discarded_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    approval_required boolean DEFAULT false NOT NULL
+);
+
+
+--
+-- Name: membership_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.membership_types_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: membership_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.membership_types_id_seq OWNED BY public.membership_types.id;
+
+
+--
+-- Name: memberships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.memberships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: memberships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.memberships_id_seq OWNED BY public.memberships.id;
+
+
+--
+-- Name: roles; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.roles (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    permissions text[] DEFAULT '{}'::text[],
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.roles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.roles_id_seq OWNED BY public.roles.id;
+
+
+--
+-- Name: roles_users; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.roles_users (
+    user_id bigint NOT NULL,
+    role_id bigint NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.schema_migrations (
+    version character varying NOT NULL
+);
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.users (
+    id bigint NOT NULL,
+    email character varying NOT NULL,
+    last_name character varying NOT NULL,
+    first_name character varying NOT NULL,
+    password_digest character varying NOT NULL,
+    confirmation_token character varying,
+    confirmed_at timestamp without time zone,
+    unconfirmed_email character varying,
+    discarded_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE users_id_seq
+CREATE SEQUENCE public.users_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -236,42 +273,57 @@ CREATE SEQUENCE users_id_seq
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE users_id_seq OWNED BY users.id;
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: _old_users id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public._old_users ALTER COLUMN id SET DEFAULT nextval('public._old_users_id_seq'::regclass);
 
 
 --
 -- Name: membership_types id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY membership_types ALTER COLUMN id SET DEFAULT nextval('membership_types_id_seq'::regclass);
+ALTER TABLE ONLY public.membership_types ALTER COLUMN id SET DEFAULT nextval('public.membership_types_id_seq'::regclass);
 
 
 --
 -- Name: memberships id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY memberships ALTER COLUMN id SET DEFAULT nextval('memberships_id_seq'::regclass);
+ALTER TABLE ONLY public.memberships ALTER COLUMN id SET DEFAULT nextval('public.memberships_id_seq'::regclass);
 
 
 --
 -- Name: roles id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
+ALTER TABLE ONLY public.roles ALTER COLUMN id SET DEFAULT nextval('public.roles_id_seq'::regclass);
 
 
 --
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Name: _old_users _old_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public._old_users
+    ADD CONSTRAINT _old_users_pkey PRIMARY KEY (id);
 
 
 --
 -- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY ar_internal_metadata
+ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
 
 
@@ -279,7 +331,7 @@ ALTER TABLE ONLY ar_internal_metadata
 -- Name: membership_types membership_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY membership_types
+ALTER TABLE ONLY public.membership_types
     ADD CONSTRAINT membership_types_pkey PRIMARY KEY (id);
 
 
@@ -287,7 +339,7 @@ ALTER TABLE ONLY membership_types
 -- Name: memberships memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY memberships
+ALTER TABLE ONLY public.memberships
     ADD CONSTRAINT memberships_pkey PRIMARY KEY (id);
 
 
@@ -295,7 +347,7 @@ ALTER TABLE ONLY memberships
 -- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY roles
+ALTER TABLE ONLY public.roles
     ADD CONSTRAINT roles_pkey PRIMARY KEY (id);
 
 
@@ -303,7 +355,7 @@ ALTER TABLE ONLY roles
 -- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY schema_migrations
+ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
 
 
@@ -311,100 +363,128 @@ ALTER TABLE ONLY schema_migrations
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY users
+ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: _old_users_email_uniq_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX _old_users_email_uniq_idx ON public._old_users USING btree (email);
+
+
+--
+-- Name: index__old_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index__old_users_on_confirmation_token ON public._old_users USING btree (confirmation_token);
+
+
+--
+-- Name: index__old_users_on_discarded_at; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index__old_users_on_discarded_at ON public._old_users USING btree (discarded_at);
+
+
+--
+-- Name: index__old_users_on_email; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index__old_users_on_email ON public._old_users USING btree (email);
+
+
+--
+-- Name: index__old_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index__old_users_on_reset_password_token ON public._old_users USING btree (reset_password_token);
+
+
+--
+-- Name: index__old_users_on_unlock_token; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index__old_users_on_unlock_token ON public._old_users USING btree (unlock_token);
 
 
 --
 -- Name: index_membership_types_on_discarded_at; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_membership_types_on_discarded_at ON membership_types USING btree (discarded_at);
+CREATE INDEX index_membership_types_on_discarded_at ON public.membership_types USING btree (discarded_at);
 
 
 --
 -- Name: index_membership_types_on_name; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_membership_types_on_name ON membership_types USING btree (name);
+CREATE UNIQUE INDEX index_membership_types_on_name ON public.membership_types USING btree (name);
 
 
 --
 -- Name: index_membership_types_on_position; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_membership_types_on_position ON membership_types USING btree ("position");
+CREATE INDEX index_membership_types_on_position ON public.membership_types USING btree ("position");
 
 
 --
 -- Name: index_memberships_on_membership_type_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_memberships_on_membership_type_id ON memberships USING btree (membership_type_id);
+CREATE INDEX index_memberships_on_membership_type_id ON public.memberships USING btree (membership_type_id);
 
 
 --
 -- Name: index_memberships_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_memberships_on_user_id ON memberships USING btree (user_id);
+CREATE INDEX index_memberships_on_user_id ON public.memberships USING btree (user_id);
 
 
 --
 -- Name: index_roles_on_name; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_roles_on_name ON roles USING btree (name);
+CREATE UNIQUE INDEX index_roles_on_name ON public.roles USING btree (name);
 
 
 --
 -- Name: index_roles_users_on_user_id_and_role_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_roles_users_on_user_id_and_role_id ON roles_users USING btree (user_id, role_id);
-
-
---
--- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (confirmation_token);
-
-
---
--- Name: index_users_on_discarded_at; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_users_on_discarded_at ON users USING btree (discarded_at);
+CREATE UNIQUE INDEX index_roles_users_on_user_id_and_role_id ON public.roles_users USING btree (user_id, role_id);
 
 
 --
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
 
 
 --
--- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
+-- Name: index_users_on_first_name; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+CREATE INDEX index_users_on_first_name ON public.users USING btree (first_name);
 
 
 --
--- Name: index_users_on_unlock_token; Type: INDEX; Schema: public; Owner: -
+-- Name: index_users_on_last_name; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_users_on_unlock_token ON users USING btree (unlock_token);
+CREATE INDEX index_users_on_last_name ON public.users USING btree (last_name);
 
 
 --
 -- Name: memberships fk_rails_99326fb65d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY memberships
-    ADD CONSTRAINT fk_rails_99326fb65d FOREIGN KEY (user_id) REFERENCES users(id);
+ALTER TABLE ONLY public.memberships
+    ADD CONSTRAINT fk_rails_99326fb65d FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
 --
@@ -427,6 +507,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180223005942'),
 ('20180223055132'),
 ('20180223062441'),
-('20180225060122');
+('20180225060122'),
+('20180409165901');
 
 

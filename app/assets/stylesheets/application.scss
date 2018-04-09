@@ -26,6 +26,11 @@ $body-bg: $dark;
 
 @import "bootstrap";
 
+form abbr[title="required"] {
+  text-decoration: none;
+  @extend .text-danger;
+}
+
 .btn {
   svg {
     fill: $white;
@@ -44,9 +49,61 @@ $body-bg: $dark;
   @extend .alert-success;
  }
 
-.form-action-buttons {
-  text-align: center;
+.main-content {
+  .btn {
+    line-height: 1.0;
+  }
 
+}
+
+.primary-form {
+  @extend .card;
+  max-width: 40rem;
+  @extend .mx-auto;
+  @extend .mb-3;
+
+  .help-block {
+    @extend .col-sm-8;
+    @extend .offset-md-4;
+  }
+
+  >header {
+    @extend .card-header;
+    text-align: center;
+  }
+
+  >div {
+    @extend .card-body;
+  }
+
+  .form-group {
+    @extend .row;
+
+    >input {
+      @extend .col-sm-8;
+    }
+
+    >label {
+      @extend .col-sm-4;
+      @extend .col-form-label;
+    }
+  }
+}
+
+.btn.disabled {
+  cursor: not-allowed;
+}
+
+.btn-new {
+  @extend .btn;
+  @extend .btn-primary;
+}
+
+.form-action-buttons {
+  @extend .col-sm-8;
+  @extend .offset-sm-4;
+  padding: 0;
+  text-align: right;
   input[type="submit"], button {
     @extend .btn;
   }
@@ -245,10 +302,6 @@ th, td {
   }
 }
 
-#devise {
-  @extend .main-content;
-}
-
 #about-us {
   @extend .main-content;
 
@@ -415,19 +468,10 @@ th, td {
   }
 }
 
-#devise {
-  #error_explanation {
-    @extend .card;
-    @extend .text-white;
-    @extend .bg-danger;
+#new-session {
+  @extend .main-content;
 
-    h1, h2, h3, h4, h5, h6 {
-      @extend .card-header;
-      font-size: 1.5em;
-    }
-
-    ul {
-      @extend .card-body;
-    }
+  >form {
+    @extend .primary-form;
   }
 }
