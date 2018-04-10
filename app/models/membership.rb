@@ -6,6 +6,8 @@ class Membership < ApplicationRecord
 
   validates :starts_on, :ends_on, :amount_paid, presence: true
 
+  delegate :display_name, to: :user, prefix: true
+
   def status
     if Date.today.between?(starts_on, ends_on + 1.day)
       'current'
