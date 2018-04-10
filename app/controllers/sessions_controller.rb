@@ -6,6 +6,12 @@ class SessionsController < ApplicationController
                  failed: method(:authentication_failed))
   end
 
+  def destroy
+    reset_session
+    flash[:notice] = 'You have been signed out.'
+    redirect_to root_path
+  end
+
   private
 
   def session_params
