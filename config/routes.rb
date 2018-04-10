@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   post '/contact_us', to: 'contact#create', as: :contact
 
   namespace :admin do
-    resources :users
+    resources :memberships, only: %i[create edit update destroy]
+    resources :users do
+      resources :memberships, only: %i[new index]
+    end
+
     resources :membership_types do
       member do
         post :undelete

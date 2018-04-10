@@ -17,5 +17,6 @@ class ListMembershipTypes < ApplicationService
     m_types = scope.order(:position).readonly
     m_types.each { |m_type| with_each.call(m_type) } if with_each.present?
     with_result.call(m_types)
+    self.result = m_types
   end
 end

@@ -47,7 +47,12 @@
     </div>
 
     <div id="membership-history">
-      <h3>Membership History</h3>
+      <header>
+        <h3>Membership History</h3>
+          <%= link_to('Add Membership',
+                      new_admin_user_membership_path(user_id: user),
+                      class: 'btn btn-success btn-sm') %>
+      </header>
       <div>
         <table>
           <thead>

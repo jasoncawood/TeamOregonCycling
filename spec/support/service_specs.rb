@@ -29,6 +29,10 @@ RSpec.shared_context :service_specs do
   end
 
   def self.it_requires_permission(permission, on: nil, authorizer: :authorizer)
+    service_double(:authorizer, 'Authorize') do |authorized:, **_|
+      authorized.call
+    end
+
     name = "requires permission :#{permission}"
     name += " on #{on}" unless on.nil?
     it name do

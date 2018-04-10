@@ -1,0 +1,19 @@
+<div id="new-membership">
+  <%= simple_form_for membership, url: admin_memberships_path do |f| %>
+    <header>
+      <h3>Adding Membership for <%= membership.user_display_name %></h3>
+    </header>
+    <div>
+      <%= f.hidden_field :user_id %>
+      <%= f.association :membership_type, collection: membership.available_types,
+        include_blank: false %>
+      <%= f.input :starts_on, as: :date, html5: true %>
+      <%= f.input :ends_on, as: :date, html5: true %>
+      <%= f.input :amount_paid %>
+      <div class="form-action-buttons">
+        <%= f.submit 'Create' %>
+        <%= link_to 'Cancel', :back, class: 'btn btn-outline-danger' %>
+      </div>
+    </div>
+  <% end %>
+</div>

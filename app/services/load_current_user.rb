@@ -7,6 +7,7 @@ class LoadCurrentUser < ApplicationService
   main do
     stop! if user_id.nil?
     if (user = User.undiscarded.where(id: user_id).first)
+      user.readonly!
       success.call(user)
     end
   end

@@ -77,13 +77,13 @@ form abbr[title="required"] {
   }
 
   .form-group {
-    @extend .row;
+    @extend .form-row;
 
-    >input {
+    >.form-control {
       @extend .col-sm-8;
     }
 
-    >label {
+    >.control-label {
       @extend .col-sm-4;
       @extend .col-form-label;
     }

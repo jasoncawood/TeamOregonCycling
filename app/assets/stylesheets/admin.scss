@@ -148,6 +148,10 @@ body.admin-site {
     }
 
     #membership-history {
+      header {
+        @extend .card-header;
+      }
+
       >div {
         @extend .card-body;
       }
@@ -177,6 +181,13 @@ body.admin-site {
   }
 
   #edit-user {
+    >form {
+      @extend .primary-form;
+    }
+  }
+
+  #new-membership {
+    @extend .main-content;
     >form {
       @extend .primary-form;
     }

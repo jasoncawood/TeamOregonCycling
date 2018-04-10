@@ -7,6 +7,7 @@ module Admin
 
     main do
       with_result.call(user)
+      self.result = user
     end
 
     private
