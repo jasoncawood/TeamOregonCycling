@@ -1,8 +1,8 @@
-ruby "2.5.0"
+ruby '2.5.0'
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -10,31 +10,33 @@ gem 'active_model_validates_intersection_of'
 gem 'acts_as_list'
 gem 'bcrypt'
 gem 'bootstrap'
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails'
 gem 'discard', github: 'jhawthorn/discard', branch: 'master'
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder'
 gem 'jquery-rails'
 gem 'mail_form'
 gem 'money-rails'
 gem 'octicons_helper'
-gem 'pg', '~> 0.18'
+gem 'pg'
 gem 'popper_js'
-gem 'puma', '~> 3.7'
-gem 'rails', '~> 5.1.4'
+gem 'puma'
+gem 'rails'
 gem 'redcarpet'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 gem 'scenic'
 gem 'simple_form'
 gem 'the_help'
-gem 'turbolinks', '~> 5'
-gem 'uglifier', '>= 1.3.0'
+gem 'turbolinks'
+gem 'uglifier'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'dotenv-rails'
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv'
+  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'rubocop-rspec'
 end
 
 group :test do
@@ -43,6 +45,6 @@ end
 
 group :development do
   gem 'foreman'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'web-console', '>= 3.3.0'
+  gem 'listen'
+  gem 'web-console'
 end

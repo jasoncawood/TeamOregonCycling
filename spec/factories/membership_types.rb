@@ -7,8 +7,8 @@ FactoryBot.define do
 
   factory :membership_type do
     name { generate(:m_type_name) }
-    description 'This is one type of membership that can be purchased.'
+    description { 'This is one type of membership that can be purchased.' }
     position { generate(:m_type_position) }
-    price 12.34
+    price { 12.34 }
   end
 end
