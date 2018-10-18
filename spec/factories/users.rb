@@ -5,8 +5,8 @@ FactoryBot.define do
 
   factory :user do
     email { generate(:user_email) }
-    password 'This is my passw3rd!'
-    first_name 'Justa'
-    last_name 'Notheruser'
+    password { 'This is my passw3rd!' }
+    first_name { 'Justa' }
+    last_name { 'Notheruser' }
   end
 end
