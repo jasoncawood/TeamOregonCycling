@@ -1,3 +1,5 @@
+require 'the_help'
+
 class ApplicationService < TheHelp::Service
   class NotFound < StandardError
     attr_reader :entity_type, :id
