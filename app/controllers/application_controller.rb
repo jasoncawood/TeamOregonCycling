@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   class RequestHalted < RuntimeError; end
 
   include TheHelp::ServiceCaller
+  include TheHelp::ProvidesCallbacks
 
   protect_from_forgery with: :exception
   around_action :catch_halt
