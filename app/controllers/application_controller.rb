@@ -11,6 +11,17 @@ class ApplicationController < ActionController::Base
   attr_reader :current_user
   helper_method :current_user
 
+  class << self
+    private
+
+    def require_permission(permission)
+      before_action do
+        require_permission(permission)
+      end
+    end
+  end
+
+
   private
 
   alias service_context current_user

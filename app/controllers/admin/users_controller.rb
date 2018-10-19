@@ -3,6 +3,8 @@ module Admin
     attr_accessor :users, :user, :memberships
     private :users=, :user=, :memberships=
 
+    require_permission(:manage_users)
+
     show_admin_sidebar_manage_users!
 
     def index
