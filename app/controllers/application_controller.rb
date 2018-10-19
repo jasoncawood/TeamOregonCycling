@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
 
   def require_permission(permission)
     call_service(Authorize, permission: permission,
-                 not_authorized: method(:render_forbidden))
+                 not_authorized: method(:render_forbidden!))
   end
 
   def catch_halt
@@ -50,10 +50,14 @@ class ApplicationController < ActionController::Base
       format.xml { head :forbidden }
       format.any { head :forbidden }
     end
+  end
+
+  def render_forbidden!
+    render_forbidden
     halt!
   end
 
-  def render_not_found!
+  def render_not_found
     respond_to do |format|
       format.html do
         render :file => "#{Rails.root}/public/404", :layout => false,
@@ -62,6 +66,10 @@ class ApplicationController < ActionController::Base
       format.xml  { head :not_found }
       format.any  { head :not_found }
     end
+  end
+
+  def render_not_found!
+    render_not_found
     halt!
   end
 
