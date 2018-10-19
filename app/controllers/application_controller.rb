@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   rescue_from TheHelp::NotAuthorizedError, with: :render_forbidden
   before_action :restore_current_user_from_session
 
-  attr_reader :current_user
   helper_method :current_user
 
   class << self
@@ -25,13 +24,17 @@ class ApplicationController < ActionController::Base
 
   private
 
-  alias service_context current_user
-  alias service_logger logger
+  def current_user
+    @current_user || User::Anonymous.new
+  end
 
   def current_user=(user)
     session[:user_id] = user.id
     @current_user = user
   end
+
+  alias service_context current_user
+  alias service_logger logger
 
   def restore_current_user_from_session
     call_service(LoadCurrentUser, user_id: session[:user_id],
@@ -56,8 +59,14 @@ class ApplicationController < ActionController::Base
   def render_forbidden
     respond_to do |format|
       format.html do
-        render file: "#{Rails.root}/public/403", layout: false,
-          status: :forbidden
+        if current_user.anonymous?
+          flash[:notice] = 'You must log in to access that page.'
+          session[:post_authentication_url] = request.url if request.get?
+          redirect_to new_session_path
+        else
+          render file: "#{Rails.root}/public/403", layout: false,
+            status: :forbidden
+        end
       end
       format.xml { head :forbidden }
       format.any { head :forbidden }

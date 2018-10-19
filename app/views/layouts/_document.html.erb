@@ -26,7 +26,9 @@
           <%= yield :main_links %>
         </ul>
         <ul id="user-links">
-          <% if current_user.present? %>
+          <% if current_user.anonymous? %>
+            <%= main_nav_link('Log In', new_session_path) %>
+          <% else %>
             <li id="logged-in-user-links">
               <a href="#" id="user-dropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true"
@@ -38,8 +40,6 @@
                 </ul>
               </div>
             </li>
-          <% else %>
-            <%= main_nav_link('Log In', new_session_path) unless current_user.present? %>
           <% end %>
         </ul>
       </div>

@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
   end
 
   def post_authentication_url
-    root_path
+    session.delete(:post_authentication_url) || root_path
   end
 
   def authentication_failed
