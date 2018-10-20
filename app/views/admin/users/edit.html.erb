@@ -1,30 +1,9 @@
 <% page_title 'Admin - Edit User' %>
-<% user = controller.user %>
 <div id="edit-user">
-  <%= simple_form_for(user, url: admin_user_path(user),
-                      html: { autocomplete: 'off' }) do |f| %>
+  <%= render 'form', user: controller.user do %>
     <header>
       <h2>Edit User</h2>
-      <%= render partial: 'user_action_buttons', as: :user, object: user %>
+      <%= render 'user_action_buttons', user: controller.user %>
     </header>
-    <div>
-      <%= f.input :email, label: 'Email Address' %>
-      <% if user.pending_reconfirmation? %>
-        <div class="alert alert-warning">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
-      <%= f.input :first_name, label: 'First Name' %>
-      <%= f.input :last_name, label: 'Last Name' %>
-      <%= f.input(
-        :password, label: 'New Password',
-        hint: 'Leave password blank if you do not want to change it.'
-      ) %>
-      <%= f.input :password_confirmation, label: 'Confirm New Password' %>
-      <% with_permission_to(:manage_users) do %>
-        <%= f.association :roles, as: :check_boxes %>
-      <% end %>
-      <div class="form-action-buttons">
-        <%= f.submit class: 'btn btn-primary' %>
-      </div>
-    </div>
   <% end %>
 </div>

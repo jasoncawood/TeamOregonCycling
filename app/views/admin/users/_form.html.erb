@@ -1,0 +1,26 @@
+<%= simple_form_for(user, url: user.new_record? ? admin_users_path : admin_user_path(user),
+                    html: { autocomplete: 'off' }) do |f| %>
+  <%= yield %>
+  <div>
+    <%= f.input :email, label: 'Email Address' %>
+    <% if user.pending_reconfirmation? %>
+      <div class="alert alert-warning">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+    <%= f.input :first_name, label: 'First Name' %>
+    <%= f.input :last_name, label: 'Last Name' %>
+    <% unless user.new_record? %>
+      <%= f.input(
+        :password, label: 'New Password',
+        hint: 'Leave password blank if you do not want to change it.'
+      ) %>
+      <%= f.input :password_confirmation, label: 'Confirm New Password' %>
+    <% end %>
+    <% with_permission_to(:manage_users) do %>
+      <%= f.association :roles, as: :check_boxes %>
+    <% end %>
+    <div class="form-action-buttons">
+      <%= f.submit class: 'btn btn-primary' %>
+      <%= link_to 'Cancel', :back, class: 'btn btn-outline-danger' %>
+    </div>
+  </div>
+<% end %>

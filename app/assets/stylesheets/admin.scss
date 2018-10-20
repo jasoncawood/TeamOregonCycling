@@ -180,7 +180,7 @@ body.admin-site {
     }
   }
 
-  #edit-user {
+  #edit-user, #new-user {
     >form {
       @extend .primary-form;
     }

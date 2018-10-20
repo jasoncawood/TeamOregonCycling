@@ -20,6 +20,10 @@ module Admin
                    with_result: method(:memberships=))
     end
 
+    def new
+      self.user = User.new
+    end
+
     def edit
       call_service(Admin::GetUserDetails, user: params[:id],
                    with_result: method(:user=))
