@@ -1,6 +1,8 @@
 <div id="manage-users-sidebar">
   <ul class="nav">
-    <%= main_nav_link('Members', admin_users_path) %>
+    <%= main_nav_link('Members', admin_users_path, show_sub: managing?(:users)) do %>
+      <%= main_nav_link('Add New Member', new_admin_user_path) %>
+    <% end %>
     <%= main_nav_link('Membership Types', admin_membership_types_path, show_sub: managing?(:membership_types)) do %>
       <%= main_nav_link 'Create Membership Type', new_admin_membership_type_path %>
       <%= main_nav_link 'Show Deleted Membership Types', deleted_admin_membership_types_path %>
