@@ -23,7 +23,7 @@ class Authorize < ApplicationService
 
   def authorize_permission(permission)
     num_user_roles_with_permission = context.roles
-      .where(['permissions @> ARRAY[:permission]', permission: permission])
+      .where(['permissions && ARRAY[:permission]', permission: permission])
       .count
     authorized! if num_user_roles_with_permission >= 1
     denied!

@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     if KNOWN_PAGES.include?(page)
       render action: page
     else
-      render_404
+      render_not_found!
     end
   end
 end

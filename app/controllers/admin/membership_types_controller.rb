@@ -35,7 +35,7 @@ module Admin
       call_service(GetMembershipType,
                    membership_type: params[:id],
                    with_result: method(:membership_type=),
-                   not_found: method(:render_404))
+                   not_found: method(:render_not_found!))
     end
 
     def update

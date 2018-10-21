@@ -3,7 +3,10 @@ module Admin
     attr_accessor :users, :user, :memberships
     private :users=, :user=, :memberships=
 
+    require_permission(:manage_users)
+
     show_admin_sidebar_manage_users!
+    currently_managing :users
 
     def index
       call_service(Admin::ListUsers,

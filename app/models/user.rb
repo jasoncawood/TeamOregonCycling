@@ -27,4 +27,18 @@ class User < ApplicationRecord
 
   delegate :ends_on, to: :current_membership, prefix: :membership,
     allow_nil: true
+
+  def anonymous?
+    false
+  end
+
+  class Anonymous < User
+    before_save do
+      raise 'Cannot save an anonymous user.'
+    end
+
+    def anonymous?
+      true
+    end
+  end
 end
