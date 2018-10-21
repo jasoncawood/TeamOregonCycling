@@ -8,7 +8,7 @@ RSpec.shared_context :service_specs do
     logger: logger
   ]}
 
-  let(:context_user) { nil }
+  let(:context_user) { instance_double('User', :default_context_user) }
   let(:logger) { instance_double('Logger').as_null_object }
 
   let(:service_args) { Hash.new }
