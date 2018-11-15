@@ -3,12 +3,10 @@ class UsersController < ApplicationController
     include ActiveModel::Model
 
     attr_accessor :email, :password, :password_confirmation, :first_name,
-                  :last_name, :code_of_conduct_accepted, :street_address, :city,
-                  :state, :phone_number, :zipcode
+                  :last_name, :code_of_conduct_accepted
 
     validates :email, :password, :password_confirmation, :first_name,
-              :last_name, :code_of_conduct_accepted, :street_address, :city,
-              :state, :zipcode, :phone_number,
+              :last_name, :code_of_conduct_accepted,
               presence: true
     validates :password,
               confirmation: true

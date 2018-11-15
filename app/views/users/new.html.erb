@@ -37,11 +37,6 @@
       <%= f.input :password_confirmation %>
       <%= f.input :first_name %>
       <%= f.input :last_name %>
-      <%= f.input :street_address %>
-      <%= f.input :city %>
-      <%= f.input :state, collection: user.address_states %>
-      <%= f.input :zipcode %>
-      <%= f.input :phone_number %>
 
       <%= f.input :code_of_conduct_accepted, label: "I agree to abide by the #{link_to 'Team Oregon Code of Conduct', page_path('code_of_conduct'), target: '_new'}".html_safe, as: :boolean %>
 
