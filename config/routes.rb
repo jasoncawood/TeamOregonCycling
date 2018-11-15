@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'pages#show', id: 'about_us'
 
   resource :session, only: %i[new create destroy]
+  resource :user
   resources :pages, only: %i[show]
 
   get '/contact_us', to: 'contact#new', as: :new_contact

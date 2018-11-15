@@ -440,15 +440,19 @@ th, td {
   }
 }
 
-#contact {
+#contact, #code-of-conduct {
   @extend .main-content;
 }
 
-#join-team {
+#new-user {
   @extend .main-content;
 
   >section {
     @extend .col-12;
+  }
+
+  #new-user-maybe-login {
+    @extend .jumbotron;
   }
 
   #membership-types {
