@@ -21,8 +21,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   private
+
+  def logged_in?
+    current_user.present?
+  end
+  helper_method :logged_in?
 
   def current_user
     @current_user || User::Anonymous.new
