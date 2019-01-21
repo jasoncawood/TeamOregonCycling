@@ -43,38 +43,6 @@ other_sponsors:
       team at North Lake is ready to get you back to peak form. North Lake works
       with most insurance companies, increasing access for all members.
 
-  - slug: castelli
-    name: Castelli
-    main_url: http://www.castelli-cycling.com/
-    logo_image: castelli.jpg
-    additional_links:
-      "Instagram - castellicycling": https://www.instagram.com/castellicycling/
-      "Twitter - @CastelliCycling": https://twitter.com/CastelliCycling
-      "Facebook": https://www.facebook.com/castellicycling
-    hashtags:
-      - castelli
-      - castellicycling
-    description: >
-      Castelli is Team Oregon's official clothing sponsor. Based in Portland,
-      Oregon, our riders know the demands on cycling apparel are no greater than
-      here in the Pacific Northwest. From the rain soaked mud baths of
-      Cyclocross to High Desert races and every race in between, Castelli
-      provides Team Oregon an Unfair Advantage in cycling apparel.
-
-  - slug: organic_partners
-    name: Organic Partners International
-    main_url: http://www.organic-partners.com/
-    logo_image: organic_partners.jpg
-    description: >
-      For the fourth year Organic Partners International, LLC is proud to
-      support Team Oregon. Organic Partners brings together a powerful network
-      of organic sourcing agents and primary suppliers of organic ingredients
-      for industrial bulk buyers. As the market for organic products expanded,
-      mainstream manufacturers and retailers joined founding organic leaders in
-      the marketplace, highlighting the lack of a sufficient and reliable supply
-      of organic ingredients. Organic Partners formed to fill this void, and has
-      been a dedicated sponsor of Team Oregon for 5 years and counting.
-
   - slug: green_drop
     name: Green Drop Garage
     main_url: http://www.greendropgarage.com/
@@ -93,38 +61,19 @@ other_sponsors:
       sustainable as possible without compromising the quality of its products
       or service.
 
-  - slug: backporch
-    name: Backporch Coffee
-    main_url: http://www.backporchcoffeeroasters.com/
-    logo_image: backporch.jpg
+  - slug: olsons
+    name: Olson's Bicycles
+    main_url: https://olsonsbicycles.com/
+    logo_image: olsons.jpg
     additional_links:
-      "Instagram- backporchcoffeeroasters": https://www.instagram.com/backporchcoffeeroasters
-      "Twitter- @BackporchBend": https://twitter.com/BackporchBend
-      "Facebook": https://www.facebook.com/pages/Backporch-Coffee-Roasters/108165585881255
+      "Facebook": https://www.facebook.com/olsonsbicycles
     hashtags:
-      - backporchcoffeeroasters
-      - backporchcoffee
-      - backporchroasters
+      - olsonsbicycles
     description: >
-      Coffee and Cycling - a perfect match! We are proud to have Backporch
-      Coffee Roasters supporting Team Oregon in 2017. Backporch is a coffee
-      roasting company and cafe in Bend, Oregon specializing in direct trade,
-      microlot and estate coffees of exceptional quality. Next time you're in
-      Bend, be sure to stop in and say hi!
-
-  - slug: river_city
-    name: River City Bicycles
-    main_url: http://rivercitybicycles.com/
-    logo_image: river_city.jpg
-    description: >
-      We've been committed to the local cycling community, sponsoring local
-      teams and clubs, giving to rides races and events since our inception.
-      We're the title sponsor of the Cross Crusade cyclocross race series, the
-      Mt. Tabor road race series, and Mountain Bike Oregon. Further, we support
-      organizations such Bicycle Transportation Alliance and Northwest Trail
-      Alliance. Our ongoing "Commute By Bike" campaign is one of Guettler's
-      personal passions, recognizing the combination of human and bicycle as
-      "the perfect machine - the perfect motor".
+      At Olson’s Bicycles we strive to carry everything you need to make your
+      riding experience a good one. We carry bicycles, clothing and gear at our
+      store in Forest Grove, but we can also special order a product for you if
+      our vendors carry it.
 
   - slug: re_sports
     name: RE Sports Wellness / Melissa Shays
@@ -154,23 +103,23 @@ other_sponsors:
       * Consult during bike fits to discuss body mechanics, diagnose pain and
         correct physical barriers.
 
-  - slug: o2_endurance
-    name: O2 Endurance
-    main_url: https://www.o2endurance.com/
-    logo_image: o2_endurance.jpg
+  - slug: castelli
+    name: Castelli
+    main_url: http://www.castelli-cycling.com/
+    logo_image: castelli.jpg
+    additional_links:
+      "Instagram - castellicycling": https://www.instagram.com/castellicycling/
+      "Twitter - @CastelliCycling": https://twitter.com/CastelliCycling
+      "Facebook": https://www.facebook.com/castellicycling
+    hashtags:
+      - castelli
+      - castellicycling
     description: >
-      O2 Endurance is a performance training group for multi-sport athletes that
-      utilizes cutting edge technology, individual coaching and a dynamic team
-      approach to meet the needs of novice triathletes, age group competitors
-      and National Champions.  Unique in Portland for our group training
-      philosophy, which harnesses the energy and natural motivation inherent in
-      team training, we offer resources that cover all the bases of competitive
-      multi-sport preparation.  O2E recognizes the importance of a training
-      environment that offers a balanced and sustainable lifestyle for people
-      juggling the challenges of personal athletic goals and real-world
-      responsibilities.  O2E helps team members identify and pursue specific
-      goal events, supporting each individual with specific coaching, the latest
-      training technology and the fun and connection of training with a team.
+      Castelli is Team Oregon's official clothing sponsor. Based in Portland,
+      Oregon, our riders know the demands on cycling apparel are no greater than
+      here in the Pacific Northwest. From the rain soaked mud baths of
+      Cyclocross to High Desert races and every race in between, Castelli
+      provides Team Oregon an Unfair Advantage in cycling apparel.
 
   - slug: nuun
     name: Nuun
