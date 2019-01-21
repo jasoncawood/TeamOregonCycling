@@ -9,6 +9,5 @@ cache:
 before_script:
   - psql -c 'create database teamo_test;' -U postgres
 install:
-  - gem install bundler:2.0.1
   - bundle config gems.rapidrailsthemes.com $RRT_CREDENTIALS
   - bundle install --path vendor/bundle
