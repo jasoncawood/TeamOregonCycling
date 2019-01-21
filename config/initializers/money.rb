@@ -92,3 +92,5 @@ MoneyRails.configure do |config|
   # Example:
   # config.raise_error_on_money_parsing = false
 end
+
+Money.locale_backend = :currency
