@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   private
 
   def logged_in?
-    current_user.present?
+    !current_user.anonymous?
   end
   helper_method :logged_in?
 

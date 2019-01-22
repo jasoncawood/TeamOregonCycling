@@ -1,14 +1,15 @@
 <div id="new-user">
   <div id="new-user-maybe-login">
     <h3>Current Members</h3>
-    <p>If you already have an account with Team Oregon and would like to manage your membership, please <%= link_to 'go to your membership page', user_path %> (you will be prompted to log in).</p>
-    <p><%= link_to 'Manage my existing membership', user_path, class: 'btn btn-primary btn-lg' %></p>
+    <p>
+      If you already have an account with Team Oregon and would like to manage
+      your membership, please
+      <%= link_to 'go to your membership page', user_path %>
+      (you will be prompted to log in).
+    </p>
   </div>
   <section>
-    <%= simple_form_for user, url: user_path do |f| %>
-      <header>
-        <h2>Join the Team</h2>
-      </header>
+      <h2>Join the Team</h2>
 
       <p>Thank you for your interest in Team Oregon! We're looking forward to
         another excellent season of Road, Track, Mountain Bike and Cyclocross
@@ -32,13 +33,23 @@
           and <a href="http://obra.org/bar/2017/team/team_bar">2017</a>!)</li>
       </ul>
 
+    <%= simple_form_for user, url: user_path do |f| %>
+      <header>
+        <h3>Create Your Account</h3>
+      </header>
+
+      <p>
+        The first step in becoming a member of Team Oregon is to create your
+        account on our website. Once you have an account, you will be able to
+        sign in, pay your membership dues, and access team-member-only areas of
+        the website.
+      </p>
+
       <%= f.input :email %>
       <%= f.input :password %>
       <%= f.input :password_confirmation %>
       <%= f.input :first_name %>
       <%= f.input :last_name %>
-
-      <%= f.input :code_of_conduct_accepted, label: "I agree to abide by the #{link_to 'Team Oregon Code of Conduct', page_path('code_of_conduct'), target: '_new'}".html_safe, as: :boolean %>
 
       <div class="form-action-buttons">
         <%= f.submit 'Create Account' %>

@@ -72,7 +72,7 @@ form abbr[title="required"] {
     text-align: center;
   }
 
-  >div {
+  >p, >div {
     @extend .card-body;
   }
 
@@ -453,6 +453,10 @@ th, td {
 
   #new-user-maybe-login {
     @extend .jumbotron;
+  }
+
+  form {
+    @extend .primary-form;
   }
 
   #membership-types {
