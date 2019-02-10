@@ -31,10 +31,18 @@ form abbr[title="required"] {
   @extend .text-danger;
 }
 
+body {
+  padding-top: 3.7em;
+}
+
 .btn {
   svg {
     fill: $white;
   }
+}
+
+.alert {
+  @extend .row;
 }
 
 .alert-error {
@@ -49,11 +57,18 @@ form abbr[title="required"] {
   @extend .alert-success;
  }
 
+.alert-content {
+  @extend .col-11;
+}
+
+.alert-control {
+  @extend .col-1;
+}
+
 .main-content {
   .btn {
     line-height: 1.0;
   }
-
 }
 
 .primary-form {
@@ -167,7 +182,6 @@ th, td {
 }
 
 #alerts {
-  @extend .position-absolute;
   width: 40em;
   max-width: 90%;
   right: 0;
@@ -235,8 +249,9 @@ th, td {
 #content {
   @extend .container;
   background-color: $light;
-  padding-top: 6em;
+  @extend .pt-3;
   @extend .pb-3;
+  @extend .rounded;
 }
 
 #content:not(.sidebar) {
