@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admin::GetUserDetails do
+RSpec.describe GetUser do
   let(:service_args) {{
     user: user,
     with_result: result_handler

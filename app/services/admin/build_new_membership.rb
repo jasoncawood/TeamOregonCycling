@@ -20,7 +20,7 @@ module Admin
     end
 
     def load_user
-      call_service(GetUserDetails, user: user)
+      call_service(GetUser, user: user)
     end
 
     def membership_types
