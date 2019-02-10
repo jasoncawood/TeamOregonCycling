@@ -6,18 +6,10 @@ class CreateUserAccount < ApplicationService
   authorization_policy allow_all: true
 
   main do
-    validate_input
     create_account
   end
 
   private
-
-  def validate_input
-    unless account_details.valid?
-      run_callback(error, account_details)
-      stop!
-    end
-  end
 
   def create_account
     user = User.create(user_data)
@@ -30,8 +22,12 @@ class CreateUserAccount < ApplicationService
   end
 
   def user_data
-    account_details
-      .to_h
-      .merge(confirmation_token: SecureRandom.hex(15))
+    {
+      email: account_details.email,
+      password: account_details.password,
+      first_name: account_details.first_name,
+      last_name: account_details.last_name,
+      confirmation_token: SecureRandom.hex(15)
+    }
   end
 end

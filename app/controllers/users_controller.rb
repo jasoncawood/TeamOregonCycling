@@ -2,37 +2,6 @@ class UsersController < ApplicationController
   attr_accessor :user, :memberships
   private :user=, :memberships=
 
-  class NewUserForm
-    include ActiveModel::Model
-
-    FIELDS = :email, :password, :password_confirmation, :first_name, :last_name
-
-    attr_accessor *FIELDS
-
-    def model_name
-      ActiveModel::Name.new(self.class, nil, 'new_user')
-    end
-
-    def to_h
-      {
-        email: email,
-        password: password,
-        first_name: first_name,
-        last_name: last_name
-      }
-    end
-
-    def errors=(new_errors)
-      @errors = new_errors
-    end
-
-    validates :email, :password, :password_confirmation, :first_name,
-      :last_name,
-      presence: true
-
-    validates :password, confirmation: true
-  end
-
   def new
     render locals: { user: NewUserForm.new }
   end
@@ -43,6 +12,8 @@ class UsersController < ApplicationController
       .require(:new_user)
       .permit(*NewUserForm::FIELDS)
     )
+
+    return account_creation_error(new_user) unless new_user.valid?
 
     call_service(CreateUserAccount, account_details: new_user,
                  success: method(:account_created),
