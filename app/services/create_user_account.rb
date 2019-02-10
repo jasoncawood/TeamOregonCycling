@@ -22,12 +22,8 @@ class CreateUserAccount < ApplicationService
   end
 
   def user_data
-    {
-      email: account_details.email,
-      password: account_details.password,
-      first_name: account_details.first_name,
-      last_name: account_details.last_name,
-      confirmation_token: SecureRandom.hex(15)
-    }
+    account_details
+      .to_h
+      .merge(confirmation_token: SecureRandom.hex(15))
   end
 end

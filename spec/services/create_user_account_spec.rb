@@ -20,9 +20,4 @@ RSpec.describe CreateUserAccount do
   }
 
   callback_double(:success_handler, :error_handler)
-
-  xit 'validates the incoming account details' do
-    subject.call
-    expect(account_details).to have_received(:valid?)
-  end
 end

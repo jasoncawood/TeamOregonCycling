@@ -16,4 +16,13 @@ class NewUserForm
     presence: true
 
   validates :password, confirmation: true
+
+  def to_h
+    {
+      email: email,
+      password: password,
+      first_name: first_name,
+      last_name: last_name
+    }
+  end
 end
