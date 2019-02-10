@@ -40,4 +40,10 @@ RSpec.describe NewUserForm do
     subject.password_confirmation = 'something else'
     expect(subject).not_to be_valid
   end
+
+  it 'allows its errors to be replaces' do
+    errors = instance_double('ActiveModel::Errors', :new_errors)
+    subject.errors = errors
+    expect(subject.errors).to be errors
+  end
 end

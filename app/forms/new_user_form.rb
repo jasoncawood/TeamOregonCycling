@@ -3,6 +3,8 @@ require 'active_model'
 class NewUserForm
   include ActiveModel::Model
 
+  attr_writer :errors
+
   FIELDS = :email, :password, :password_confirmation, :first_name, :last_name
 
   attr_accessor *FIELDS
