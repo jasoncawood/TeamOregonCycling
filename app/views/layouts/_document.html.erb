@@ -37,6 +37,7 @@
                 aria-expanded="false"><%= current_user.display_name %></a>
               <div class="dropdown-menu" arial-labelledby="user-dropdown">
                 <ul>
+                  <%= main_nav_link('My Account', user_path) %>
                   <%= admin_site_link %>
                   <%= main_nav_link('Sign Out', session_path, method: :delete) %>
                 </ul>

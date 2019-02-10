@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admin::ListMembershipHistory do
+RSpec.describe ListMembershipHistory do
   let(:service_args) {{
     user: user,
     with_result: result_handler

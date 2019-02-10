@@ -45,9 +45,9 @@ class ApplicationController < ActionController::Base
                  success: method(:current_user=))
   end
 
-  def require_permission(permission)
+  def require_permission(permission, on: nil)
     call_service(Authorize, permission: permission,
-                 not_authorized: method(:render_forbidden!))
+                 on: on, not_authorized: method(:render_forbidden!))
   end
 
   def catch_halt

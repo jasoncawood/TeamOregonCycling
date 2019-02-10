@@ -483,3 +483,61 @@ th, td {
     @extend .primary-form;
   }
 }
+
+#user-details {
+  >header {
+    text-align: center;
+  }
+
+  >div {
+    @extend .d-flex;
+    @extend .flex-wrap;
+
+    >div {
+      @extend .card;
+      @extend .m-3;
+
+      >h3 {
+        @extend .card-header;
+      }
+    }
+  }
+
+  #account-info {
+    dl {
+      @extend .card-body;
+    }
+  }
+
+  #membership-history {
+    header {
+      @extend .card-header;
+    }
+
+    >div {
+      @extend .card-body;
+    }
+
+    table {
+      @extend .table;
+      @extend .table-striped;
+      @extend .table-sm;
+
+      tbody {
+        tr.expired-member {
+          @extend .text-muted;
+        }
+
+        tr.expired-member:first-of-type {
+          @extend .text-danger;
+        }
+      }
+    }
+  }
+
+  #roles {
+    >div {
+      @extend .card-body;
+    } 
+  }
+}

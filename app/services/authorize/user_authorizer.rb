@@ -2,6 +2,7 @@ class Authorize
   class UserAuthorizer < Authorize
     main do
       validate_target
+      denied! if operating_on_self? && anonymous?
       denied! if is_deletion? && operating_on_self? && can_manage_users?
       authorized! if operating_on_self?
       authorized! if can_manage_users?
@@ -22,6 +23,10 @@ class Authorize
 
     def operating_on_self?
       context == on
+    end
+
+    def anonymous?
+      context.anonymous?
     end
 
     def can_manage_users?
