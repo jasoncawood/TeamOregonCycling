@@ -1,4 +1,4 @@
-ruby '2.5.0'
+ruby '2.6.0'
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -16,17 +16,17 @@ gem 'jbuilder'
 gem 'jquery-rails'
 gem 'mail_form'
 gem 'money-rails'
+gem 'new_google_recaptcha'
 gem 'octicons_helper'
 gem 'pg'
 gem 'popper_js'
 gem 'puma'
 gem 'rails'
 gem 'redcarpet'
-gem 'sass-rails'
+gem 'sassc-rails'
 gem 'scenic'
 gem 'simple_form'
 gem 'the_help'
-gem 'turbolinks'
 gem 'uglifier'
 
 group :development, :test do

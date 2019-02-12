@@ -14,12 +14,11 @@ module Admin
     end
 
     def show
-      call_service(Admin::GetUserDetails,
-                   user: params[:id],
-                   with_result: callback(:user=))
-      call_service(Admin::ListMembershipHistory,
-                   user: user,
-                   with_result: callback(:memberships=))
+      call_service(GetUser, user: params[:id],
+                   with_result: method(:user=))
+      call_service(ListMembershipHistory, user: user,
+                   with_result: method(:memberships=))
+      render 'users/show'
     end
 
     def new
@@ -43,7 +42,7 @@ module Admin
     end
 
     def edit
-      call_service(Admin::GetUserDetails,
+      call_service(GetUser,
                    user: params[:id],
                    with_result: callback(:user=))
     end

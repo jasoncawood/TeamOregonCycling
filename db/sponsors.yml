@@ -34,7 +34,7 @@ other_sponsors:
       "Facebook": https://www.facebook.com/North-Lake-Physical-Therapy-150697991645983/?fref=ts
     description: >
       North Lake Physical Therapy and Rehabilitation proudly continues its
-      support and partnership in 2017. Owners of North Lake, Michael Choate
+      support and partnership in 2019. Owners of North Lake, Michael Choate
       MSPT, and Vince Blaney, MSPT, are both avid competitive cyclists and have
       worked with many athletes over their careers. North Lake has multiple
       locations around the Portland metro area to serve our members.
@@ -42,6 +42,48 @@ other_sponsors:
       The sport of cycling poses both mental and physical challenges, and the
       team at North Lake is ready to get you back to peak form. North Lake works
       with most insurance companies, increasing access for all members.
+
+  - slug: olsons
+    name: Olson's Bicycles
+    main_url: https://olsonsbicycles.com/
+    logo_image: olsons.jpg
+    additional_links:
+      "Facebook": https://www.facebook.com/olsonsbicycles
+    hashtags:
+      - olsonsbicycles
+    description: >
+      At Olson’s Bicycles we strive to carry everything you need to make your
+      riding experience a good one. We carry bicycles, clothing and gear at our
+      store in Forest Grove, but we can also special order a product for you if
+      our vendors carry it.
+
+  - slug: re_sports
+    name: Sports Wellness Consulting, PC
+    main_url: http://www.melissashays.com/
+    logo_image: re_sports.jpg
+    description: >
+      Melissa Shays, ND, LAc, CISSN is pleased to offer her support to the
+      members of Team Oregon for the 2019 cycling season. Melissa's holistic
+      approach to sports medicine helps athletes of all levels reach their
+      athletic potential. She works with clients in her Portland and Hood River
+      offices to
+
+
+      * Focus on preventing and treating conditions unique to athletes with her
+        sports health screening program.
+
+      * Monitor health during demanding training.
+
+      * Create nutritional plans that work with a busy life.
+
+      * Coordinate care with your coach.
+
+      * Provide recovery and injury treatments.
+
+      * Suggest cutting edge clean sport supplements.
+
+      * Consult during bike fits to discuss body mechanics, diagnose pain and
+        correct physical barriers.
 
   - slug: castelli
     name: Castelli
@@ -61,117 +103,6 @@ other_sponsors:
       Cyclocross to High Desert races and every race in between, Castelli
       provides Team Oregon an Unfair Advantage in cycling apparel.
 
-  - slug: organic_partners
-    name: Organic Partners International
-    main_url: http://www.organic-partners.com/
-    logo_image: organic_partners.jpg
-    description: >
-      For the fourth year Organic Partners International, LLC is proud to
-      support Team Oregon. Organic Partners brings together a powerful network
-      of organic sourcing agents and primary suppliers of organic ingredients
-      for industrial bulk buyers. As the market for organic products expanded,
-      mainstream manufacturers and retailers joined founding organic leaders in
-      the marketplace, highlighting the lack of a sufficient and reliable supply
-      of organic ingredients. Organic Partners formed to fill this void, and has
-      been a dedicated sponsor of Team Oregon for 5 years and counting.
-
-  - slug: green_drop
-    name: Green Drop Garage
-    main_url: http://www.greendropgarage.com/
-    logo_image: green_drop.jpg
-    additional_links:
-      "Twitter - @GreenDropGarage": https://www.instagram.com/greendropgarage/
-      "Facebook": https://www.facebook.com/greendropgarage
-    hashtags:
-      - greendropgarage
-    description: >
-      Green Drop Garage is proud to continue its support of Team Oregon again in
-      2017. Green Drop Garage is Portland's eco-friendly one-stop auto shop,
-      ready to fix or maintain whatever your car (or Team O van) needs. From oil
-      changes to brake maintenance to electrical work and engine overhauls, the
-      team at Green Drop has you covered. The shop strives to to be as
-      sustainable as possible without compromising the quality of its products
-      or service.
-
-  - slug: backporch
-    name: Backporch Coffee
-    main_url: http://www.backporchcoffeeroasters.com/
-    logo_image: backporch.jpg
-    additional_links:
-      "Instagram- backporchcoffeeroasters": https://www.instagram.com/backporchcoffeeroasters
-      "Twitter- @BackporchBend": https://twitter.com/BackporchBend
-      "Facebook": https://www.facebook.com/pages/Backporch-Coffee-Roasters/108165585881255
-    hashtags:
-      - backporchcoffeeroasters
-      - backporchcoffee
-      - backporchroasters
-    description: >
-      Coffee and Cycling - a perfect match! We are proud to have Backporch
-      Coffee Roasters supporting Team Oregon in 2017. Backporch is a coffee
-      roasting company and cafe in Bend, Oregon specializing in direct trade,
-      microlot and estate coffees of exceptional quality. Next time you're in
-      Bend, be sure to stop in and say hi!
-
-  - slug: river_city
-    name: River City Bicycles
-    main_url: http://rivercitybicycles.com/
-    logo_image: river_city.jpg
-    description: >
-      We've been committed to the local cycling community, sponsoring local
-      teams and clubs, giving to rides races and events since our inception.
-      We're the title sponsor of the Cross Crusade cyclocross race series, the
-      Mt. Tabor road race series, and Mountain Bike Oregon. Further, we support
-      organizations such Bicycle Transportation Alliance and Northwest Trail
-      Alliance. Our ongoing "Commute By Bike" campaign is one of Guettler's
-      personal passions, recognizing the combination of human and bicycle as
-      "the perfect machine - the perfect motor".
-
-  - slug: re_sports
-    name: RE Sports Wellness / Melissa Shays
-    main_url: http://www.melissashays.com/
-    logo_image: re_sports.jpg
-    description: >
-      Melissa Shays ND, LAC, PC is pleased to offer her support to the members
-      of Team Oregon for the 2017 cycling season. Melissa's holistic approach to
-      sports medicine helps athletes of all levels reach their athletic
-      potential. She works with clients in her Portland and Hood River offices
-      to
-
-
-      * Focus on preventing and treating conditions unique to athletes with her
-        sports health screening program.
-
-      * Monitor health during demanding training.
-
-      * Create nutritional plans that work with a busy life.
-
-      * Coordinate care with your coach.
-
-      * Provide recovery and injury treatments.
-
-      * Suggest cutting edge clean sport supplements.
-
-      * Consult during bike fits to discuss body mechanics, diagnose pain and
-        correct physical barriers.
-
-  - slug: o2_endurance
-    name: O2 Endurance
-    main_url: https://www.o2endurance.com/
-    logo_image: o2_endurance.jpg
-    description: >
-      O2 Endurance is a performance training group for multi-sport athletes that
-      utilizes cutting edge technology, individual coaching and a dynamic team
-      approach to meet the needs of novice triathletes, age group competitors
-      and National Champions.  Unique in Portland for our group training
-      philosophy, which harnesses the energy and natural motivation inherent in
-      team training, we offer resources that cover all the bases of competitive
-      multi-sport preparation.  O2E recognizes the importance of a training
-      environment that offers a balanced and sustainable lifestyle for people
-      juggling the challenges of personal athletic goals and real-world
-      responsibilities.  O2E helps team members identify and pursue specific
-      goal events, supporting each individual with specific coaching, the latest
-      training technology and the fun and connection of training with a team.
-
   - slug: nuun
     name: Nuun
     main_url: http://www.nuun.com/
@@ -188,4 +119,4 @@ other_sponsors:
       replacement from carbohydrates. Before Nuun, if you wanted an electrolyte
       drink, the result was a bottle full of sugar. With its simple,
       self-dissolving, sugar-free electrolyte tab, Nuun revolutionized the
-      sports drink and is proud to partner with Team Oregon in 2017.
+      sports drink and is proud to partner with Team Oregon in 2019.

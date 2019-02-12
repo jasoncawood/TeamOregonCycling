@@ -10,13 +10,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= yield :recaptcha_js %>
     <%= yield :head %>
   </head>
 
   <body class="<%= body_class %>">
-    <%= render partial: 'layouts/messages' %>
     <nav id="page-header">
       <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarSupportedContent"
@@ -30,25 +30,27 @@
           <%= yield :main_links %>
         </ul>
         <ul id="user-links">
-          <% if current_user.anonymous? %>
-            <%= main_nav_link('Log In', new_session_path) %>
-          <% else %>
+          <% if logged_in? %>
             <li id="logged-in-user-links">
               <a href="#" id="user-dropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false"><%= current_user.display_name %></a>
               <div class="dropdown-menu" arial-labelledby="user-dropdown">
                 <ul>
+                  <%= main_nav_link('My Account', user_path) %>
                   <%= admin_site_link %>
                   <%= main_nav_link('Sign Out', session_path, method: :delete) %>
                 </ul>
               </div>
             </li>
+          <% else %>
+            <%= main_nav_link('Log In', new_session_path) %>
           <% end %>
         </ul>
       </div>
     </nav>
     <div id="content" class="<%= 'sidebar' if show_sidebar? || show_admin_sidebar? %>">
+      <%= render partial: 'layouts/messages' %>
       <div class="row">
         <%= render(partial: 'layouts/admin_sidebar') if show_admin_sidebar? %>
         <%= yield %>
