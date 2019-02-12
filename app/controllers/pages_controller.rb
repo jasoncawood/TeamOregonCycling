@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   KNOWN_PAGES = %w[
     about_us
     sponsors
-    join_team
+    code_of_conduct
   ]
 
   def show

@@ -21,8 +21,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   private
+
+  def logged_in?
+    !current_user.anonymous?
+  end
+  helper_method :logged_in?
 
   def current_user
     @current_user || User::Anonymous.new
@@ -41,9 +45,9 @@ class ApplicationController < ActionController::Base
                  success: method(:current_user=))
   end
 
-  def require_permission(permission)
+  def require_permission(permission, on: nil)
     call_service(Authorize, permission: permission,
-                 not_authorized: method(:render_forbidden!))
+                 on: on, not_authorized: method(:render_forbidden!))
   end
 
   def catch_halt

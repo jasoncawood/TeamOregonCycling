@@ -1,0 +1,17 @@
+<div id="new-email-confirmation">
+  <%= simple_form_for @send_new_email_confirmation, url: email_confirmation_token_path do |f| %>
+    <header>
+      <h2>Resend Email Confirmation Code</h2>
+    </header>
+    <section>
+      <p>Enter your email address. If there is an account associated with that
+      email address, we will send a new email confirmation token.</p>
+    </section>
+
+    <%= f.input :email_address %>
+
+    <div class="form-action-buttons">
+      <%= f.submit 'Send Confirmation Code' %>
+    </div>
+  <% end %>
+</div>

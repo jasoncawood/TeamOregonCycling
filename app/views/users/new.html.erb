@@ -1,0 +1,64 @@
+<div id="new-user">
+  <div id="new-user-maybe-login">
+    <h3>Current Members</h3>
+    <p>
+      If you already have an account with Team Oregon and would like to manage
+      your membership, please
+      <%= link_to 'go to your membership page', user_path %>
+      (you will be prompted to log in).
+    </p>
+  </div>
+  <section>
+    <div class="row">
+      <div class="col-md-4 card">
+        <div class="card-body">
+          <p><strong>Thank you for your interest in Team Oregon!</strong></p>
+
+          <p>We're looking forward to another excellent season of Road, Track,
+            Mountain Bike and Cyclocross events.</p>
+
+          <p>Team Oregon welcomes cyclists of <em>all</em> backgrounds and
+            abilities. Whether you are an experienced racer or are thinking of
+            pinning on a race number for the first time this season, we would
+            love to support your goals as a member of our team.</p>
+
+          <p>Benefits of team membership include:</p>
+
+          <ul>
+            <li>Discounted products or services from many of our sponsors</li>
+            <li>Discounts on certain race entry fees (these can easily add up to
+              more than what your membership costs over the course of a single
+              season.)</li>
+            <li>Awesome teammates who show up to race (we won the OBRA Team BAR
+              competition in
+              <a href="http://obra.org/bar/2015/team/team_bar">2015</a>,
+              <a href="http://obra.org/bar/2016/team/team_bar">2016</a>,
+              and <a href="http://obra.org/bar/2017/team/team_bar">2017</a>!)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <%= simple_form_for user, url: user_path do |f| %>
+          <header>
+            <h3>Create Your Account</h3>
+          </header>
+
+          <p>The first step in becoming a member of Team Oregon is to create
+            your account on our website. Once you have an account, you will be
+            able to sign in, pay your membership dues, and access
+            team-member-only areas of the website.</p>
+
+          <%= f.input :email %>
+          <%= f.input :password %>
+          <%= f.input :password_confirmation %>
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+
+          <div class="form-action-buttons">
+            <%= f.submit 'Create Account' %>
+            <%= recaptcha('create_account') %>
+          </div>
+        <% end %>
+      </div>
+  </section>
+</div>

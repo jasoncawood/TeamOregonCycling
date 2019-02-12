@@ -77,6 +77,13 @@ module ApplicationHelper
     return permitted
   end
 
+  def recaptcha(action_name)
+    content_for :recaptcha_js do
+      include_recaptcha_js
+    end
+    recaptcha_action(action_name)
+  end
+
   private
 
   def service_context

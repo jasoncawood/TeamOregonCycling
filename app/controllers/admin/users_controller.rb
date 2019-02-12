@@ -14,14 +14,15 @@ module Admin
     end
 
     def show
-      call_service(Admin::GetUserDetails, user: params[:id],
+      call_service(GetUser, user: params[:id],
                    with_result: method(:user=))
-      call_service(Admin::ListMembershipHistory, user: user,
+      call_service(ListMembershipHistory, user: user,
                    with_result: method(:memberships=))
+      render 'users/show'
     end
 
     def edit
-      call_service(Admin::GetUserDetails, user: params[:id],
+      call_service(GetUser, user: params[:id],
                    with_result: method(:user=))
     end
 

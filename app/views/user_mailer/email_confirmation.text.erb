@@ -1,0 +1,25 @@
+Hello <%= @user.first_name %>,
+
+Someone (hopefully you!) has used the email address "<%= @user.email %>" to
+register an account on the Team Oregon website, and we need you to confirm that
+this email address should be associated with that account before the account can
+be activated.
+
+Please visit
+<%= email_confirmation_url(confirmation_token: @user.confirmation_token) %>
+and enter the confirmation code below (if it doesn't appear automatically) to
+confirm your email address:
+
+  <%= @user.confirmation_token %>
+
+If this email address should *not* be associated with an account on Team
+Oregon's website, you do not need to take any action. The account will not be
+active without explicit confirmation and will be removed in one week.
+
+Please contact us at info@teamoregon.org if you have any questions.
+
+-- 
+Regards,
+
+Team Oregon
+https://teamoregon.org
