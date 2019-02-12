@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   private :user=, :memberships=
 
   def new
+    if ENV['SIGN_UP_ENABLED'] == 'false'
+      redirect_to page_path(:join_the_team)
+      return
+    end
     render locals: { user: NewUserForm.new }
   end
 

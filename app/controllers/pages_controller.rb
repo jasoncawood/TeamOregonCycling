@@ -3,6 +3,7 @@ class PagesController < ApplicationController
     about_us
     sponsors
     code_of_conduct
+    join_team
   ]
 
   def show
