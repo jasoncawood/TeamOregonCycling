@@ -3,15 +3,15 @@
     <header>
       <h2>Resend Email Confirmation Code</h2>
     </header>
-    <section>
+    <div>
       <p>Enter your email address. If there is an account associated with that
-      email address, we will send a new email confirmation token.</p>
-    </section>
+        email address, we will send a new email confirmation token.</p>
 
-    <%= f.input :email_address %>
+      <%= f.input :email_address %>
 
-    <div class="form-action-buttons">
-      <%= f.submit 'Send Confirmation Code' %>
+      <div class="form-action-buttons">
+        <%= f.submit 'Send Confirmation Code' %>
+      </div>
     </div>
   <% end %>
 </div>

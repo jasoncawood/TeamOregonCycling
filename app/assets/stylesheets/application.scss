@@ -58,7 +58,7 @@ body {
     line-height: 1.0;
   }
 
-  >form {
+  form {
     @extend .primary-form;
   }
 }
@@ -85,7 +85,6 @@ body {
 
   .form-group {
     @extend .form-row;
-    margin-bottom: 0;
 
     >.form-control {
       @extend .col-sm-8;
@@ -461,10 +460,6 @@ th, td {
     padding: 1em;
   }
 
-  form {
-    @extend .primary-form;
-  }
-
   #membership-types {
     table {
       @extend .table;
@@ -482,7 +477,11 @@ th, td {
   }
 }
 
-#join-team, #new-session, #email-confirmation, #new-email-confirmation {
+#join-team,
+#new-session,
+#email-confirmation,
+#new-email-confirmation,
+#new-membership {
   @extend .main-content;
 }
 

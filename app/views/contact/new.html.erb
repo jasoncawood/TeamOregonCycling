@@ -4,24 +4,26 @@
   contact_form = controller.contact_form
 %>
 <div id="contact">
-    <h2>Contact Us</h2>
+  <h2>Contact Us</h2>
 
-    <p>Fill out the form below, and your message will be emailed to team
-        leadership. We will do our best to repsond promptly, and we thank you
-        for understanding that we are staffed by part-time volunteers and may
-        take a few days to get back to you.</p>
+  <p>Fill out the form below, and your message will be emailed to team
+    leadership. We will do our best to repsond promptly, and we thank you
+    for understanding that we are staffed by part-time volunteers and may
+    take a few days to get back to you.</p>
 
-    <%= simple_form_for contact_form, url: contact_path do |f| %>
-        <%= f.input :name, label: 'Your Name' %>
-        <%= f.input :email, label: 'Your Email Address' %>
-        <%= f.input :reason, label: 'Reason for your message',
-            collection: contact_form.valid_reasons, include_blank: false %>
-        <%= f.input :message, as: :text,
-            input_html: { rows: 10 } %>
-        <div class="form-action-buttons">
-          <%= f.submit 'Send your message' %>
-          <%= link_to 'Cancel', :back, class: 'btn btn-outline-danger' %>
-          <%= recaptcha('contact_form') %>
-        </div>
-    <% end %>
+  <%= simple_form_for contact_form, url: contact_path do |f| %>
+    <div>
+      <%= f.input :name, label: 'Your Name' %>
+      <%= f.input :email, label: 'Your Email Address' %>
+      <%= f.input :reason, label: 'Reason for your message',
+        collection: contact_form.valid_reasons, include_blank: false %>
+      <%= f.input :message, as: :text,
+        input_html: { rows: 10 } %>
+      <div class="form-action-buttons">
+        <%= f.submit 'Send your message' %>
+        <%= link_to 'Cancel', :back, class: 'btn btn-outline-danger' %>
+        <%= recaptcha('contact_form') %>
+      </div>
+    </div>
+  <% end %>
 </div>

@@ -43,20 +43,22 @@
             <h3>Create Your Account</h3>
           </header>
 
-          <p>The first step in becoming a member of Team Oregon is to create
-            your account on our website. Once you have an account, you will be
-            able to sign in, pay your membership dues, and access
-            team-member-only areas of the website.</p>
+          <div>
+            <p>The first step in becoming a member of Team Oregon is to create
+              your account on our website. Once you have an account, you will be
+              able to sign in, pay your membership dues, and access
+              team-member-only areas of the website.</p>
 
-          <%= f.input :email %>
-          <%= f.input :password %>
-          <%= f.input :password_confirmation %>
-          <%= f.input :first_name %>
-          <%= f.input :last_name %>
+            <%= f.input :email %>
+            <%= f.input :password %>
+            <%= f.input :password_confirmation %>
+            <%= f.input :first_name %>
+            <%= f.input :last_name %>
 
-          <div class="form-action-buttons">
-            <%= f.submit 'Create Account' %>
-            <%= recaptcha('create_account') %>
+            <div class="form-action-buttons">
+              <%= f.submit 'Create Account' %>
+              <%= recaptcha('create_account') %>
+            </div>
           </div>
         <% end %>
       </div>

@@ -3,7 +3,7 @@
     <header>
       <h2>Please Confirm Your Email Address</h2>
     </header>
-    <section>
+    <div>
       <p>You must confirm your email address before logging in. You should
         receive an email message sent to the address associated with your
         account containing the confirmation code and instructions for
@@ -15,12 +15,12 @@
 
       <p><em>Accounts that have not been confirmed within one week will be
           automatically removed.</em></p>
-    </section>
 
-    <%= f.input :confirmation_token %>
+      <%= f.input :confirmation_token %>
 
-    <div class="form-action-buttons">
-      <%= f.submit 'Confirm' %>
+      <div class="form-action-buttons">
+        <%= f.submit 'Confirm' %>
+      </div>
     </div>
   <% end %>
 </div>
