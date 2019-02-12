@@ -1,5 +1,5 @@
 <% user = controller.user %>
-
+<% page_title "Admin - User Details - #{user.display_name}" %>
 <div id="user-details">
   <header>
     <h2><%= user.display_name %></h2>
@@ -25,37 +25,33 @@
       </dl>
     </div>
 
-    <% if has_permission?(:manage_users) %>
-      <div id="roles">
-        <h3>Authorized Roles</h3>
-        <div>
-          <ul>
-            <% user.roles.each do |role| %>
-              <li data-toggle="tooltip" data-placement="bottom"
-                title="Permissions: <%= role.permissions.join(', ') %>"><%= role.name %></li>
-            <% end %>
-          </ul>
-        </div>
-
-        <h3>Permissions</h3>
-        <div>
-          <ul>
-            <% user.roles.pluck(:permissions).flatten.uniq.sort.each do |perm| %>
-              <li><%= perm %></li>
-            <% end %>
-          <ul>
-        </div>
+    <div id="roles">
+      <h3>Authorized Roles</h3>
+      <div>
+        <ul>
+          <% user.roles.each do |role| %>
+            <li data-toggle="tooltip" data-placement="bottom"
+              title="Permissions: <%= role.permissions.join(', ') %>"><%= role.name %></li>
+          <% end %>
+        </ul>
       </div>
-    <% end %>
+
+      <h3>Permissions</h3>
+      <div>
+        <ul>
+          <% user.roles.pluck(:permissions).flatten.uniq.sort.each do |perm| %>
+            <li><%= perm %></li>
+          <% end %>
+        <ul>
+      </div>
+    </div>
 
     <div id="membership-history">
       <header>
         <h3>Membership History</h3>
-        <% if has_permission?(:manage_users) %>
           <%= link_to('Add Membership',
                       new_admin_user_membership_path(user_id: user),
                       class: 'btn btn-success btn-sm') %>
-        <% end %>
       </header>
       <div>
         <table>

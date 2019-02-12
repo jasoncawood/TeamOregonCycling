@@ -31,18 +31,10 @@ form abbr[title="required"] {
   @extend .text-danger;
 }
 
-body {
-  padding-top: 3.7em;
-}
-
 .btn {
   svg {
     fill: $white;
   }
-}
-
-.alert {
-  @extend .row;
 }
 
 .alert-error {
@@ -57,22 +49,11 @@ body {
   @extend .alert-success;
  }
 
-.alert-content {
-  @extend .col-11;
-}
-
-.alert-control {
-  @extend .col-1;
-}
-
 .main-content {
   .btn {
     line-height: 1.0;
   }
 
-  >form {
-    @extend .primary-form;
-  }
 }
 
 .primary-form {
@@ -91,13 +72,12 @@ body {
     text-align: center;
   }
 
-  >p, >div, >section {
+  >div {
     @extend .card-body;
   }
 
   .form-group {
     @extend .form-row;
-    margin-bottom: 0;
 
     >.form-control {
       @extend .col-sm-8;
@@ -187,6 +167,7 @@ th, td {
 }
 
 #alerts {
+  @extend .position-absolute;
   width: 40em;
   max-width: 90%;
   right: 0;
@@ -254,9 +235,8 @@ th, td {
 #content {
   @extend .container;
   background-color: $light;
-  @extend .pt-3;
+  padding-top: 6em;
   @extend .pb-3;
-  @extend .rounded;
 }
 
 #content:not(.sidebar) {
@@ -460,24 +440,15 @@ th, td {
   }
 }
 
-#contact, #code-of-conduct {
+#contact {
   @extend .main-content;
 }
 
-#new-user {
+#join-team {
   @extend .main-content;
 
   >section {
     @extend .col-12;
-  }
-
-  #new-user-maybe-login {
-    @extend .jumbotron;
-    padding: 1em;
-  }
-
-  form {
-    @extend .primary-form;
   }
 
   #membership-types {
@@ -497,64 +468,10 @@ th, td {
   }
 }
 
-#new-session, #email-confirmation, #new-email-confirmation {
+#new-session {
   @extend .main-content;
-}
 
-#user-details {
-  >header {
-    text-align: center;
-  }
-
-  >div {
-    @extend .d-flex;
-    @extend .flex-wrap;
-
-    >div {
-      @extend .card;
-      @extend .m-3;
-
-      >h3 {
-        @extend .card-header;
-      }
-    }
-  }
-
-  #account-info {
-    dl {
-      @extend .card-body;
-    }
-  }
-
-  #membership-history {
-    header {
-      @extend .card-header;
-    }
-
-    >div {
-      @extend .card-body;
-    }
-
-    table {
-      @extend .table;
-      @extend .table-striped;
-      @extend .table-sm;
-
-      tbody {
-        tr.expired-member {
-          @extend .text-muted;
-        }
-
-        tr.expired-member:first-of-type {
-          @extend .text-danger;
-        }
-      }
-    }
-  }
-
-  #roles {
-    >div {
-      @extend .card-body;
-    } 
+  >form {
+    @extend .primary-form;
   }
 }
