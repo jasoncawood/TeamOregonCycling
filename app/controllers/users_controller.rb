@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def new
     if ENV['SIGN_UP_ENABLED'] == 'false'
-      redirect_to page_path(:join_the_team)
+      redirect_to page_path(:join_team)
       return
     end
     render locals: { user: NewUserForm.new }
