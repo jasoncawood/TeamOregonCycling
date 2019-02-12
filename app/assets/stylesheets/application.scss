@@ -41,10 +41,6 @@ body {
   }
 }
 
-.alert {
-  @extend .row;
-}
-
 .alert-error {
   @extend .alert-danger;
  }
@@ -56,14 +52,6 @@ body {
 .alert-notice {
   @extend .alert-success;
  }
-
-.alert-content {
-  @extend .col-11;
-}
-
-.alert-control {
-  @extend .col-1;
-}
 
 .main-content {
   .btn {
@@ -187,13 +175,10 @@ th, td {
 }
 
 #alerts {
-  width: 40em;
-  max-width: 90%;
-  right: 0;
-  left: 0;
-  margin: auto;
-  top: 4em;
-  z-index: 100;
+  margin-top: -1em;
+  margin-bottom: 1em;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
 #page-header {
