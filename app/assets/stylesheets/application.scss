@@ -69,6 +69,10 @@ body {
   .btn {
     line-height: 1.0;
   }
+
+  >form {
+    @extend .primary-form;
+  }
 }
 
 .primary-form {
@@ -87,12 +91,13 @@ body {
     text-align: center;
   }
 
-  >p, >div {
+  >p, >div, >section {
     @extend .card-body;
   }
 
   .form-group {
     @extend .form-row;
+    margin-bottom: 0;
 
     >.form-control {
       @extend .col-sm-8;
@@ -468,6 +473,7 @@ th, td {
 
   #new-user-maybe-login {
     @extend .jumbotron;
+    padding: 1em;
   }
 
   form {
@@ -491,12 +497,8 @@ th, td {
   }
 }
 
-#new-session {
+#new-session, #email-confirmation, #new-email-confirmation {
   @extend .main-content;
-
-  >form {
-    @extend .primary-form;
-  }
 }
 
 #user-details {

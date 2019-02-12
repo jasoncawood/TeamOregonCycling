@@ -7,17 +7,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    new_user = NewUserForm.new(
+    self.user = NewUserForm.new(
       params
       .require(:new_user)
       .permit(*NewUserForm::FIELDS)
     )
 
-    return account_creation_error(new_user) unless new_user.valid?
+    validate_recaptcha!
 
-    call_service(CreateUserAccount, account_details: new_user,
-                 success: method(:account_created),
-                 error: method(:account_creation_error))
+    return account_creation_error(user) unless user.valid?
+
+    call_service(CreateUserAccount,
+                 account_details: user,
+                 success: callback(:account_created),
+                 error: callback(:account_creation_error))
   end
 
   def show
@@ -27,15 +30,24 @@ class UsersController < ApplicationController
                  user: current_user, with_result: method(:memberships=))
   end
 
-  private
-
-  def account_created(user)
-    self.current_user = user
-    redirect_to user_path
+  callback :account_created do |user|
+    flash[:info] = render_to_string(partial: 'account_created_flash', locals: {user: user})
+    redirect_to email_confirmation_path
   end
 
-  def account_creation_error(new_user)
+  callback :account_creation_error do |errors|
+    user.errors = errors
     flash.now[:error] = 'There was an error while creating your account.'
-    render action: :new, locals: { user: new_user }
+    render action: :new, locals: { user: user }
+  end
+
+  private
+
+  def validate_recaptcha!
+    return if NewGoogleRecaptcha.human?(params[:new_google_recaptcha_token],
+                                        'create_account')
+
+    account_creation_error(user.errors)
+    halt!
   end
 end

@@ -131,6 +131,8 @@ GEM
       money (~> 6.13.0)
       railties (>= 3.0)
     multi_json (1.13.1)
+    new_google_recaptcha (1.0.0)
+      rails (>= 4.2.0)
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
@@ -238,9 +240,6 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.9)
-    turbolinks (5.2.0)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.20)
@@ -275,6 +274,7 @@ DEPENDENCIES
   listen
   mail_form
   money-rails
+  new_google_recaptcha
   octicons_helper
   pg
   popper_js
@@ -289,7 +289,6 @@ DEPENDENCIES
   scenic
   simple_form
   the_help
-  turbolinks
   uglifier
   web-console
 

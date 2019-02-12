@@ -7,23 +7,27 @@ class CreateUserAccount < ApplicationService
 
   main do
     create_account
+    send_email_confirmation
+    success!
   end
 
   private
 
+  attr_accessor :user
+
   def create_account
-    user = User.create(user_data)
-    if user.valid?
-      run_callback(success, user)
-    else
-      account_details.errors = user.errors
-      run_callback(error, account_details)
-    end
+    self.user = User.create(account_details.to_h)
+    return if user.valid?
+
+    run_callback(error, user.errors)
+    stop!
   end
 
-  def user_data
-    account_details
-      .to_h
-      .merge(confirmation_token: SecureRandom.hex(15))
+  def send_email_confirmation
+    call_service(SendEmailConfirmationToken, email: user.email)
+  end
+
+  def success!
+    run_callback(success, user)
   end
 end
