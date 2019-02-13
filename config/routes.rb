@@ -10,6 +10,12 @@ Rails.application.routes.draw do
 
   resource :user
   resources :pages, only: %i[show]
+  resources :memberships do
+    collection do
+      post 'payment', to: 'payment'
+      get 'capture_payment', to: 'capture_payment'
+    end
+  end
 
   get '/contact_us', to: 'contact#new', as: :new_contact
   post '/contact_us', to: 'contact#create', as: :contact

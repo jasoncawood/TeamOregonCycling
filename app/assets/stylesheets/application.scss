@@ -61,6 +61,18 @@ body {
   form {
     @extend .primary-form;
   }
+
+  >section {
+    @extend .card;
+
+    >header {
+      @extend .card-header;
+    }
+
+    >p, >section, >div {
+      @extend .card-body;
+    }
+  }
 }
 
 .primary-form {
@@ -93,6 +105,38 @@ body {
     >.control-label {
       @extend .col-sm-4;
       @extend .col-form-label;
+    }
+
+    >.control-label::after {
+      content: ":";
+    }
+
+    >.no-indent-checkbox {
+      @extend .col-sm-12;
+      @extend .row;
+
+      .checkbox {
+        @extend .col-sm-1;
+      }
+
+      label {
+        @extend .col-sm-11;
+      }
+    }
+
+    >.checkbox {
+      padding: 0;
+      @extend .col-sm-8;
+      @extend .offset-sm-4;
+      @extend .row;
+
+      input[type="checkbox"] {
+        @extend .col-sm-1;
+      }
+
+      label {
+        @extend .col-sm-11;
+      }
     }
   }
 }
@@ -459,30 +503,36 @@ th, td {
     @extend .jumbotron;
     padding: 1em;
   }
-
-  #membership-types {
-    table {
-      @extend .table;
-      @extend .table-striped;
-      @extend .table-sm;
-      @extend .table-hover;
-      font-size: 0.8rem;
-
-      .btn-enroll {
-        @extend .btn;
-        @extend .btn-primary;
-        @extend .btn-sm;
-      }
-    }
-  }
 }
 
 #join-team,
 #new-session,
 #email-confirmation,
 #new-email-confirmation,
-#new-membership {
+#new-membership,
+#membership-payment {
   @extend .main-content;
+}
+
+#membership-payment {
+  >section {
+    max-width: 40em;
+    margin: auto;
+  }
+}
+
+#membership-types {
+  @extend .table;
+  @extend .table-striped;
+  @extend .table-sm;
+  @extend .table-hover;
+  font-size: 0.8rem;
+
+  .btn-enroll {
+    @extend .btn;
+    @extend .btn-primary;
+    @extend .btn-sm;
+  }
 }
 
 #user-details {

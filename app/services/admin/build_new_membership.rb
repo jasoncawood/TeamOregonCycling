@@ -5,7 +5,7 @@ module Admin
     require_permission :manage_users
 
     main do
-      self.result = NewMembershipForm.new(
+      self.result = Admin::NewMembershipForm.new(
         membership,
         available_types: membership_types
       )

@@ -36,6 +36,7 @@ class UsersController < ApplicationController
 
   callback :account_created do |user|
     flash[:info] = render_to_string(partial: 'account_created_flash', locals: {user: user})
+    session[:post_authentication_url] = new_membership_path
     redirect_to email_confirmation_path
   end
 

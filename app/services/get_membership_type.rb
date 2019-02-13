@@ -7,6 +7,7 @@ class GetMembershipType < ApplicationService
 
   main do
     if existing_membership_type.present?
+      self.result = existing_membership_type
       with_result.call(existing_membership_type)
     else
       not_found.call

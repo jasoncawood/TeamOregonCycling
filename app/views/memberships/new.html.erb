@@ -1,0 +1,69 @@
+<div id="new-membership">
+  <%= simple_form_for new_membership, url: payment_memberships_path do |f| %>
+    <header>
+      <h2>Purchase/Renew Your Membership</h2>
+    </header>
+    <div>
+      <p>Purchase or renew your Team Oregon membership today. Membership dues
+        are good for one year from the date of purchase. We do not auto-renew
+        your membership, but you will be notified via email and on this site
+        when it is time for you to renew.</p>
+
+      <%= f.error :base %>
+
+      <p>Select one of the following options for your membership:</p>
+
+      <table id="membership-types">
+        <% membership_types.each_with_index do |membership_type, i| %>
+          <tr>
+            <td><input id="membership-type-<%= membership_type.id %>"
+                       type="radio"
+                       name="new_membership_form[membership_type_id]"
+                       value="<%= membership_type.id -%>" <%= 'checked' if i == 0 %>/></td>
+            <td>
+              <strong><%= membership_type.name %></strong>
+              <%= markdown membership_type.description, link_attributes: {} %>
+              <% if membership_type.approval_required? %>
+                <p>This type of membership requires approval by the Team Oregon Board of Directors and may take up to 7 days to be processed. (It's usually much quicker, but we are all volunteers, after all.)</p>
+              <% end %>
+            </td>
+            <td class="money"><%= humanized_money_with_symbol(membership_type.price) %></td>
+          </tr>
+        <% end %>
+      </table>
+      <div class="form-group">
+        <div class="no-indent-checkbox">
+          <span class="checkbox"><%= f.input_field :accepts_code_of_conduct, as: :boolean, required: true, boolean_style: :inline %></span>
+          <label for="new_membership_form_accepts_code_of_conduct">
+            I agree to abide by the <%=link_to 'Team Oregon Code of Conduct', page_path(:code_of_conduct), data: { toggle: 'modal', target: '#teamOregonCoC' } %>
+          </label>
+        </div>
+      </div>
+      <div class="form-action-buttons">
+        <%= f.submit 'Purchase Membership' %>
+      </div>
+      <div class="modal fade" id="teamOregonCoC" tabindex="-1" role="dialog" aria-labelledby="teamOregonCoCTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="teamOregonCoCTitle">Team Oregon Code of Conduct</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= render partial: 'pages/code_of_conduct_list' %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
+<script type="text/javascript">
+  $('#membership-types tr').click(function() {
+    $(this).find('td input:radio').prop('checked', true);
+  })
+</script>

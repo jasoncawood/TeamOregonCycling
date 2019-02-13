@@ -8,20 +8,46 @@ class ApplicationController < ActionController::Base
   around_action :catch_halt
   rescue_from TheHelp::NotAuthorizedError, with: :render_forbidden
   before_action :restore_current_user_from_session
+  before_action :check_membership_status
 
   helper_method :current_user
 
   class << self
     private
 
-    def require_permission(permission)
+    def require_permission(permission, on: nil)
       before_action do
-        require_permission(permission)
+        if on.nil?
+          require_permission(permission)
+        else
+          require_permission(permission, on: send(on))
+        end
       end
     end
   end
 
   private
+
+  def check_membership_status
+    return if current_user.anonymous?
+
+    call_service(CheckMembershipStatus,
+                 user: current_user,
+                 current: ->(*_) {},
+                 expired: callback(:membership_expired),
+                 no_history: callback(:no_membership_history))
+  end
+
+  callback(:membership_expired) do |membership|
+    flash.now[:warning] = render_to_string('application/membership_expired_warning',
+                                       locals: { membership: membership },
+                                       layout: false)
+  end
+
+  callback(:no_membership_history) do
+    flash.now[:warning] = render_to_string('application/no_membership_warning',
+                                       layout: false)
+  end
 
   def logged_in?
     !current_user.anonymous?

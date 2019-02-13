@@ -1,0 +1,8 @@
+<h3>Membership Expired</h3>
+
+<p>Your membership expired on <%= long_date(membership.ends_on) %>. Some areas
+  of the site, as well as your right to make use of membership benefits such as
+  sponsor discounts, is suspended until you
+  <%= link_to 'renew your membership', new_membership_path %>. If your
+  membership is not renewed within 30 days of expiration, you will be removed
+  from the team mailing list and other private communication channels.</p>

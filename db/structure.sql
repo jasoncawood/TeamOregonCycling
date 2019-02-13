@@ -101,7 +101,8 @@ CREATE TABLE public.memberships (
     amount_paid_currency character varying DEFAULT 'USD'::character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    membership_type_id bigint NOT NULL
+    membership_type_id bigint NOT NULL,
+    payment_data jsonb DEFAULT '{}'::jsonb NOT NULL
 );
 
 
@@ -508,6 +509,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180223055132'),
 ('20180223062441'),
 ('20180225060122'),
-('20180409165901');
+('20180409165901'),
+('20190213190925');
 
 

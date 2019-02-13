@@ -64,6 +64,7 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
+    braintreehttp (0.5.0)
     builder (3.2.3)
     byebug (10.0.2)
     coffee-rails (4.2.2)
@@ -144,6 +145,7 @@ GEM
     parallel (1.13.0)
     parser (2.6.0.0)
       ast (~> 2.4.0)
+    paypal-checkout-sdk (1.0.1)
     pg (1.1.4)
     popper_js (1.14.5)
     powerpack (0.1.2)
@@ -262,6 +264,7 @@ DEPENDENCIES
   acts_as_list
   bcrypt
   bootstrap
+  braintreehttp
   byebug
   coffee-rails
   discard!
@@ -276,6 +279,7 @@ DEPENDENCIES
   money-rails
   new_google_recaptcha
   octicons_helper
+  paypal-checkout-sdk
   pg
   popper_js
   puma

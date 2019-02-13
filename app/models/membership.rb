@@ -1,4 +1,8 @@
 class Membership < ApplicationRecord
+  CURRENT = 'current'.freeze
+  EXPIRED = 'expired'.freeze
+  PENDING = 'pending'.freeze
+
   belongs_to :user
   belongs_to :membership_type
 
@@ -10,11 +14,15 @@ class Membership < ApplicationRecord
 
   def status
     if Date.today.between?(starts_on, ends_on + 1.day)
-      'current'
+      CURRENT
     elsif ends_on < Date.today
-      'expired'
+      EXPIRED
     else
-      'pending'
+      PENDING
     end
+  end
+
+  def expired?
+    status == EXPIRED
   end
 end

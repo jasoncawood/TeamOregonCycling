@@ -1,0 +1,62 @@
+<div id="membership-payment">
+  <section>
+    <header>
+      <h2>Payment Required</h2>
+    </header>
+
+    <section>
+      <p>
+        You are about to purchase a <strong><%= membership_type.name %></strong>
+        membership with Team Oregon for
+        <strong><%= humanized_money_with_symbol(membership_type.price) %></strong>
+      </p>
+
+      <p>Your membership will be valid for one year from the date of
+        purchase.</p>
+
+      <div id="paypal-button-container"></div>
+    </section>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=<%= paypal_client_id %>">
+    </script>
+    <script>
+      paypal.Buttons({
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                currency_code: 'USD',
+                value: '<%= membership_type.price %>',
+                breakdown: {
+                  item_total: {
+                    currency_code: 'USD',
+                    value: '<%= membership_type.price %>'
+                  }
+                }
+              },
+              soft_descriptor: 'Team Oregon',
+              items: [
+                {
+                  name: 'Standard Membership',
+                  unit_amount: {
+                    currency_code: 'USD',
+                    value: '<%= membership_type.price %>'
+                  },
+                  quantity: '1',
+                  sku: 'membership_type-<%= membership_type.id %>',
+                  category: 'DIGITAL_GOODS'
+                }
+              ]
+            }]
+          });
+        },
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+            window.location = '<%= capture_payment_memberships_path%>?order_id=' + data.orderID;
+            return true;
+          });
+        }
+      }).render('#paypal-button-container');
+    </script>
+  </section>
+</div>

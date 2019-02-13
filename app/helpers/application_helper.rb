@@ -84,6 +84,12 @@ module ApplicationHelper
     recaptcha_action(action_name)
   end
 
+  def long_date(date)
+    date
+      .to_date
+      .to_formatted_s(:long_ordinal)
+  end
+
   private
 
   def service_context

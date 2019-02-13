@@ -1,4 +1,8 @@
 class MembershipType < ApplicationRecord
+  SKU_ITEM_TYPE = 'membership_type'
+
+  include Purchasable
+
   include Discard::Model
 
   monetize :price_cents
