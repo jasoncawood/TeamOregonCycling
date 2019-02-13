@@ -29,4 +29,8 @@ class Membership < ApplicationRecord
   def current?
     status == CURRENT
   end
+
+  def pay_pal_order_id
+    payment_data['id']
+  end
 end

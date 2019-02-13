@@ -12,6 +12,7 @@ class CreateMembershipFromPayment < ApplicationService
     determine_starts_on
     determine_ends_on
     create_membership
+    notify_admins
     run_callback(success, membership)
   end
 
@@ -67,6 +68,13 @@ class CreateMembershipFromPayment < ApplicationService
       amount_paid: membership_purchase.amount_paid,
       payment_data: PayPalClient.openstruct_to_hash(payment)
     )
+  end
+
+  def notify_admins
+    UserMailer
+      .with(user: user, membership: membership)
+      .membership_purchased
+      .deliver_now
   end
 
   class MembershipPurchase

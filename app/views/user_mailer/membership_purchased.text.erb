@@ -1,0 +1,11 @@
+Hello,
+
+<%= @user.display_name %> just purchased a membership via the team website.
+
+Email Address: <%= @user.email %>
+Membership Type: <%= @membership.membership_type.name %>
+Amount Paid: <%= humanized_money_with_symbol(@membership.amount_paid) %>
+Starts: <%= long_date(@membership.starts_on) %>
+Expires: <%= long_date(@membership.ends_on) %>
+
+PayPal Order ID: <%= @membership.pay_pal_order_id %>
