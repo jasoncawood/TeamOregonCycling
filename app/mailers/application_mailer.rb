@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'no-reply@teamoregon.org'
+  default from: '"Team Oregon Website" <no-reply@teamoregon.org>'
   layout 'mailer'
 end
