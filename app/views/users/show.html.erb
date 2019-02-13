@@ -51,11 +51,6 @@
     <div id="membership-history">
       <header>
         <h3>Membership History</h3>
-        <% if has_permission?(:manage_users) %>
-          <%= link_to('Add Membership',
-                      new_admin_user_membership_path(user_id: user),
-                      class: 'btn btn-success btn-sm') %>
-        <% end %>
       </header>
       <div>
         <table>

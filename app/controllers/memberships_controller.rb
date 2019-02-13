@@ -62,7 +62,7 @@ class MembershipsController < ApplicationController
   private
 
   def redirect_if_current_member
-    if current_user.current_membership.present?
+    if current_user.current_membership&.current?
       flash[:warning] = render_to_string(
         partial: 'already_a_member',
         locals: { ends_on: current_user.current_membership.ends_on }

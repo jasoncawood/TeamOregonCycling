@@ -25,4 +25,8 @@ class Membership < ApplicationRecord
   def expired?
     status == EXPIRED
   end
+
+  def current?
+    status == CURRENT
+  end
 end
