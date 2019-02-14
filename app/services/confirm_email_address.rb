@@ -22,7 +22,7 @@ class ConfirmEmailAddress < ApplicationService
   end
 
   def invalid!
-    run_callback(invalid)
+    run_callback(invalid, "Invalid confirmation token: #{confirmation_token}")
     stop!
   end
 

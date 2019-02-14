@@ -68,7 +68,9 @@ class SessionsController < ApplicationController
   end
 
   callback(:invalid_confirmation_token) do |error|
-    flash.now[:error] = error
+    flash.now[:error] = 'We were unable to verify the confirmation token ' \
+                        'that you entered. Please double-check that ' \
+                        "the confirmation token was entered correctly. #{error}"
     render action: :email_confirmation_token
     halt!
   end
