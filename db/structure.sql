@@ -117,6 +117,10 @@ CREATE VIEW public.current_memberships AS
     m.user_id,
     m.amount_paid_cents,
     m.amount_paid_currency,
+    m.created_at,
+    m.updated_at,
+    m.membership_type_id,
+    m.payment_data,
     m.seqnum
    FROM ( SELECT m_1.id,
             m_1.starts_on,
@@ -124,9 +128,13 @@ CREATE VIEW public.current_memberships AS
             m_1.user_id,
             m_1.amount_paid_cents,
             m_1.amount_paid_currency,
+            m_1.created_at,
+            m_1.updated_at,
+            m_1.membership_type_id,
+            m_1.payment_data,
             row_number() OVER (PARTITION BY m_1.user_id ORDER BY m_1.ends_on DESC) AS seqnum
            FROM public.memberships m_1
-          WHERE (m_1.starts_on <= ('now'::text)::date)) m
+          WHERE (m_1.starts_on <= CURRENT_DATE)) m
   WHERE (m.seqnum = 1);
 
 
@@ -254,7 +262,9 @@ CREATE TABLE public.users (
     unconfirmed_email character varying,
     discarded_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    added_to_mailing_list boolean DEFAULT false NOT NULL,
+    invited_to_slack boolean DEFAULT false NOT NULL
 );
 
 
@@ -510,6 +520,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180223062441'),
 ('20180225060122'),
 ('20180409165901'),
-('20190213190925');
+('20190213190925'),
+('20190214221926'),
+('20190214223438');
 
 

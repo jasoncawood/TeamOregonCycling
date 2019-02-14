@@ -12,6 +12,8 @@ class Membership < ApplicationRecord
 
   delegate :display_name, to: :user, prefix: true
 
+  delegate :name, to: :membership_type, prefix: true
+
   def status
     if Date.today.between?(starts_on, ends_on + 1.day)
       CURRENT

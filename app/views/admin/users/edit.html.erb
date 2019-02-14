@@ -20,6 +20,8 @@
       ) %>
       <%= f.input :password_confirmation, label: 'Confirm New Password' %>
       <% with_permission_to(:manage_users) do %>
+        <%= f.input :added_to_mailing_list %>
+        <%= f.input :invited_to_slack %>
         <%= f.association :roles, as: :check_boxes %>
       <% end %>
       <div class="form-action-buttons">

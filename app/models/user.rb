@@ -18,6 +18,9 @@ class User < ApplicationRecord
     current_membership&.status || 'none'
   end
 
+  delegate :membership_type_name, to: :current_membership, prefix: false,
+           allow_nil: true
+
   def inactive_message
     I18n.t('account_inactive')
   end

@@ -5,6 +5,13 @@
     <%=t "membership_status.#{user.membership_status}",
          ends_on: l_date(user.membership_ends_on) %>
   </td>
+  <td><%= user.membership_type_name %></td>
+  <td class="boolean">
+    <%= 'yes' if user.added_to_mailing_list? %>
+  </td>
+  <td class="boolean">
+    <%= 'yes' if user.invited_to_slack? %>
+  </td>
   <td class="roles">
     <ul>
       <% user.roles.each do |role| %>
