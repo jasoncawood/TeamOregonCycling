@@ -17,7 +17,7 @@
       <div id="paypal-button-container"></div>
     </section>
 
-    <script src="https://www.paypal.com/sdk/js?client-id=<%= paypal_client_id %>">
+    <script src="https://www.paypal.com/sdk/js?debug=true&client-id=<%= paypal_client_id %>&disable-funding=credit,card">
     </script>
     <script>
       paypal.Buttons({
