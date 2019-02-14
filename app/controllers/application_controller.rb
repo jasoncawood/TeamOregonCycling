@@ -6,8 +6,9 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
   around_action :catch_halt
-  rescue_from TheHelp::NotAuthorizedError, with: :render_forbidden
   before_action :restore_current_user_from_session
+  around_action :configure_logging
+  rescue_from TheHelp::NotAuthorizedError, with: :render_forbidden
   before_action :check_membership_status
 
   helper_method :current_user
@@ -27,6 +28,15 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def configure_logging(&block)
+    user_context = Timber::Contexts::User.new(
+      id: current_user.id,
+      email: current_user.email,
+      name: current_user.display_name
+    )
+    Timber.with_context(user_context, &block)
+  end
 
   def check_membership_status
     return if current_user.anonymous?

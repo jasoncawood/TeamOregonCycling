@@ -52,7 +52,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  logger           = ActiveSupport::Logger.new(STDOUT)
-  logger.formatter = config.log_formatter
+  logger           = Timber::Logger.new(STDOUT)
+  config.logger    = ActiveSupport::TaggedLogging.new(logger)
   config.logger    = ActiveSupport::TaggedLogging.new(logger)
 end

@@ -29,6 +29,7 @@ gem 'sassc-rails'
 gem 'scenic'
 gem 'simple_form'
 gem 'the_help'
+gem 'timber', '~> 2.6'
 gem 'uglifier'
 
 group :development, :test do

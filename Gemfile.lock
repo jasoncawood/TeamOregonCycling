@@ -131,6 +131,7 @@ GEM
       monetize (~> 1.9.0)
       money (~> 6.13.0)
       railties (>= 3.0)
+    msgpack (1.2.6)
     multi_json (1.13.1)
     new_google_recaptcha (1.0.0)
       rails (>= 4.2.0)
@@ -242,6 +243,8 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.9)
+    timber (2.6.2)
+      msgpack (~> 1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.20)
@@ -293,6 +296,7 @@ DEPENDENCIES
   scenic
   simple_form
   the_help
+  timber (~> 2.6)
   uglifier
   web-console
 
