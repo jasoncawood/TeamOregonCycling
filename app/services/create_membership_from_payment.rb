@@ -36,7 +36,10 @@ class CreateMembershipFromPayment < ApplicationService
   end
 
   def determine_starts_on
-    self.starts_on = (current_membership&.ends_on || Date.today).at_midnight
+    self.starts_on = [current_membership&.ends_on, Date.today]
+                     .compact
+                     .max
+                     .at_midnight
   end
 
   def determine_ends_on
