@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post 'email_confirmation_token', to: 'sessions#send_new_email_confirmation'
 
   resource :user
+  get '/pages/join_team', to: redirect('/user/new')
   resources :pages, only: %i[show]
   resources :memberships do
     collection do
