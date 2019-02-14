@@ -61,18 +61,6 @@ body {
   form {
     @extend .primary-form;
   }
-
-  >section {
-    @extend .card;
-
-    >header {
-      @extend .card-header;
-    }
-
-    >p, >section, >div {
-      @extend .card-body;
-    }
-  }
 }
 
 .primary-form {
