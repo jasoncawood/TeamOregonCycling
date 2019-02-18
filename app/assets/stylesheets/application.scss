@@ -41,6 +41,11 @@ body {
   }
 }
 
+.cancel-button {
+  @extend .btn;
+  @extend .btn-danger;
+}
+
 .alert-error {
   @extend .alert-danger;
  }
