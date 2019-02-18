@@ -23,9 +23,7 @@ RSpec.shared_context :service_specs do
     let!(name) {
       class_double(constant).tap do |s|
         s.as_stubbed_const
-        allow(s).to receive(:call) { |*args|
-          s.instance_exec(*args, &block) if block_given?
-        }
+        allow(s).to receive(:call, &block)
       end
     }
   end

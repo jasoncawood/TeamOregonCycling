@@ -503,7 +503,10 @@ th, td {
 #email-confirmation,
 #new-email-confirmation,
 #new-membership,
-#membership-payment {
+#membership-payment,
+#reset-password,
+#edit-password
+{
   @extend .main-content;
 }
 

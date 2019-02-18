@@ -1,0 +1,15 @@
+<div id="edit-password">
+  <%= simple_form_for form, url: password_path, method: :put do |f| %>
+    <header>
+      <h2>Change Your Password</h2>
+    </header>
+    <section>
+      <%= f.input :password %>
+      <%= f.input :password_confirmation %>
+      <div class="form-action-buttons">
+        <%= link_to 'Cancel', user_path, class: 'cancel-button' %>
+        <%= f.submit 'Change Password' %>
+      </div>
+    </section>
+  <% end %>
+</div> 
