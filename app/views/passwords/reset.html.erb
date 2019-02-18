@@ -1,0 +1,20 @@
+<div id="reset-password">
+  <%= simple_form_for form, url: send_reset_password_path do |f| %>
+    <header>
+      <h2>Request a Password Reset</h2>
+    </header>
+    <section>
+      <p>If you have forgotten the password to your account, please enter the
+         email address associated with your account in the form below. If we
+         have an account associated with that email address, we will send you a
+         message containing a reset token that you may use once to log in and
+         reset your password. Note that the reset token will only be valid for
+         24 hours.</p>
+      <%= f.input :email %>
+      <div class="form-action-buttons">
+        <%= link_to 'Cancel', new_session_path, class: 'cancel-button' %>
+        <%= f.submit 'Request Password Reset' %>
+      </div>
+    </section>
+  <% end %>
+</div>

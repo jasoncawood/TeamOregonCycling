@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
   class << self
     private
 
-    def require_permission(permission, on: nil)
-      before_action do
+    def require_permission(permission, on: nil, **filter_opts)
+      before_action(**filter_opts) do
         if on.nil?
           require_permission(permission)
         else

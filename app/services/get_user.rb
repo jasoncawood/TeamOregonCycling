@@ -1,5 +1,6 @@
 class GetUser < ApplicationService
   input :user
+  input :allow_update, default: false
   input :with_result, default: ->(user) { user }
 
   require_permission :show, on: :user
@@ -12,8 +13,8 @@ class GetUser < ApplicationService
   private
 
   def user
-    @user = User.find(@user) unless @user.is_a?(User)
-    @user.readonly!
+    @user = User.find(@user.to_param)
+    @user.readonly! unless allow_update
     @user
   end
 end

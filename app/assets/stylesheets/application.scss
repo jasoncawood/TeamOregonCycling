@@ -41,6 +41,11 @@ body {
   }
 }
 
+.cancel-button {
+  @extend .btn;
+  @extend .btn-danger;
+}
+
 .alert-error {
   @extend .alert-danger;
  }
@@ -148,7 +153,7 @@ body {
   }
 
   input[type="submit"] {
-    @extend .btn-primary;
+    @extend .btn-success;
   }
 }
 
@@ -498,7 +503,10 @@ th, td {
 #email-confirmation,
 #new-email-confirmation,
 #new-membership,
-#membership-payment {
+#membership-payment,
+#reset-password,
+#edit-password
+{
   @extend .main-content;
 }
 

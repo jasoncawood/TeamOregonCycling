@@ -6,6 +6,10 @@
     <div>
       <%= f.input :email %>
       <%= f.input :password %>
+      <p class="help-block">
+        Forgot your password? You can
+        <%= link_to('reset your password here', reset_password_path) %>.
+      </p>
       <div class="form-action-buttons">
         <%= f.submit 'Log In' %>
       </div>

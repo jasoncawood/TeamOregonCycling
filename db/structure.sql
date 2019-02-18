@@ -264,7 +264,9 @@ CREATE TABLE public.users (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     added_to_mailing_list boolean DEFAULT false NOT NULL,
-    invited_to_slack boolean DEFAULT false NOT NULL
+    invited_to_slack boolean DEFAULT false NOT NULL,
+    password_reset_token character varying,
+    password_reset_token_expires_at timestamp without time zone
 );
 
 
@@ -491,6 +493,13 @@ CREATE INDEX index_users_on_last_name ON public.users USING btree (last_name);
 
 
 --
+-- Name: index_users_on_password_reset_token; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_users_on_password_reset_token ON public.users USING btree (password_reset_token);
+
+
+--
 -- Name: memberships fk_rails_99326fb65d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -522,6 +531,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180409165901'),
 ('20190213190925'),
 ('20190214221926'),
-('20190214223438');
+('20190214223438'),
+('20190217184629');
 
 

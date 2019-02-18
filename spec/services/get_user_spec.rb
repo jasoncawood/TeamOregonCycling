@@ -34,4 +34,20 @@ RSpec.describe GetUser do
       expect(result).to eq user
     end
   end
+
+  it 'provides a readonly result' do
+    subject.call
+    expect(result).to be_readonly
+  end
+
+  context 'when allow_update is true' do
+    before do
+      service_args[:allow_update] = true
+    end
+
+    it 'provides an updatable result' do
+      subject.call
+      expect(result).not_to be_readonly
+    end
+  end
 end

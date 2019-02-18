@@ -9,6 +9,14 @@ Rails.application.routes.draw do
   post 'email_confirmation_token', to: 'sessions#send_new_email_confirmation'
 
   resource :user
+  resource :password do
+    member do
+      get 'reset', to: 'reset'
+      post 'send_reset', to: 'send_reset'
+      get 'verify_reset', to: 'verify_reset'
+    end
+  end
+
   get '/pages/join_team', to: redirect('/user/new')
   resources :pages, only: %i[show]
   resources :memberships do
