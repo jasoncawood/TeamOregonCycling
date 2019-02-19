@@ -1,8 +1,8 @@
-<tr class="<%= user.membership_status.downcase %>-member">
+<tr>
   <td><%= user.display_name %></td>
   <td><%= mail_to(user.email) %></td>
-  <td>
-      <%=t "membership_status.#{user.membership_status}",
+  <td class="<%= user.membership_status.downcase %>-member">
+    <%=t "membership_status.#{user.membership_status}",
          ends_on: l_date(user.membership_ends_on) %>
   </td>
   <td><%= user.membership_type_name %></td>
