@@ -18,7 +18,13 @@
         <dd><%= user.last_name %></dd>
 
         <dt>Email Address</dt>
-        <dd><%= user.email %></dd>
+        <dd>
+            <% if user.pending_reconfirmation? %>
+                <div class="alert alert-warning">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% else %>
+                <%= user.email %>
+            <% end %>
+        </dd>
 
         <dt>Created:</dt>
         <dd><%=l user.created_at %></dd>
